@@ -52,8 +52,8 @@ http://localhost:9999
 ####Permissions for Tomcat admin
 Edit __tomcat/conf/tomcat-users.xml__
 ```
-<role rolename="richard"/>
-<user username="richard" password="adho" roles="richard"/>
+<role rolename="user"/>
+<user username="user" password="------------" roles="-------"/>
 ```
 ![](img/tomcatmgr.jpg)
  
