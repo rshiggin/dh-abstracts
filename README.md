@@ -2,7 +2,13 @@
 
 ### Renovating the Digital Humanities Conference Abstracts Collection
 
-SUMMARY
+Current active location: [digitalhumanities.org/dh-abstracts/search](http://digitalhumanities.org/dh-abstracts/search)
+
+__In Progress: modified XTF default__
+
+![](img/redesign01.jpg)
+
+__Project Summary__
 
 1. Upgrade the underlying XTF application and dependencies
   * install and configure latest version of XTF web application
@@ -19,6 +25,4 @@ SUMMARY
   * configure improved features for faceted and keyword search
   * implement standards and authority control over key entities
   * establish documented workflow and code versioning system      
-
-URL: [digitalhumanities.org/dh-abstracts/search](http://digitalhumanities.org/dh-abstracts/search)
 
