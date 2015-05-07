@@ -174,6 +174,8 @@ __Initial Custom Redesign__
 __Find in directory__
 style/crossQuery/resultFormatter/default/searchForms.xsl
 
+[searchForms.xsl](resultFormatter/default/searchForms.xsl)
+
 ```
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" 
