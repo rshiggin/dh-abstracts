@@ -174,11 +174,5 @@ __Initial Custom Redesign__
 __Find in directory__  
 style/crossQuery/resultFormatter/default/searchForms.xsl
 
-Modified document  
-[searchForms.xsl](resultFormatter/default/searchForms.xsl)  
-
-   
-</xsl:stylesheet>    
-```
-
+  modified document [searchForms.xsl](resultFormatter/default/searchForms.xsl)  
 
