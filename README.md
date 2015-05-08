@@ -2,7 +2,8 @@
 
 ### Renovating the Digital Humanities Conference Abstracts Collection
 
-Current active location: [digitalhumanities.org/dh-abstracts/search](http://digitalhumanities.org/dh-abstracts/search)
+Current active location: [digitalhumanities.org/dh-abstracts/search](http://digitalhumanities.org/dh-abstracts/search)  
+Questions and comments? Use contact info found [here](http://www.rshiggins.net) for Richard Higgins 
 
 __In Progress: modified XTF default__
 
