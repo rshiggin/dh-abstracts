@@ -3,12 +3,11 @@
    xmlns="http://www.w3.org/1999/xhtml"
    version="2.0">
    
-   
+<!-- DH-Abstracts revisions: Disabled Freeform search (commented-out); changed Examples to match content of site: from "south africa" to "digital archive." R. Higgins 2015-5-7 -->
    
    <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
    <!-- Search forms stylesheet                                                -->
    <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
-   <!-- DHQ revisions: commented-out freeform search; changed examples for relevance from "south africa" to "digital archive." 2015-5-7 R. Higgins -->
    <!--
       Copyright (c) 2008, Regents of the University of California
       All rights reserved.
