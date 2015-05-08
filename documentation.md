@@ -158,13 +158,13 @@ Now, lets add that trick to our ~/.bash_profile.
  #export JAVA_HOME=`/usr/libexec/java_home -v 1.6`
 ``` 
   
-Now you can uncomment the version you need when you need.
+Uncomment the version you need when you need it.
 
 Source: <a href="http://asanga.blogspot.com/2015/01/setting-up-multiple-javahome-versions.html">asanga.blogspot.com/</a>
 
 ##Customizing XTF (XSLT stylesheets and CSS customization)
 
-__Initial Custom Redesign__     
+__Prototype for custom interface__     
       
 ![](img/redesign01.jpg)
 
