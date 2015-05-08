@@ -1,6 +1,7 @@
 ##DH Abstracts Documentation
-Richard Higgins, PhD
-Indiana University
+Richard Higgins, PhD (English), MIS (InfoSci)
+Indiana University, Bloomington
+[rshiggin.net](http://www.rshiggins.net/)
 
 ####Versions
 XTF 3.1
