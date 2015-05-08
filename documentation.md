@@ -162,7 +162,7 @@ Now you can uncomment the version you need when you need.
 
 Source: <a href="http://asanga.blogspot.com/2015/01/setting-up-multiple-javahome-versions.html">asanga.blogspot.com/</a>
 
-##Customizing XTF (XLS stylesheets and CSS customization)
+##Customizing XTF (XSL stylesheets and CSS customization)
 
 __Initial Custom Redesign__     
       
