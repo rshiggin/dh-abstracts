@@ -162,17 +162,20 @@ Now you can uncomment the version you need when you need.
 
 Source: <a href="http://asanga.blogspot.com/2015/01/setting-up-multiple-javahome-versions.html">asanga.blogspot.com/</a>
 
-##Customizing XTF (XSL stylesheets and CSS customization)
+##Customizing XTF (XSLT stylesheets and CSS customization)
 
 __Initial Custom Redesign__     
       
 ![](img/redesign01.jpg)
 
+__Directories and key config files__    
 
+<img src="img/styleDir.jpg" alt="" width="415" height="390" align="left"><img src="img/confDir.jpg"" alt="" width="415" height="390" align="right">  
+```  
+```  
+#### Default search form/start page
 
-####1. Default search form
-
-__Find in directory__  
+__Find in CrossQuery directory__  
 style/crossQuery/resultFormatter/default/searchForms.xsl
 
   modified document [searchForms.xsl](resultFormatter/default/searchForms.xsl)  
