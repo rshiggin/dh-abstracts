@@ -162,7 +162,14 @@ Uncomment the version you need when you need it.
 
 Source: <a href="http://asanga.blogspot.com/2015/01/setting-up-multiple-javahome-versions.html">asanga.blogspot.com/</a>
 
-##Customizing XTF (XSLT stylesheets and CSS customization)
+##Customizing XTF (XSLT stylesheets and CSS customization)  
+
+Modifying search form/start page
+
+__Find in CrossQuery directory__  
+style/crossQuery/resultFormatter/default/searchForms.xsl
+
+  modified document [searchForms.xsl](resultFormatter/default/searchForms.xsl) 
 
 __Prototype for custom interface__     
       
@@ -173,10 +180,4 @@ __Directories and key config files__
 <img src="img/styleDir.jpg" alt="" width="415" height="390" align="left"><img src="img/confDir.jpg"" alt="" width="415" height="390" align="right">  
 ```  
 ```  
-#### Default search form/start page
-
-__Find in CrossQuery directory__  
-style/crossQuery/resultFormatter/default/searchForms.xsl
-
-  modified document [searchForms.xsl](resultFormatter/default/searchForms.xsl)  
 
