@@ -164,20 +164,21 @@ Source: <a href="http://asanga.blogspot.com/2015/01/setting-up-multiple-javahome
 
 ##Customizing XTF (XSLT stylesheets and CSS customization)  
 
+__Directories and key config files__    
+
+<img src="img/styleDir.jpg" alt="" width="415" height="390" align="left"><img src="img/confDir.jpg"" alt="" width="415" height="390" align="right">  
+```  
+```
+
 Modifying search form/start page
 
 __Find in CrossQuery directory__  
 style/crossQuery/resultFormatter/default/searchForms.xsl
 
-  modified document [searchForms.xsl](resultFormatter/default/searchForms.xsl) 
+  modified XSLT view: [searchForms.xsl](resultFormatter/default/searchForms.xsl) 
 
 __Prototype for custom interface__     
       
 ![](img/redesign01.jpg)
 
-__Directories and key config files__    
-
-<img src="img/styleDir.jpg" alt="" width="415" height="390" align="left"><img src="img/confDir.jpg"" alt="" width="415" height="390" align="right">  
-```  
-```  
 
