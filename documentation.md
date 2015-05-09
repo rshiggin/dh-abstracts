@@ -169,13 +169,31 @@ __Directories and key config files__
 <img src="img/styleDir.jpg" alt="" width="415" height="390" align="left"><img src="img/confDir.jpg"" alt="" width="415" height="390" align="right">  
 ```  
 ```
+#####Modifying search form/start page
 
-Modifying search form/start page
-
-__Find in CrossQuery directory__  
+change XSLT
+__searchForms.xsl__ 
+```
 style/crossQuery/resultFormatter/default/searchForms.xsl
+```
+modified XSLT  
+  1. Disabled Freeform search
+  2. change Examples to match content of site: from "south africa" to "digital archive" 
 
-  modified XSLT view: [searchForms.xsl](resultFormatter/default/searchForms.xsl) 
+>view: [searchForms.xsl](resultFormatter/default/searchForms.xsl)  
+  
+change CSS  
+__results.css__  
+```
+css/default/results.css 
+```  
+modified .css  
+  1. change to ADHO site "blue"
+  2. modify header margin, padding
+  3. add logos and site title  
+  4. change text and link color  
+  
+>view: [results.css](css/default/results.css)
 
 __Prototype for custom interface__     
       
