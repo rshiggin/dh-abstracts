@@ -175,7 +175,7 @@ __modify XSLT__ "searchForms.xsl"
 ```
 style/crossQuery/resultFormatter/default/searchForms.xsl
 ```
-changes  
+changes
   1. Disabled Freeform search
   2. change Examples to match content of site: from "south africa" to "digital archive" 
 
@@ -185,7 +185,7 @@ __modify CSS__ "results.css"
 ```
 css/default/results.css 
 ```  
-changes 
+changes
   1. change to ADHO site "blue"
   2. modify header margin, padding
   3. add logos and site title  
