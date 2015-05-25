@@ -3,12 +3,11 @@
    xmlns="http://www.w3.org/1999/xhtml"
    version="2.0">
    
-   
+<!-- DH-Abstracts revisions: Disabled Freeform search (commented-out); changed Examples to match content of site: from "south africa" to "digital archive." R. Higgins 2015-5-7 -->
    
    <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
    <!-- Search forms stylesheet                                                -->
    <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
-   
    <!--
       Copyright (c) 2008, Regents of the University of California
       All rights reserved.
@@ -43,7 +42,7 @@
    <!-- Global parameters                                                      -->
    <!-- ====================================================================== -->
    
-   <xsl:param name="freeformQuery"/>
+   <!-- <xsl:param name="freeformQuery"/> -->
    
    <!-- ====================================================================== -->
    <!-- Form Templates                                                         -->
@@ -65,11 +64,11 @@
                      <tr>
                         <td class="{if(matches($smode,'simple')) then 'tab-select' else 'tab'}"><a href="search?smode=simple">Keyword</a></td>
                         <td class="{if(matches($smode,'advanced')) then 'tab-select' else 'tab'}"><a href="search?smode=advanced">Advanced</a></td>
-                        <td class="{if(matches($smode,'freeform')) then 'tab-select' else 'tab'}"><a href="search?smode=freeform">Freeform</a></td>
+                        <!-- <td class="{if(matches($smode,'freeform')) then 'tab-select' else 'tab'}"><a href="search?smode=freeform">Freeform</a></td> -->
                         <td class="{if(matches($smode,'browse')) then 'tab-select' else 'tab'}"><a href="search?smode=browse">Browse</a></td>
                      </tr>
                      <tr>
-                        <td colspan="4">
+                        <td colspan="3"> <!-- changed colspan to "4": commenting out "freeform" -->
                            <div class="form">
                               <xsl:choose>
                                  <xsl:when test="matches($smode,'simple')">
@@ -78,9 +77,9 @@
                                  <xsl:when test="matches($smode,'advanced')">
                                     <xsl:call-template name="advancedForm"/>
                                  </xsl:when>
-                                 <xsl:when test="matches($smode,'freeform')">
+                                <!-- <xsl:when test="matches($smode,'freeform')">
                                     <xsl:call-template name="freeformForm"/>
-                                 </xsl:when>
+                                 </xsl:when> -->
                                  <xsl:when test="matches($smode,'browse')">
                                     <table>
                                        <tr>
@@ -126,24 +125,24 @@
                         <td colspan="2">Examples:</td>                  
                      </tr>
                      <tr>
-                        <td class="sampleQuery">africa</td>
+                        <td class="sampleQuery">digital</td>
                         <td class="sampleDescrip">Search keywords (full text and metadata) for 'africa'</td>
                      </tr>
                      <tr>
-                        <td class="sampleQuery">south africa</td>
-                        <td class="sampleDescrip">Search keywords for 'south' AND 'africa'</td>
+                        <td class="sampleQuery">digital archive</td>
+                        <td class="sampleDescrip">Search keywords for 'digital' AND 'archive'</td>
                      </tr>
                      <tr>
-                        <td class="sampleQuery">"south africa"</td>
-                        <td class="sampleDescrip">Search keywords for the phrase 'south africa'</td>
+                        <td class="sampleQuery">"digital archive"</td>
+                        <td class="sampleDescrip">Search keywords for the phrase 'digital archive'</td>
                      </tr>
                      <tr>
-                        <td class="sampleQuery">africa*</td>
-                        <td class="sampleDescrip">Search keywords for the string 'africa' followed by 0 or more characters</td>
+                        <td class="sampleQuery">digital*</td>
+                        <td class="sampleDescrip">Search keywords for the string 'digital' followed by 0 or more characters</td>
                      </tr>
                      <tr>
-                        <td class="sampleQuery">africa?</td>
-                        <td class="sampleDescrip">Search keywords for the string 'africa' followed by a single character</td>
+                        <td class="sampleQuery">digital?</td>
+                        <td class="sampleDescrip">Search keywords for the string 'digital' followed by a single character</td>
                      </tr>
                   </table>
                </td>
@@ -334,9 +333,9 @@
                      </tr>
                      <tr>
                         <td class="indent">&#160;</td>
-                        <td><b>Subject</b></td>
+                        <td><b>Location</b></td> <!-- substituting "Location" for "Subject" -->
                         <td>
-                           <input type="text" name="subject" size="20" value="{$subject}"/>
+                           <input type="text" name="location" size="20" value="{$subject}"/>
                         </td>
                      </tr>
                      <tr>
@@ -384,17 +383,17 @@
                <td colspan="2">
                   <table class="sampleTable">
                      <tr>
-                        <td colspan="3">Examples:</td>                  
+                        <td colspan="3"><h4>Example Search</h4></td>                  
                      </tr>
                      <tr>
                         <td/>
-                        <td class="sampleQuery">south africa</td>
-                        <td class="sampleDescrip">Search full text for 'south' AND 'africa'</td>
+                        <td class="sampleQuery">digital archive</td>
+                        <td class="sampleDescrip">Search full text for 'digital' AND 'archive'</td>
                      </tr>
                      <tr>
                         <td>Exclude</td>
-                        <td class="sampleQuery">race</td>
-                        <td class="sampleDescrip">Exclude results which contain the term 'race'</td>
+                        <td class="sampleQuery">text</td>
+                        <td class="sampleDescrip">Exclude results which contain the term 'text'</td>
                      </tr>
                      <tr>
                         <td>Proximity</td>
@@ -404,17 +403,17 @@
                      <tr>
                         <td>Section</td>
                         <td><form action=""><input type="radio" checked="checked"/>headings</form></td>
-                        <td class="sampleDescrip">Match the full text terms, only if they appear in document 'headings' (e.g. chapter titles)</td>
+                        <td class="sampleDescrip">Match the full text terms, only if they appear in document 'headings' (e.g. section titles)</td>
                      </tr>
                      <tr>
                         <td>Title</td>
-                        <td class="sampleQuery">"south africa"</td>
-                        <td class="sampleDescrip">Search for the phrase 'south africa' in the 'title' field</td>
+                        <td class="sampleQuery">"digital archive"</td>
+                        <td class="sampleDescrip">Search for the phrase 'digital archive' in the 'title' field</td>
                      </tr>
                      <tr>
                         <td>Year(s)</td>
-                        <td><form action="">from <input type="text" value="2000" size="4"/> to <input type="text" value="2005" size="4"/></form></td>
-                        <td class="sampleDescrip">Search for documents whose date falls in the range from '2000' to '2005'</td>
+                        <td><form action="">from <input type="text" value="2000" size="4"/> to <input type="text" value="2003" size="4"/></form></td>
+                        <td class="sampleDescrip">Search for documents whose date falls in the range from '2000' to '2003'</td>
                      </tr>
                   </table>
                </td>
@@ -423,7 +422,7 @@
       </form>
    </xsl:template>
    
-   <!-- free-form form -->
+   <!-- free-form form 
    <xsl:template name="freeformForm" exclude-result-prefixes="#all">
       <form method="get" action="{$xtfURL}{$crossqueryPath}">
          <table>
@@ -514,6 +513,6 @@
             </tr>
          </table>
       </form>
-   </xsl:template>
+   </xsl:template> -->
    
 </xsl:stylesheet>

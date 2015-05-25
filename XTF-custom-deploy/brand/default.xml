@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<!-- Header and style customized for DH-Abstracts -->
+
 <brand xmlns="http://www.w3.org/1999/xhtml">
    
    <links>
@@ -16,24 +18,61 @@
    
    <header>
       <div class="header">
-         <img src="icons/default/xtf_logo.gif" alt="eXtensible Text Framework" class="xtf-logo"/>
-         <img src="icons/default/your_logo.gif" width="100" height="40" alt="graphic" class="your-logo" />
+         <img src="icons/brand/ADHO-Logo.png" width="100" height="100" alt="ADHO" class="left-logo"/>
+         <img src="icons/brand/ACH-logo.jpg" width="100" height="100" alt="logo" class="right-logo"/>
+         <h1 class="text_line">Digital Humanities Abstracts</h1> 
          <br class="clear" />
       </div>
    </header>
    
-   <dynaxml.header>
+<!--   <dynaxml.header>
       <div class="header">
-         <img src="icons/default/xtf_logo.gif" alt="eXtensible Text Framework" class="xtf-logo"/>
-         <img src="icons/default/your_logo.gif" width="100" height="40" alt="graphic" class="your-logo" />
+         <img src="icons/brand/ADHO-Logo.png" width="100" height="100" alt="ADHO" class="left-logo"/>
+         <h1 style="text-align:center;bottom">Digital Humanities Abstracts</h1>
+         <img src="icons/brand/ACH-logo.jpg" width="100" height="100" alt="logo" class="right-logo" />
          <br class="clear" />
-      </div>
-   </dynaxml.header>
+   </dynaxml.header> -->
    
    <footer>
       <div class="footer">
          <a href="mailto:you@yourserver.com">Comments? Questions?</a> | <a href="javascript://" onclick="javascript:window.open('/xtf/search?smode=getLang','popup','width=500,height=200,resizable=no,scrollbars=no')">Choose Language</a>
       </div>
    </footer>
+   
+ <!-- MODIFY ADHO CODE FOR DH ABSTRACTS  
+    <div class="region region-four-second">
+      <section id="block-block-9" class="block block-block block-odd block-count-12 block-region-four-second">
+         <div class="block-inner clearfix">
+            <h2 class="block-title">ADHO Constituent Organizations</h2>
+            <div class="block-content content">
+               <p><a href="http://www.allc.org/">The European Association for Digital Humanities </a>(EADH), <a href="http://www.ach.org/">Association for Computers and the Humanities</a> (ACH), <a href="http://csdh-schn.org/">Canadian Society for Digital Humanities / Société canadienne des humanités numériques</a> (CSDH/SCHN), <a href="http://digitalhumanities.org/centernet/">centerNet</a>, <a href="http://aa-dh.org/">Australasian Association for Digital Humanities </a>(aaDH), <a href="http://www.jadh.org/">Japanese Association for Digital Humanities</a> (JADH)</p>
+            </div>
+         </div>
+      </section>
+   </div>
+   <div class="region region-four-third">
+      <section id="block-block-1" class="block block-block block-odd block-count-13 block-region-four-third">
+         <div class="block-inner clearfix">
+            <h2 class="block-title">Contact</h2>
+            <div class="block-content content">
+               <p><a href="/contact">Contact form</a></p>
+               <p>Email: <a href="mailto:web@digitalhumanities.org">web@digitalhumanities.org</a></p>
+               <p><a href="https://plus.google.com/105806705242570224568" rel="publisher" target="blank">Google+</a> | <a href="https://www.facebook.com/AllianceofDigitalHumanitiesOrganizations" target="blank">Facebook</a> | <a href="https://twitter.com/adhorg" target="blank">Twitter</a> | <a href="https://www.youtube.com/channel/UCJvBL1_70IBL2d1GDure01Q" target="blank">YouTube</a></p>
+            </div>
+         </div>
+      </section>
+   </div>
+   <div class="region region-four-fourth">
+      <div id="block-block-10" class="block block-block block-odd block-count-14 block-region-four-fourth">
+         <div class="block-inner clearfix">
+            <div class="block-content content no-title">
+               <p><a href="http://creativecommons.org/licenses/by/3.0/deed.en_US" rel="license"><img alt="Creative Commons Attribution License" src="/sites/adho.org/files/CC-by88x31.png" /></a><br />
+                  This work is licensed under a <a href="http://creativecommons.org/licenses/by/3.0/deed.en_US" rel="license">Creative Commons Attribution 3.0 Unported License</a>.</p>
+            </div>
+         </div>
+      </div>
+   </div>
+   </div>
+   </div></div> -->  
    
 </brand>
