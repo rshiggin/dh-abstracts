@@ -1,0 +1,12 @@
+title
+creator
+location
+publisher
+contributor
+date
+type
+format
+source
+language
+set
+year

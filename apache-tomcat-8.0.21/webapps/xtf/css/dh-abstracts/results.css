@@ -1,0 +1,422 @@
+/* crossQuery RESULTS stylesheet */
+
+body {
+   font-family: Arial, sans-serif;
+   background-color: silver;
+	 font-size: small;
+	 color: #333;
+}
+
+form {
+	display: inline;
+}
+
+.clear {
+	clear: both;
+}
+
+div.header {
+background-color:black;
+border-color:#666666 #666666 -moz-use-text-color;
+border-style:solid solid none;
+border-width:1px 1px 0;
+margin:0 auto;
+height:60px;
+}
+
+a {
+text-decoration:none;
+}
+
+div#main {
+margin-right:auto;
+margin-left:auto;
+}
+
+a:visited {color:inherit;}
+
+div.headerTitle {
+float:left;
+color:white;
+font-family:Georgia,Bodoni,Times,serif;
+margin-top:5px;
+margin-bottom:5px;
+margin-left:.5em;
+letter-spacing:3px;
+font-size:x-large;
+}
+
+div.headerTitle div.nav {
+margin-top:5px;
+font-family:"Lucida Grande","Lucida Sans Unicode","Lucida Sans",Verdana,Helvetica,Arial,Sans-Serif;
+font-size:10px; 
+font-size:small;
+}
+
+div.resultsHeader {
+background-color:#DEDEDF;
+border-color:#999999 #666666;
+border-left:1px solid #666666;
+border-right:1px solid #666666;
+border-style:solid;
+border-width:1px;
+margin-left:auto;
+margin-right:auto;
+margin-bottom:0;
+}
+
+div.searchBox {
+position:relative;
+float:right;
+top:1em;
+right:2em;
+}
+
+div.searchBox input.query {
+background-color:transparent;
+border-color:-moz-use-text-color -moz-use-text-color #555555;
+border-style:none none solid;
+border-width:0 0 1px;
+color:#666666;
+font-family:"Lucida Grande","Lucida Sans Unicode","Lucida Sans",Verdana,Helvetica,Arial,Sans-Serif;
+font-size:10px;
+height:15px;
+margin:0;
+padding-bottom:2px;
+width:185px;
+}
+
+/*
+div.header {
+	 border: 1px solid #666;
+	 width: 99%;
+	 border-bottom: 0;
+	 margin: 0 auto;
+	 background-color: #63718d;
+}
+*/
+
+div.header img {
+	border: 0;
+}
+
+div.header img.xtf-logo {
+	float: left;
+	margin: 21px 0 0 15px
+}
+
+div.header img.your-logo {
+	float: right;
+	margin: 10px 15px;
+}
+
+div.footer {
+   margin: 0 auto;
+	 width: 99%;
+	 text-align: center;
+	 padding: 10px 0;
+	 margin-bottom: 20px;
+}
+
+/* Forms */
+
+div.searchPage {
+     /* margin: 0 auto; */
+	 background-color: #fff;
+	 /*width: 99%; */
+	 border-right: 1px solid #666;
+	 border-left: 1px solid #666;
+	 border-top: 1px solid #999;
+	 border-bottom: 1px solid #666;
+}
+
+div.forms {
+	min-height: 500px;
+	text-align:left;
+}
+
+div.forms table {
+width: 100%;
+}
+
+div.forms table,
+div.forms table td {
+	/*border: 1px solid #ccc;*/
+}
+
+div.forms table td.tab,
+div.forms table td.tab-select {
+	width: 25%;
+	text-align: center;
+	padding: 0.5em;
+}
+
+div.forms table td.tab {
+   border: 1px solid #999;
+	 background-color: #E8EBF1;
+}
+
+div.forms table td.tab-select {
+   border: 1px solid #999;
+	 border-bottom: 0;
+}
+
+div.forms table td.tab a {
+	text-decoration: none;
+	color: #333;
+}
+
+div.forms table td.tab a:hover {
+	text-decoration: underline;
+}
+
+div.forms table td.tab-select a {
+	color: #424F8D;
+}
+
+div.form {
+   width: 99%;
+	 margin: 20px 0 10px 10px;
+   text-align: left;
+}
+
+div.form table {
+
+}
+
+div.form table.top_table {
+	width: 85%;
+
+}
+
+div.form table.left_table {
+	border-right: 1px solid #ccc;
+	text-align: left;
+	margin-right: 40px;
+	width: 90%;
+}
+
+div.form table.right_table {
+	margin: 0 25px;
+}
+
+div.form table h4 {
+	margin: 0 0 10px 0;
+}
+
+div.form table,
+div.form table td {
+	/*border: 1px solid #ccc;*/
+}
+
+div.form table td {
+	vertical-align: top;
+	text-align: left;
+}
+
+div.form table td table td {
+	vertical-align: middle;
+}
+
+div.form table td.indent {
+   width: 2px;
+}
+
+table.sampleTable {
+	margin-top: 20px;
+}
+
+table.sampleTable td {
+	padding: 5px;
+}
+
+table td.sampleQuery {
+   font-family: courier, serif;
+   border-style: solid;
+   border-color: black;
+   border-width: 1px 1px 1px 1px;
+}
+
+table td.sampleDescrip {
+    font-style: italic;
+}
+
+/* Results */
+
+div.resultsHeader {
+   width: 99%;
+	 border-right: 1px solid #666;
+	 border-left: 1px solid #666;
+	 border-top: 1px solid #999;
+	 border-bottom: 1px solid #999;
+	 background-color: #dededf;
+	 margin-left: auto;
+	 margin-right: auto;
+}
+
+div.resultsHeader table {
+   width: 100%;
+}
+
+div.resultsHeader table td {
+	padding: 2px 5px;
+}
+
+td.right {
+   text-align: right;
+}
+
+td.left {
+   text-align: left;
+}
+
+td.center {
+   text-align: center;
+	 padding: 10px;
+}
+
+div.query {
+   width: 350px;
+	 float: left;
+}
+
+div.label {
+   float: left;
+}
+
+div.resultsHeader .subQuery {
+	float: left;
+}
+
+div.results {
+   margin: 0 auto;
+   background-color: white;
+	 width: 99%;
+	 border: 1px solid #666;
+	 border-top: 0;
+}
+
+div.results table {
+	margin: 0 10px;
+}
+
+div.results table td {
+   vertical-align: top;
+}
+
+div.results table td.facet{
+   width: 25%;
+}
+
+div.facetGroup {
+	font-size: 95%;	
+}
+
+div.results table td.docHit{
+}
+
+div.docHit {
+	background-color: #FAFAFB;
+	border: 1px solid #ccc;
+	margin: 10px 0 10px 0;
+	padding: 10px;
+}
+
+div.docHit table td {
+	/* border: 1px solid red; */
+}
+
+div#main_2, div#main_4, div#main_6, div#main_8, div#main_10, div#main_12 {
+	
+}
+
+div.docHit table td.col1{
+   width: 4%;
+   text-align: left;
+}
+
+div.docHit table td.col2{
+   width: 10%;
+   text-align: right;
+}
+
+div.docHit table td.col3{
+   width: 76%;
+   text-align: left;
+}
+
+div.docHit table td.col4{
+   width: 10%;
+   text-align: right;
+}
+
+div.docHit .typeIcon {
+	vertical-align: text-top;
+	margin-left: 1px;
+}
+
+.hit {
+   color: #FD8239;
+   font-weight: bold;
+}
+
+.subhit {
+   color: #FD8239;
+   font-weight: bold;
+	 margin-left: 5px;
+}
+
+.hitsection {
+   background-color: #D6DCE5;
+}
+
+div.facetName {
+  font-weight: bold;
+	margin: 10px 0;
+	font-size: 95%;
+}
+
+div.facet table {
+   border-style: none;
+}
+
+div.facet table td.col1 {
+   width: 12px;
+   text-align: center;
+   vertical-align: middle;
+   padding-right: 0.5em;
+	 color: #6699CC;
+}
+
+div.facet table td.col2 {
+   padding-bottom: 0.1em;
+   padding-top: 0.1em;
+}
+
+div.facet table td.col3 {
+   text-align: right;
+}
+
+div.facetMore {
+   margin-top: 0.5em;
+   margin-left: 2em;
+}
+
+div.facetLess {
+   margin-left: 2em;
+   margin-bottom: 0.5em;
+}
+
+div.getAddress {
+	width: 95%;
+	margin: 0 auto;
+	background-color: #fff;
+	border: 1px solid #666;
+	border-top: 0;
+	padding: 10px;
+}
+
+div.getAddress h2 {
+	margin: 0 0 10px 0;
+	font-size: 120%;
+}

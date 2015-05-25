@@ -183,7 +183,7 @@ style/crossQuery/resultFormatter/default/searchForms.xsl
 __modify CSS__ "results.css" 
 ```
 css/default/results.css 
-```  
+
   1. change to ADHO site "blue"
   2. modify header margin, padding
   3. add logos and site title  
@@ -194,5 +194,14 @@ css/default/results.css
 __Prototype for custom interface__     
       
 ![](img/redesign01.jpg)
+
+
+
+####Customize Revisions
+
+####Reindex
+```
+$ /usr/local/apache-tomcat/webapps/xtf/bin/textIndexer -clean -index default
+```
 
 
