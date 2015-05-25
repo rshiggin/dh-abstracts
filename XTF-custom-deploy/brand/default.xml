@@ -6,14 +6,14 @@
    
    <links>
       <link rel="stylesheet" href="css/default/results.css" type="text/css"/>
-	  <link rel="shortcut icon" href="icons/default/favicon.ico" />
+      <link rel="shortcut icon" href="icons/default/favicon.ico" />
    </links>
    
    <dynaxml.links>
       <link rel="stylesheet" href="css/default/content.css" type="text/css"/>
       <link rel="shortcut icon" href="icons/default/favicon.ico" />
-
-
+      
+      
    </dynaxml.links>
    
    <header>
@@ -25,7 +25,7 @@
       </div>
    </header>
    
-<!--   <dynaxml.header>
+   <dynaxml.header>
       <div class="header">
          <img src="icons/brand/ADHO-Logo.png" width="100" height="100" alt="ADHO" class="left-logo"/>
          <h1 style="text-align:center;bottom">Digital Humanities Abstracts</h1>
@@ -39,7 +39,7 @@
       </div>
    </footer>
    
- <!-- MODIFY ADHO CODE FOR DH ABSTRACTS  
+   <!-- MODIFY ADHO CODE FOR DH ABSTRACTS  
     <div class="region region-four-second">
       <section id="block-block-9" class="block block-block block-odd block-count-12 block-region-four-second">
          <div class="block-inner clearfix">
