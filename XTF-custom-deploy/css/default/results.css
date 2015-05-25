@@ -1,33 +1,10 @@
 /* crossQuery RESULTS stylesheet */
-/* Modified for DH Abstracts */
+
 body {
    font-family: Arial, sans-serif;
    background-color: silver;
 	 font-size: small;
 	 color: #333;
-}
-
-/* Links */
-a,
-a.active,
-li a.active {
-  color: #b93826;
-}
-
-legend {
-  background-color: #b93826;
-  color: #ffffff;
-}
-
-/* Link hovered */
-a:hover,
-a:focus,
-a.active:hover,
-a.active:focus,
-li a.active:hover,
-li a.active:focus {
-  color: #d54b17;
-  border-bottom-color: #d54b17;
 }
 
 form {
@@ -43,29 +20,22 @@ div.header {
 	 width: 99%;
 	 border-bottom: 0;
 	 margin: 0 auto;
-	 background-color: #417ba8;
+	 background-color: #B1B8C6;
 }
 
 div.header img {
 	border: 0;
 }
 
-div.header img.left-logo {
+div.header img.xtf-logo {
 	float: left;
-	margin: 10px 15px
+	margin: 21px 0 0 15px
 }
 
-div.header img.right-logo {
+div.header img.your-logo {
 	float: right;
 	margin: 10px 15px;
 }
-
-div.header .text_line {
-    text-align: center;
-	color: #FFF;
-	margin-top: 40px;
-	font-size: 40px;
-} 
 
 div.footer {
    margin: 0 auto;
@@ -73,11 +43,6 @@ div.footer {
 	 text-align: center;
 	 padding: 10px 0;
 	 margin-bottom: 20px;
-	 background-color: #417ba8;
-	 text-color: #FFF;
-}
-div.footer a {
-      color: #ffffff;
 }
 
 /* Forms */
@@ -324,7 +289,7 @@ div.docHit .typeIcon {
 .subhit {
    color: #FD8239;
    font-weight: bold;
-   margin-left: 5px;
+	 margin-left: 5px;
 }
 
 .hitsection {
