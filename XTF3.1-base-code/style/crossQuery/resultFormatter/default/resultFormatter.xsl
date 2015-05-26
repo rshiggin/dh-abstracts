@@ -49,7 +49,6 @@
    <!-- ====================================================================== -->
    
    <xsl:import href="../common/resultFormatterCommon.xsl"/>
-   <xsl:import href="rss.xsl"/>
    <xsl:include href="searchForms.xsl"/>
    
    <!-- ====================================================================== -->
@@ -101,7 +100,7 @@
          <xsl:when test="$smode='setLang'">
             <xsl:call-template name="setLang"/>
          </xsl:when>
-         <!-- rss feed -->
+         <!-- rss feed 
          <xsl:when test="$rmode='rss'">
             <xsl:apply-templates select="crossQueryResult" mode="rss"/>
          </xsl:when>
@@ -111,7 +110,7 @@
                   <xsl:apply-templates select="crossQueryResult" mode="emailFolder"/>
                </xsl:with-param>
             </xsl:call-template>
-         </xsl:when>
+         </xsl:when> -->
          <!-- similar item -->
          <xsl:when test="$smode = 'moreLike'">
             <xsl:call-template name="translate">

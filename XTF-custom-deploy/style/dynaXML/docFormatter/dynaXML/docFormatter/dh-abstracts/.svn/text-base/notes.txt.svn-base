@@ -1,0 +1,7 @@
+Handle quotes that don't need quotation marks, e.g., in epigraphs, e.g., "On the Cliffs."
+
+Fix other date variables, e.g, @from, @to, and other cases of @when to use "parse-date" template.
+
+<list type="ordered"> -> <ol start="XX">
+
+TEI does not have the equivalent of the XHTML ol/@start.  My practice is to add an @n attribute to the first child item of a list.  My XSLT tests for the presence of such an attribute and inserts its value into ol/@start.
