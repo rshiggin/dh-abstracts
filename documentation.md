@@ -183,7 +183,7 @@ style/crossQuery/resultFormatter/default/searchForms.xsl
 __modify CSS__ "results.css" 
 ```
 css/default/results.css 
-
+```
   1. change to ADHO site "blue"
   2. modify header margin, padding
   3. add logos and site title  
@@ -197,9 +197,23 @@ __Prototype for custom interface__
 
 
 
-####Customize Revisions
+####Tasks completed  
++ running all latest versions of webapps software  
++ added "location" as metadata category  
++ configured XSLT to deliver "location" as a faceted search category
++ revised nomenclature for Bookbag  
++ added branding/home site colors to main search and results pages  
++ revised CSS for customization  
++ added comments to all revised code
++ enlarged central search bar  
++ removed RSS option  
++ redefined categories and labels to be relevant with DH/ADHO  
++ all revised code with versioning committed to GitHub   
 
-####Reindex
+
+
+
+##### Clean reindex
 ```
 $ /usr/local/apache-tomcat/webapps/xtf/bin/textIndexer -clean -index default
 ```
