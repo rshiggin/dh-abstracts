@@ -224,6 +224,14 @@ __Updated search, showing facets and sorting__
 
 ![](img/screen2.jpg)   
 
+####Prep for deploy: create Java .war file   
+```
+149-160-200-119:webapps User$ cd xtf
+149-160-200-119:xtf User$ ls
+149-160-200-119:xtf User$ jar cvf /tmp/dh-abstracts.war *
+149-160-200-119:xtf User$ cd /tmp
+149-160-200-119:tmp User$ cp dh-abstracts.war ~/Desktop
 
+```    
 
 
