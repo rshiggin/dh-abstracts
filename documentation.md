@@ -207,15 +207,23 @@ __Prototype for custom interface__
 + added comments to all revised code
 + enlarged central search bar  
 + removed RSS option  
++ removed Freeform search (redundant and still beta)
 + redefined categories and labels to be relevant with DH/ADHO  
-+ all revised code with versioning committed to GitHub   
-
-
-
++ all revised code with versioning committed to GitHub    
 
 ##### Clean reindex
 ```
 $ /usr/local/apache-tomcat/webapps/xtf/bin/textIndexer -clean -index default
-```
+```   
+
+__Customized interface__     
+
+![](img/screen1.jpg)   
+
+__Updated search, showing facets and sorting__   
+
+![](img/screen2.jpg)   
+
+
 
 
