@@ -8,6 +8,8 @@
    
    <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
    <!-- Query result formatter stylesheet                                      -->
+   
+   <!-- DH-abstracts: remove RSS and Freeform; modify Bookbag to Save selected -->
    <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
    
    <!--
@@ -49,7 +51,7 @@
    <!-- ====================================================================== -->
    
    <xsl:import href="../common/resultFormatterCommon.xsl"/>
-   <xsl:import href="rss.xsl"/>
+   <!-- <xsl:import href="rss.xsl"/> -->
    <xsl:include href="searchForms.xsl"/>
    
    <!-- ====================================================================== -->
@@ -101,10 +103,10 @@
          <xsl:when test="$smode='setLang'">
             <xsl:call-template name="setLang"/>
          </xsl:when>
-         <!-- rss feed -->
+         <!-- rss feed 
          <xsl:when test="$rmode='rss'">
             <xsl:apply-templates select="crossQueryResult" mode="rss"/>
-         </xsl:when>
+         </xsl:when> -->
          <xsl:when test="$smode='emailFolder'">
             <xsl:call-template name="translate">
                <xsl:with-param name="resultTree">
@@ -167,7 +169,7 @@
       
       <html xml:lang="en" lang="en">
          <head>
-            <title>XTF: Search Results</title>
+            <title>DH Abstracts: Search Results</title>
             <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
             <xsl:copy-of select="$brand.links"/>
             <!-- AJAX support -->
@@ -186,7 +188,7 @@
                      <td colspan="2" class="right">
                         <xsl:if test="$smode != 'showBag'">
                            <xsl:variable name="bag" select="session:getData('bag')"/>
-                           <a href="{$xtfURL}{$crossqueryPath}?smode=showBag">Bookbag</a>
+                           <a href="{$xtfURL}{$crossqueryPath}?smode=showBag">Save selected</a>
                            (<span id="bagCount"><xsl:value-of select="count($bag/bag/savedDoc)"/></span>)
                         </xsl:if>
                      </td>
@@ -201,7 +203,7 @@
                                     <xsl:text>javascript:window.open('</xsl:text><xsl:value-of
                                        select="$xtfURL"/>search?smode=getAddress<xsl:text>','popup','width=500,height=200,resizable=no,scrollbars=no')</xsl:text>
                                  </xsl:attribute>
-                                 <xsl:text>E-mail My Bookbag</xsl:text>
+                                 <xsl:text>E-mail selected</xsl:text>
                               </a>
                            </xsl:when>
                            <xsl:otherwise>
@@ -215,13 +217,15 @@
                         </xsl:choose>
                      </td>
                      <td class="right">
-                        <xsl:if test="docHit">
+                        
+                       <!-- remove RSS for now --> 
+                       <!-- <xsl:if test="docHit">
                            <xsl:variable name="cleanString" select="replace(replace($queryString,';*smode=docHits',''),'^;','')"/>
                            <span style="vertical-align:bottom"><img src="{$icon.path}/i_rss.png" alt="rss icon"/></span>
                            <xsl:text>&#160;</xsl:text>
                            <a href="search?{$cleanString};docsPerPage=100;rmode=rss;sort=rss">RSS</a>
                            <xsl:text>&#160;|&#160;</xsl:text>
-                        </xsl:if>
+                        </xsl:if> -->
                         <xsl:if test="$smode != 'showBag'">
                            <a href="{$xtfURL}{$crossqueryPath}?{$modifyString}">
                               <xsl:text>Modify Search</xsl:text>
@@ -252,7 +256,7 @@
                   </xsl:if>
                   <tr>
                      <td>
-                        <b><xsl:value-of select="if($smode='showBag') then 'Bookbag' else 'Results'"/>:</b>&#160;
+                        <b><xsl:value-of select="if($smode='showBag') then 'Saved' else 'Results'"/>:</b>&#160;
                         <xsl:variable name="items" select="@totalDocs"/>
                         <xsl:choose>
                            <xsl:when test="$items = 1">
@@ -302,6 +306,7 @@
                            <xsl:if test="not($smode='showBag')">
                               <td class="facet">
                                  <xsl:apply-templates select="facet[@field='facet-subject']"/>
+                                 <xsl:apply-templates select="facet[@field='facet-location']"/>
                                  <xsl:apply-templates select="facet[@field='facet-date']"/>
                               </td>
                            </xsl:if>
@@ -326,7 +331,7 @@
                            <td>
                               <xsl:choose>
                                  <xsl:when test="$smode = 'showBag'">
-                                    <p>Your Bookbag is empty.</p>
+                                    <p>No items saved.</p>
                                     <p>Click on the 'Add' link next to one or more items in your <a href="{session:getData('queryURL')}">Search Results</a>.</p>
                                  </xsl:when>
                                  <xsl:otherwise>
@@ -364,14 +369,14 @@
    <xsl:template name="getAddress" exclude-result-prefixes="#all">
       <html xml:lang="en" lang="en">
          <head>
-            <title>E-mail My Bookbag: Get Address</title>
+            <title>E-mail Saved Items: Get Address</title>
             <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
             <xsl:copy-of select="$brand.links"/>
          </head>
          <body>
             <xsl:copy-of select="$brand.header"/>
             <div class="getAddress">
-               <h2>E-mail My Bookbag</h2>
+               <h2>E-mail Saved Items</h2>
                <form action="{$xtfURL}{$crossqueryPath}" method="get">
                   <xsl:text>Address: </xsl:text>
                   <input type="text" name="email"/>
@@ -397,8 +402,8 @@
          useSSL="no" 
          from="admin@yourserver.org"
          to="{$email}" 
-         subject="XTF: My Bookbag">
-Your XTF Bookbag:
+         subject="DH-Abstracts: Saved Items">
+Selected DH Abstracts:
 <xsl:apply-templates select="$bookbagContents/savedDoc" mode="emailFolder"/>
       </mail:send>
       
@@ -454,7 +459,7 @@ Item number <xsl:value-of select="$num"/>:
       
       <html xml:lang="en" lang="en">
          <head>
-            <title>XTF: Search Results</title>
+            <title>DH Abstracts: Search Results</title>
             <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
             <xsl:copy-of select="$brand.links"/>
             <!-- AJAX support -->
@@ -472,7 +477,7 @@ Item number <xsl:value-of select="$num"/>:
                   <tr>
                      <td colspan="2" class="right">
                         <xsl:variable name="bag" select="session:getData('bag')"/>
-                        <a href="{$xtfURL}{$crossqueryPath}?smode=showBag">Bookbag</a>
+                        <a href="{$xtfURL}{$crossqueryPath}?smode=showBag">Save selected</a>
                         (<span id="bagCount"><xsl:value-of select="count($bag/bag/savedDoc)"/></span>)
                      </td>
                   </tr>
@@ -556,24 +561,24 @@ Item number <xsl:value-of select="$num"/>:
    <xsl:template name="browseLinks">
       <xsl:choose>
          <xsl:when test="$browse-all">
-            <xsl:text>Facet | </xsl:text>
+            <xsl:text>Facets | </xsl:text>
             <a href="{$xtfURL}{$crossqueryPath}?browse-title=first;sort=title">Title</a>
             <xsl:text> | </xsl:text>
             <a href="{$xtfURL}{$crossqueryPath}?browse-creator=first;sort=creator">Author</a>
          </xsl:when>
          <xsl:when test="$browse-title">
-            <a href="{$xtfURL}{$crossqueryPath}?browse-all=yes">Facet</a>
+            <a href="{$xtfURL}{$crossqueryPath}?browse-all=yes">Facets</a>
             <xsl:text> | Title | </xsl:text>
             <a href="{$xtfURL}{$crossqueryPath}?browse-creator=first;sort=creator">Author</a>
          </xsl:when>
          <xsl:when test="$browse-creator">
-            <a href="{$xtfURL}{$crossqueryPath}?browse-all=yes">Facet</a>
+            <a href="{$xtfURL}{$crossqueryPath}?browse-all=yes">Facets</a>
             <xsl:text> | </xsl:text>
             <a href="{$xtfURL}{$crossqueryPath}?browse-title=first;sort=title">Title</a>
             <xsl:text>  | Author</xsl:text>
          </xsl:when>
          <xsl:otherwise>
-            <a href="{$xtfURL}{$crossqueryPath}?browse-all=yes">Facet</a>
+            <a href="{$xtfURL}{$crossqueryPath}?browse-all=yes">Facets</a>
             <xsl:text> | </xsl:text>
             <a href="{$xtfURL}{$crossqueryPath}?browse-title=first;sort=title">Title</a>
             <xsl:text> | </xsl:text>
@@ -739,7 +744,7 @@ Item number <xsl:value-of select="$num"/>:
                   <xsl:text>&#160;</xsl:text>
                </td>
                <td class="col2">
-                  <b>Published:&#160;&#160;</b>
+                  <b>Presented:&#160;&#160;</b>
                </td>
                <td class="col3">
                   <xsl:choose>
@@ -765,6 +770,22 @@ Item number <xsl:value-of select="$num"/>:
                   </td>
                   <td class="col3">
                      <xsl:apply-templates select="meta/subject"/>
+                  </td>
+                  <td class="col4">
+                     <xsl:text>&#160;</xsl:text>
+                  </td>
+               </tr>
+            </xsl:if>
+            <xsl:if test="meta/location">
+               <tr>
+                  <td class="col1">
+                     <xsl:text>&#160;</xsl:text>
+                  </td>
+                  <td class="col2">
+                     <b>Location:&#160;&#160;</b>
+                  </td>
+                  <td class="col3">
+                     <xsl:apply-templates select="meta/location"/>
                   </td>
                   <td class="col4">
                      <xsl:text>&#160;</xsl:text>

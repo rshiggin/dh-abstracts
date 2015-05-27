@@ -9,36 +9,64 @@
         <servlet>
             <servlet-name>crossQuery</servlet-name>
             <servlet-class>org.cdlib.xtf.crossQuery.CrossQuery</servlet-class>
+            <init-param>
+                <param-name>base-dir</param-name>
+                <param-value>/usr/local/apache-tomcat/webapps/xtf</param-value>
+            </init-param>
         </servlet>
         
         <servlet>
             <servlet-name>rawQuery</servlet-name>
             <servlet-class>org.cdlib.xtf.crossQuery.raw.RawQuery</servlet-class>
+            <init-param>
+                <param-name>base-dir</param-name>
+                <param-value>/usr/local/apache-tomcat/webapps/xtf</param-value>
+            </init-param>
         </servlet>
         
         <servlet>
             <servlet-name>dynaXML</servlet-name>
             <servlet-class>org.cdlib.xtf.dynaXML.DynaXML</servlet-class>
+            <init-param>
+                <param-name>base-dir</param-name>
+                <param-value>/usr/local/apache-tomcat/webapps/xtf</param-value>
+            </init-param>
         </servlet>
         
         <servlet>
             <servlet-name>SRU</servlet-name>
             <servlet-class>org.cdlib.xtf.zing.SRU</servlet-class>
+            <init-param>
+                <param-name>base-dir</param-name>
+                <param-value>/usr/local/apache-tomcat/webapps/xtf</param-value>
+            </init-param>
         </servlet>
         
         <servlet>
             <servlet-name>org.cdlib.xtf.dynaXML.DynaXML</servlet-name>
             <servlet-class>org.cdlib.xtf.dynaXML.DynaXML</servlet-class>
+            <init-param>
+                <param-name>base-dir</param-name>
+                <param-value>/usr/local/apache-tomcat/webapps/xtf</param-value>
+            </init-param>
         </servlet>
 
         <servlet>
             <servlet-name>org.cdlib.xtf.crossQuery.CrossQuery</servlet-name>
             <servlet-class>org.cdlib.xtf.crossQuery.CrossQuery</servlet-class>
+            <init-param>
+                <param-name>base-dir</param-name>
+                <param-value>/usr/local/apache-tomcat/webapps/xtf</param-value>
+            </init-param>
         </servlet>
 
         <servlet>
             <servlet-name>org.cdlib.xtf.zing.SRU</servlet-name>
             <servlet-class>org.cdlib.xtf.zing.SRU</servlet-class>
+            <init-param>
+                <param-name>base-dir</param-name>
+                <param-value>/usr/local/apache-tomcat/webapps/xtf</param-value>
+            </init-param>
         </servlet>
         
         <servlet-mapping>

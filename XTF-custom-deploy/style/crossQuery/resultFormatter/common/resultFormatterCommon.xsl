@@ -8,6 +8,7 @@
    
    <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
    <!-- Query result formatter stylesheet                                      -->
+   <!-- DH-abstracts: added location as metadata facet                         -->
    <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
    
    <!--
@@ -156,6 +157,13 @@
    <xsl:param name="rights-prox"/>
    <xsl:param name="rights-exclude"/>
    <xsl:param name="rights-max"/>
+  
+  <!-- Special DH Abstracts addition of "location" -->
+   <xsl:param name="location"/>
+   <xsl:param name="location-join"/>
+   <xsl:param name="location-prox"/>
+   <xsl:param name="location-exclude"/>
+   <xsl:param name="location-max"/>
    
    <!-- Special XTF Metadata Field based on Date -->
    <xsl:param name="year"/>
@@ -462,6 +470,20 @@
    </xsl:template>
    
    <!-- ====================================================================== -->
+   <!-- Location Links                                                          -->
+   <!-- ====================================================================== -->
+   
+   <xsl:template match="location">
+      <a href="{$xtfURL}{$crossqueryPath}?location={editURL:protectValue(.)};location-join=exact;smode={$smode};rmode={$rmode};style={$style};brand={$brand}">
+         <xsl:apply-templates/>
+      </a>
+      <xsl:if test="not(position() = last())">
+         <xsl:text> | </xsl:text>
+      </xsl:if>
+   </xsl:template>
+   
+   
+   <!-- ====================================================================== -->
    <!-- "More" Blocks                                                            -->
    <!-- ====================================================================== -->
    
@@ -517,30 +539,42 @@
                   <xsl:when test="$sort = ''">
                      <option value="title" selected="selected">title</option>
                      <option value="creator">author</option>
+                     <option value="location">location</option>
                      <option value="year">publication date</option>
                      <option value="reverse-year">reverse date</option>
                   </xsl:when>
                   <xsl:when test="$sort = 'title'">
                      <option value="title" selected="selected">title</option>
                      <option value="creator">author</option>
+                     <option value="location">location</option>
                      <option value="year">publication date</option>
                      <option value="reverse-year">reverse date</option>
                   </xsl:when>
                   <xsl:when test="$sort = 'creator'">
                      <option value="title">title</option>
                      <option value="creator" selected="selected">author</option>
+                     <option value="location">location</option>
+                     <option value="year">publication date</option>
+                     <option value="reverse-year">reverse date</option>
+                  </xsl:when>
+                  <xsl:when test="$sort = 'location'">
+                     <option value="title">title</option>
+                     <option value="creator">author</option>
+                     <option value="location" selected="selected">location</option>
                      <option value="year">publication date</option>
                      <option value="reverse-year">reverse date</option>
                   </xsl:when>
                   <xsl:when test="$sort = 'year'">
                      <option value="title">title</option>
                      <option value="creator">author</option>
+                     <option value="location">location</option>
                      <option value="year" selected="selected">publication date</option>
                      <option value="reverse-year">reverse date</option>
                   </xsl:when>
                   <xsl:when test="$sort = 'reverse-year'">
                      <option value="title">title</option>
                      <option value="creator">author</option>
+                     <option value="location">location</option>
                      <option value="year">publication date</option>
                      <option value="reverse-year" selected="selected">reverse date</option>
                   </xsl:when>
@@ -552,6 +586,7 @@
                      <option value="" selected="selected">relevance</option>
                      <option value="title">title</option>
                      <option value="creator">author</option>
+                     <option value="location">location</option>
                      <option value="year">publication date</option>
                      <option value="reverse-year">reverse date</option>
                   </xsl:when>
@@ -559,13 +594,22 @@
                      <option value="">relevance</option>
                      <option value="title" selected="selected">title</option>
                      <option value="creator">author</option>
+                     <option value="location">location</option>
                      <option value="year">publication date</option>
                      <option value="reverse-year">reverse date</option>
                   </xsl:when>
                   <xsl:when test="$sort = 'creator'">
                      <option value="">relevance</option>
                      <option value="title">title</option>
+                     <option value="location">location</option>
                      <option value="creator" selected="selected">author</option>
+                     <option value="year">publication date</option>
+                     <option value="reverse-year">reverse date</option>
+                  </xsl:when>
+                  <xsl:when test="$sort = 'location'">
+                     <option value="title">title</option>
+                     <option value="creator">author</option>
+                     <option value="location" selected="selected">location</option>
                      <option value="year">publication date</option>
                      <option value="reverse-year">reverse date</option>
                   </xsl:when>
@@ -573,12 +617,14 @@
                      <option value="">relevance</option>
                      <option value="title">title</option>
                      <option value="creator">author</option>
+                     <option value="location">location</option>
                      <option value="year" selected="selected">publication date</option>
                      <option value="reverse-year">reverse date</option>
                   </xsl:when>
                   <xsl:when test="$sort = 'reverse-year'">
                      <option value="">relevance</option>
                      <option value="title">title</option>
+                     <option value="location">location</option>
                      <option value="creator">author</option>
                      <option value="year">publication date</option>
                      <option value="reverse-year" selected="selected">reverse date</option>
@@ -854,7 +900,7 @@
       <html>
          <head>
             <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-            <title>XTF: Results</title>
+            <title>DH Abstracts: Results</title>
          </head>
          <body>
             

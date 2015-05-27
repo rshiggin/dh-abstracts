@@ -6,7 +6,9 @@
    version="2.0">
    
    <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
-   <!-- Simple query parser stylesheet                                         -->
+   <!-- Simple query parser stylesheet  -->
+   
+   <!-- DH-abstracts mods: add location where necessary; remove RSS and Freeform -->
    <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
    
    <!--
@@ -64,7 +66,7 @@
    <!-- list of fields to search in 'keyword' search; generally these should
         be the same fields shown in the search result listing, so the user
         can see all the matching words. -->
-   <xsl:param name="fieldList" select="'text title creator subject '"/>
+   <xsl:param name="fieldList" select="'text title creator location subject '"/>
    
    <!-- ====================================================================== -->
    <!-- Root Template                                                          -->
@@ -84,23 +86,26 @@
             <xsl:attribute name="sortMetaFields">
                <xsl:choose>
                   <xsl:when test="$sort='title'">
-                     <xsl:value-of select="'sort-title,sort-creator,sort-publisher,sort-year'"/>
+                     <xsl:value-of select="'sort-title,sort-creator,sort-location,sort-publisher,sort-year'"/>
                   </xsl:when>
                   <xsl:when test="$sort='year'">
-                     <xsl:value-of select="'sort-year,sort-title,sort-creator,sort-publisher'"/>
-                  </xsl:when>              
+                     <xsl:value-of select="'sort-year,sort-title,sort-creator,sort-location,sort-publisher'"/>
+                  </xsl:when> 
+                  <xsl:when test="$sort='location'">
+                     <xsl:value-of select="'sort-location,sort-year,sort-title,sort-creator'"/>
+                  </xsl:when>
                   <xsl:when test="$sort='reverse-year'">
-                     <xsl:value-of select="'-sort-year,sort-title,sort-creator,sort-publisher'"/>
+                     <xsl:value-of select="'-sort-year,sort-title,sort-creator,sort-location,sort-publisher'"/>
                   </xsl:when>              
                   <xsl:when test="$sort='creator'">
                      <xsl:value-of select="'sort-creator,sort-year,sort-title'"/>
                   </xsl:when>
                   <xsl:when test="$sort='publisher'">
-                     <xsl:value-of select="'sort-publisher,sort-title,sort-year'"/>
+                     <xsl:value-of select="'sort-publisher,sort-title,sort-year,sort-location'"/>
                   </xsl:when>     
-                  <xsl:when test="$sort='rss'">
+               <!--   <xsl:when test="$sort='rss'">
                      <xsl:value-of select="'-sort-date,sort-title'"/>
-                  </xsl:when>         
+                  </xsl:when>  -->       
                </xsl:choose>
             </xsl:attribute>
          </xsl:if>
@@ -118,6 +123,15 @@
          -->
          <xsl:call-template name="facet">
             <xsl:with-param name="field" select="'facet-subject'"/>
+            <xsl:with-param name="topGroups" select="'*[1-5]'"/>
+            <xsl:with-param name="sort" select="'totalDocs'"/>
+         </xsl:call-template>
+         
+         <!-- location facet, normally shows top 10 sorted by count, but user can select 'more' 
+              to see all sorted by location. 
+         -->
+         <xsl:call-template name="facet">
+            <xsl:with-param name="field" select="'facet-location'"/>
             <xsl:with-param name="topGroups" select="'*[1-5]'"/>
             <xsl:with-param name="sort" select="'totalDocs'"/>
          </xsl:call-template>
@@ -194,12 +208,13 @@
             </and>
          </xsl:if>
          
-         <!-- Freeform query language -->
+         <!-- DH-abstracts remove Freeform search -->
+         <!-- Freeform query language 
          <xsl:if test="//param[matches(@name, '^freeformQuery$')]">
             <xsl:variable name="strQuery" select="//param[matches(@name, '^freeformQuery$')]/@value"/>
             <xsl:variable name="parsed" select="freeformQuery:parse($strQuery)"/>
             <xsl:apply-templates select="$parsed/query/*" mode="freeform"/>
-         </xsl:if>
+         </xsl:if> -->
         
          <!-- Unary Not -->
          <xsl:for-each select="param[contains(@name, '-exclude')]">

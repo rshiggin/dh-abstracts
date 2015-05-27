@@ -120,10 +120,12 @@
          <xsl:apply-templates select="$meta/*:title[1]" mode="sort"/>    
          <xsl:apply-templates select="$meta/*:creator[1]" mode="sort"/>
          <xsl:apply-templates select="$meta/*:date[1]" mode="sort"/>
+         <xsl:apply-templates select="$meta/*:location[1]" mode="sort"/>
          
          <!-- Create facets -->
          <xsl:apply-templates select="$meta/*:date" mode="facet"/>
          <xsl:apply-templates select="$meta/*:subject" mode="facet"/>
+         <xsl:apply-templates select="$meta/*:location" mode="facet"/>
          
          <xsl:apply-templates select="$meta/*:title[1]" mode="browse"/>    
          <xsl:apply-templates select="$meta/*:creator[1]" mode="browse"/>
@@ -189,6 +191,15 @@
          <xsl:attribute name="xtf:facet" select="'yes'"/>
          <xsl:value-of select="normalize-unicode(string(.))"/>
       </facet-subject>
+   </xsl:template>
+   
+   <!-- Generate facet-location -->
+   <xsl:template match="*:location" mode="facet">
+      <facet-location>
+         <xsl:attribute name="xtf:meta" select="'true'"/>
+         <xsl:attribute name="xtf:facet" select="'yes'"/>
+         <xsl:value-of select="normalize-unicode(string(.))"/>
+      </facet-location>
    </xsl:template>
    
    <!-- Generate browse-title -->

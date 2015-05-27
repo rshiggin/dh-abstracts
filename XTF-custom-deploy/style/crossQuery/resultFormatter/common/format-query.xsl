@@ -121,7 +121,7 @@
                   </xsl:when>
                   <xsl:otherwise>
                      <!-- mask facets -->
-                     <xsl:value-of select="replace(replace(replace(@field,'facet-',''),'subject','subject'),'date','date')"/>
+ <xsl:value-of select="replace(replace(replace(replace(@field,'facet-',''),'location','location'),'subject','subject'),'date','date')"/>
                   </xsl:otherwise>
                </xsl:choose>
             </b>

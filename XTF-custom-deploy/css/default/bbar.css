@@ -12,25 +12,46 @@ form {
 .clear {
 	clear: both;
 }
-
 div.header {
+	 border: 1px solid #666;
+	 width: 100%;
 	 border-bottom: 0;
 	 margin: 0 auto;
-	 background-color: #B1B8C6;
-	 height: 100%;
+	 background-color: #417ba8;
 }
 
 div.header img {
 	border: 0;
 }
 
-div.header img.xtf-logo {
+div.header img.left-logo {
 	float: left;
+	margin: 5px 5px
 }
 
-div.header img.your-logo {
+div.header img.right-logo {
 	float: right;
-	margin: 10px 15px;
+	margin: 5px 5px;
+}
+
+div.header .text_line {
+    text-align: center;
+	color: #FFF;
+	margin-top: 30px;
+	font-size: 36px;
+} 
+
+div.footer {
+   margin: 0 auto;
+	width: 100%;
+	 text-align: center;
+	 padding: 10px 0;
+	 margin-bottom: 1px;
+	 background-color: #417ba8;
+	 text-color: #FFF;
+}
+div.footer a {
+      color: #ffffff;
 }
 
 div.bbar {

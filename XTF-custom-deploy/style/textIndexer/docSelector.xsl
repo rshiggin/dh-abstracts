@@ -172,7 +172,7 @@
                            matches($ns,'tei')">
                            <indexFile fileName="{$fileName}"
                               preFilter="style/textIndexer/tei/teiPreFilter.xsl"
-                              displayStyle="style/dynaXML/docFormatter/tei/teiDocFormatter.xsl"/>
+                              displayStyle="style/dynaXML/docFormatter/dh-abstracts/xslt/dh-abstracts2html.xsl"/>
                         </xsl:when>
                         <!-- DjVu files are typically subordinate to a main doc -->
                         <xsl:when test="matches($root-element-name, 'DjVuXML')">

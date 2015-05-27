@@ -1,10 +1,9 @@
-<xsl:stylesheet version="2.0" 
-   xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-   xmlns:xtf="http://cdlib.org/xtf"
-   xmlns="http://www.w3.org/1999/xhtml"
-   xmlns:session="java:org.cdlib.xtf.xslt.Session"
-   extension-element-prefixes="session"
-   exclude-result-prefixes="#all">
+   <xsl:stylesheet xpath-default-namespace="http://www.tei-c.org/ns/1.0"
+      xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="2.0"
+      xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:eg="http://www.tei-c.org/ns/Examples"
+      xmlns:xdoc="http://www.pnp-software.com/XSLTdoc" exclude-result-prefixes="#all"
+      xmlns:fn="http://www.w3.org/2005/xpath-functions" xmlns:tei="http://www.tei-c.org/ns/1.0"
+      xmlns:xtf="http://cdlib.org/xtf" xmlns="http://www.w3.org/1999/xhtml">
    
    <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
    <!-- dynaXML Stylesheet                                                     -->
@@ -50,19 +49,19 @@
    <!-- Output Format                                                          -->
    <!-- ====================================================================== -->
    
-   <xsl:output method="xhtml" indent="no" 
+   <xsl:output name="noframe" method="xhtml" indent="no" 
       encoding="UTF-8" media-type="text/html; charset=UTF-8" 
       doctype-public="-//W3C//DTD XHTML 1.0 Transitional//EN" 
       doctype-system="http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd" 
       exclude-result-prefixes="#all"
       omit-xml-declaration="yes"/>
    
-   <xsl:output name="frameset" method="xhtml" indent="no" 
+<!--   <xsl:output name="frameset" method="xhtml" indent="no" 
       encoding="UTF-8" media-type="text/html; charset=UTF-8" 
       doctype-public="-//W3C//DTD XHTML 1.0 Frameset//EN" 
       doctype-system="http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd" 
       omit-xml-declaration="yes"
-      exclude-result-prefixes="#all"/>
+      exclude-result-prefixes="#all"/> -->
    
    <!-- ====================================================================== -->
    <!-- Strip Space                                                            -->
@@ -80,7 +79,7 @@
    <xsl:include href="parameter.xsl"/>
    <xsl:include href="structure.xsl"/>
    <xsl:include href="table.xsl"/>
-   <xsl:include href="titlepage.xsl"/>
+   <xsl:include href="titlepage.xsl"/> 
    
    <!-- ====================================================================== -->
    <!-- Define Keys                                                            -->
@@ -92,7 +91,13 @@
    <xsl:key name="endnote-id" match="*[matches(name(),'^note$')][@type='endnote' or @place='end']" use="@*:id"/>
    <xsl:key name="div-id" match="*[matches(name(),'^div')]" use="@*:id"/>
    <xsl:key name="generic-id" match="*[matches(name(),'^note$')][not(@type='footnote' or @place='foot' or @type='endnote' or @place='end')]|*[matches(name(),'^figure$|^bibl$|^table$')]" use="@*:id"/>
-   
+ 
+ <!-- borrowed params from jawalsh -->
+      <xsl:param name="displayPageImageLinks" as="xs:boolean" select="true()"/>
+      <xsl:param name="xtf" as="xs:boolean" select="true()"/>
+      <xsl:param name="supplyEndnoteHead" as="xs:boolean" select="false()"/>
+      <xsl:param name="brand" select="'default'"/>
+ 
    <!-- ====================================================================== -->
    <!-- TEI-specific parameters                                                -->
    <!-- ====================================================================== -->
@@ -163,7 +168,7 @@
             <xsl:call-template name="print"/>
          </xsl:when>
          <xsl:otherwise>
-            <xsl:call-template name="frames"/>
+            <xsl:call-template name="content"/>
          </xsl:otherwise>
       </xsl:choose>
    </xsl:template>
@@ -258,19 +263,52 @@
             </html>
          </xsl:with-param>
       </xsl:call-template>
-   </xsl:template>
+   </xsl:template> 
    
    <!-- ====================================================================== -->
    <!-- Content Template                                                       -->
    <!-- ====================================================================== -->
    
-   <xsl:template name="content" exclude-result-prefixes="#all">
+  <!-- <xsl:template name="content" exclude-result-prefixes="#all"> -->
       
       <xsl:variable name="navbar">
          <xsl:call-template name="navbar"/>
       </xsl:variable>
       
-      <html xml:lang="en" lang="en">
+      <xsl:template name="content" exclude-result-prefixes="#all">
+         <html xml:lang="en" lang="en">
+            <head>
+               <title>
+                  <xsl:value-of select="$doc.title"/>
+               </title>
+               <link rel="stylesheet" type="text/css" href="{$css.path}{$content.css}"/>
+               <link rel="shortcut icon" href="icons/default/favicon.ico" />
+               
+            </head>
+            <body bgcolor="white">
+               <hr class="hr-title"/>
+               <div align="center">
+                  <table width="95%">
+                     <tr>
+                        <td>
+                           <xsl:choose>
+                              <xsl:when test="$chunk.id != '0'">
+                                 <xsl:apply-templates select="key('div-id', $chunk.id)"/>
+                              </xsl:when>
+                              <xsl:otherwise>
+                                 <xsl:apply-templates select="/*/*:text/*"/>
+                              </xsl:otherwise>
+                           </xsl:choose>
+                        </td>
+                     </tr>
+                  </table>
+               </div>
+               <hr class="hr-title"/>
+            </body>
+         </html>
+      </xsl:template>
+      
+ <!--  <html xml:lang="en" lang="en">
          <head>
             <title>
                <xsl:value-of select="$doc.title"/> "<xsl:value-of select="$chunk.id"/>"
@@ -282,10 +320,10 @@
          <body>
             
             <table width="100%" border="0" cellpadding="0" cellspacing="0">
-               <!-- BEGIN MIDNAV ROW -->
+                BEGIN MIDNAV ROW
                <tr>
                   <td colspan="2" width="100%" align="center" valign="top">
-                     <!-- BEGIN MIDNAV INNER TABLE -->
+                     BEGIN MIDNAV INNER TABLE
                      <table width="94%" border="0" cellpadding="0" cellspacing="0">
                         <tr>
                            <td colspan="3">
@@ -299,18 +337,18 @@
                            </td>
                         </tr>
                      </table>
-                     <!-- END MIDNAV INNER TABLE -->
+                      END MIDNAV INNER TABLE
                   </td>
                </tr>
-               <!-- END MIDNAV ROW -->
+              END MIDNAV ROW
             </table>
             
-            <!-- BEGIN CONTENT ROW -->
+            BEGIN CONTENT ROW 
             <table width="100%" border="0" cellpadding="0" cellspacing="0">
                <tr>
                   <td align="left" valign="top">
                      <div class="content">
-                        <!-- BEGIN CONTENT -->
+                        BEGIN CONTENT
                         <xsl:choose>
                            <xsl:when test="$chunk.id = '0'">
                               <xsl:apply-templates select="/*/*:text/*:front/*:titlePage"/>
@@ -325,10 +363,10 @@
             </table>
             
             <table width="100%" border="0" cellpadding="0" cellspacing="0">
-               <!-- BEGIN MIDNAV ROW -->
+                BEGIN MIDNAV ROW
                <tr>
                   <td colspan="2" width="100%" align="center" valign="top">
-                     <!-- BEGIN MIDNAV INNER TABLE -->
+                    BEGIN MIDNAV INNER TABLE
                      <table width="94%" border="0" cellpadding="0" cellspacing="0">
                         <tr>
                            <td colspan="3">
@@ -342,15 +380,15 @@
                            </td>
                         </tr>
                      </table>
-                     <!-- END MIDNAV INNER TABLE -->
+                     END MIDNAV INNER TABLE
                   </td>
                </tr>
-               <!-- END MIDNAV ROW -->
+              END MIDNAV ROW
             </table>
             
          </body>
       </html>
-   </xsl:template>
+   </xsl:template> -->
    
    <!-- ====================================================================== -->
    <!-- Print Template                                                  -->

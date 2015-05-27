@@ -150,9 +150,9 @@
          if (matches($http.URL, $ercPat)) then 'style/dynaXML/docFormatter/erc/ercDocFormatter.xsl'
          else if ($fileType = 'ead') then 'style/dynaXML/docFormatter/ead/eadDocFormatter.xsl'
          else if ($fileType = 'nlm') then 'style/dynaXML/docFormatter/nlm/nlmDocFormatter.xsl'
-         else if ($fileType = 'tei') then 'style/dynaXML/docFormatter/tei/teiDocFormatter.xsl'
+         else if ($fileType = 'tei') then 'style/dynaXML/docFormatter/dh-abstracts/xslt/dh-abstracts2html.xsl'
          else if ($fileType = 'book') then 'style/dynaXML/docFormatter/bookreader/bookDocFormatter.xsl'
-         else                             'style/dynaXML/docFormatter/default/docFormatter.xsl'}"/>
+         else                             'style/dynaXML/docFormatter/common/docFormatterCommon.xsl'}"/>
       
       <!-- ==================================================================
          The "source" tag specifies a filesystem path (relative to the servlet

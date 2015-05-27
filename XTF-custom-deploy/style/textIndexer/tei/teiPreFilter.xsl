@@ -148,6 +148,8 @@
                <!-- special values for OAI -->
                <xsl:call-template name="oai-datestamp"/>
                <xsl:call-template name="oai-set"/>
+               <!-- special value for dh-abstracts -->
+               <xsl:call-template name="get-tei-location"/>
             </xsl:otherwise>
          </xsl:choose>
       </xsl:variable>
@@ -215,6 +217,11 @@
                </subject>
             </xsl:for-each>
          </xsl:when>
+            <xsl:otherwise>
+               <subject xtf:meta="true">
+                  <xsl:value-of select="'unknown'"/>
+               </subject>
+            </xsl:otherwise>
       </xsl:choose>
    </xsl:template>
    
@@ -394,5 +401,27 @@
          <xsl:value-of select="'public'"/>
       </set>
    </xsl:template>
+   
+   <!-- location for dh-abstracts -->
+   <xsl:template name="get-tei-location">
+      <xsl:choose>
+         <xsl:when test="//*:fileDesc/*:publicationStmt/*:pubPlace">
+            <location xtf:meta="true">
+               <xsl:value-of select="string(//*:fileDesc/*:publicationStmt/*:pubPlace[1])"/>
+            </location>
+         </xsl:when>
+         <xsl:when test="//*:text/*:front/*:titlePage//*:pubPlace">
+            <location xtf-meta="true">
+               <xsl:value-of select="string(//*:text/*:front/*:titlePage//*:pubPlace[1])"/>
+            </location>
+         </xsl:when>
+         <xsl:otherwise>
+            <location xtf:meta="true">
+               <xsl:value-of select="'unknown'"/>
+            </location>
+         </xsl:otherwise>
+      </xsl:choose>
+   </xsl:template>
+   
    
 </xsl:stylesheet>

@@ -209,7 +209,7 @@
         <!--<xsl:variable name="lang" select="session:getData('lang')"/>-->
         <html xml:lang="en" lang="en">
             <head>
-                <title>XTF: Set Language</title>
+                <title>Abstracts: Set Language</title>
                 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
                 <xsl:copy-of select="$brand.links"/>
             </head>
@@ -250,7 +250,7 @@
         <xsl:value-of select="session:setData('lang', $lang)"/>
         <html xml:lang="en" lang="en">
             <head>
-                <title>XTF: Success</title>
+                <title>Abstracts: Success</title>
                 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
                 <xsl:copy-of select="$brand.links"/>
             </head>
