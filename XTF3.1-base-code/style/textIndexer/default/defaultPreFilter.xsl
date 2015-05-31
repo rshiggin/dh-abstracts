@@ -42,9 +42,9 @@
    <!-- Output parameters                                                      -->
    <!-- ====================================================================== -->
    
-   <xsl:output method="xml" 
+  <!-- <xsl:output method="xml" 
       indent="yes" 
-      encoding="UTF-8"/>
+      encoding="UTF-8"/> -->
    
    <!-- ====================================================================== -->
    <!-- Default: identity transformation                                       -->

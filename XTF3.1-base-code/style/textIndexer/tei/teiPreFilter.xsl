@@ -77,7 +77,7 @@
    <!-- TEI Indexing                                                           -->
    <!-- ====================================================================== -->
    
-   <!-- Ignored Elements. -->
+   <!-- Choose to ignore elements. -->
    <xsl:template match="*:teiHeader">
       <xsl:copy>
          <xsl:copy-of select="@*"/>
