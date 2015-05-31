@@ -12,19 +12,21 @@ __In Progress: modified XTF default__
 
 __Project Summary__
 
-1. Upgrade the underlying XTF application and dependencies
-  * install and configure latest version of XTF web application
-  * carry out basic improvements to the default XTF search functions
-  * develop guidelines for Schematron validation of past and future content  
+1. Fix the present site        
+  * upgrade software  
+  * rewrite outdated code    
+  * address inconsistencies and errors in current XML markup and metadata    
+  * establish a GitHub-based version-tracking workflow   
+  * improve the user interface and faceted search
 
-2. Update conference abstracts and content
-  * prepare conference abstracts for web publication
-  * perform markup of documents in XML/TEI
-  * ensure XML and TEI code conforms to validation schema
+2. Bring the content of the Collection up-to-date   
+  * encode and integrate all documents from 2004 to the present   
+  * validate and normalize markup in the entire collection
+  * add support for the display of images for those abstracts that include screenshots  
+  * graphs, and charts, and create guidelines, templates, and schemas for future conference abstracts
 
-3. Redesign site interface and initiate a documented workflow
-  * leverage XTF extensibility to customize user interface and design
-  * configure improved features for faceted and keyword search
-  * implement standards and authority control over key entities
-  * establish documented workflow and code versioning system      
-
+3. Incorporate abstracts from pre-1996 conferences    
+  * collect conference material from the 1970s, 80s and early 90s
+  * scan and OCR non-digital documents   
+  * ensure that the abstracts dataset conforms to the definitions and standards that we have codified    
+  * revise XTF code and specifications as needed to accommodate the expanded collection of XML documents
