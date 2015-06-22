@@ -227,8 +227,29 @@ crossQuery/resultFormatter/common/resultFormatterCommon.xsl
  <xsl:value-of select="replace(replace__(replace__(replace(@field,'facet-',''),'location','location')__'subject', 'subject'),'date','date')"/>
                   </xsl:otherwise>         
    
+```  
+crossQuery/resultFormatter/default/resultFormatter.xsl 
 ```   
+ <!--    <xsl:apply-templates select="facet[@field='facet-subject']"/> -->
+ 
+       <!--      <xsl:if test="meta/subject">
+               <tr>
+                  <td class="col1">
+                     <xsl:text>&#160;</xsl:text>
+                  </td>
+                  <td class="col2">
+                     <b>Subjects:&#160;&#160;</b>
+                  </td>
+                  <td class="col3">
+                     <xsl:apply-templates select="meta/subject"/>
+                  </td>
+                  <td class="col4">
+                     <xsl:text>&#160;</xsl:text>
+                  </td>
+               </tr>
+            </xsl:if>                                 -->
 
+```  
 
 
 #####Search form/start page
