@@ -190,6 +190,45 @@ textIndexer/tei/teiPreFilter.xsl
 ```  
  <!--   <xsl:call-template name="get-tei-subject"/> -->
 ```  
+crossQuery/resultFormatter/common/resultFormatterCommon.xsl 
+```  
+   <!-- ====================================================================== -->
+   <!-- Subject Links                                                          -->
+   <!-- ====================================================================== -->
+   
+  <!-- <xsl:template match="subject">
+      <a href="{$xtfURL}{$crossqueryPath}?subject={editURL:protectValue(.)};subject-join=exact;smode={$smode};rmode={$rmode};style={$style};brand={$brand}">
+         <xsl:apply-templates/>
+      </a>
+      <xsl:if test="not(position() = last())">
+         <xsl:text> | </xsl:text>
+      </xsl:if>
+   </xsl:template> -->
+  
+  
+<!--       <xsl:when test="$selectType='subject'">    
+            <xsl:if test="$option != ''"> 
+               <option>
+                  <xsl:attribute name="value">"<xsl:value-of select="$option"/>"</xsl:attribute>
+                  <xsl:if test="contains($subject,$option)">
+                     <xsl:attribute name="selected" select="'yes'"/>
+                  </xsl:if>
+                  <xsl:value-of select="$option"/>
+               </option>    
+               <xsl:call-template name="selectBuilder">
+                  <xsl:with-param name="selectType" select="$selectType"/>
+                  <xsl:with-param name="optionList" select="replace(substring-after($optionList, $option), '^::', '')"/>
+                  <xsl:with-param name="count" select="$count + 1"/>
+               </xsl:call-template>
+            </xsl:if>
+         </xsl:when>                                           -->
+         
+                     <!-- mask facets -->
+ <xsl:value-of select="replace(replace__(replace__(replace(@field,'facet-',''),'location','location')__'subject', 'subject'),'date','date')"/>
+                  </xsl:otherwise>         
+   
+```   
+
 
 
 #####Search form/start page
