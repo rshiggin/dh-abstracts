@@ -169,6 +169,24 @@ __Directories and key config files__
 <img src="img/styleDir.jpg" alt="" width="415" height="390" align="left"><img src="img/confDir.jpg"" alt="" width="415" height="390" align="right">  
 ```  
 ```
+#####Disable Subject facet  
+
+common/preFilterCommon.xsl
+```
+   <!--   <xsl:apply-templates select="$meta/*:subject" mode="facet"/> -->
+   
+   <!-- Generate facet-subject 
+   <xsl:template match="*:subject" mode="facet">
+      <facet-subject>
+         <xsl:attribute name="xtf:meta" select="'true'"/>
+         <xsl:attribute name="xtf:facet" select="'yes'"/>
+         <xsl:value-of select="normalize-unicode(string(.))"/>
+      </facet-subject>
+   </xsl:template> -->
+   
+```      
+
+
 #####Search form/start page
 
 __modify XSLT__ "searchForms.xsl" 
@@ -194,7 +212,6 @@ css/default/results.css
 __Prototype for custom interface__     
       
 ![](img/redesign01.jpg)
-
 
 
 ####Tasks completed  
