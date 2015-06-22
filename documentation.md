@@ -171,7 +171,7 @@ __Directories and key config files__
 ```
 #####Disable Subject facet  
 
-common/preFilterCommon.xsl
+textIndexer/common/preFilterCommon.xsl
 ```
    <!--   <xsl:apply-templates select="$meta/*:subject" mode="facet"/> -->
    
@@ -184,7 +184,12 @@ common/preFilterCommon.xsl
       </facet-subject>
    </xsl:template> -->
    
-```      
+```  
+textIndexer/tei/teiPreFilter.xsl
+
+```  
+ <!--   <xsl:call-template name="get-tei-subject"/> -->
+```  
 
 
 #####Search form/start page
