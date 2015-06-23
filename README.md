@@ -6,7 +6,7 @@ Current active location: [digitalhumanities.org/dh-abstracts/search](http://digi
 See [documentation.md](documentation.md) for specific guidelines and changelog    
 Questions and comments? Use contact info found [here](http://www.rshiggins.net) for Richard Higgins 
 
-__In Progress: modified XTF default__
+__In Progress: modified default search__
 
 ![](img/screen1.jpg)
 
@@ -29,4 +29,8 @@ __Project Summary__
   * collect conference material from the 1970s, 80s and early 90s
   * scan and OCR non-digital documents   
   * ensure that the abstracts dataset conforms to the definitions and standards that we have codified    
-  * revise XTF code and specifications as needed to accommodate the expanded collection of XML documents
+  * revise XTF code and specifications as needed to accommodate the expanded collection of XML documents  
+
+__In Progress: modified results page__  
+  
+![](img/results-rev.png)
