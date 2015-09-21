@@ -305,7 +305,7 @@
                         <tr>
                            <xsl:if test="not($smode='showBag')">
                               <td class="facet">
-                                 <xsl:apply-templates select="facet[@field='facet-subject']"/>
+                  <!--  <xsl:apply-templates select="facet[@field='facet-subject']"/> -->
                                  <xsl:apply-templates select="facet[@field='facet-location']"/>
                                  <xsl:apply-templates select="facet[@field='facet-date']"/>
                               </td>
@@ -760,7 +760,7 @@ Item number <xsl:value-of select="$num"/>:
                   <xsl:text>&#160;</xsl:text>
                </td>
             </tr>
-            <xsl:if test="meta/subject">
+     <!--       <xsl:if test="meta/subject">
                <tr>
                   <td class="col1">
                      <xsl:text>&#160;</xsl:text>
@@ -775,7 +775,7 @@ Item number <xsl:value-of select="$num"/>:
                      <xsl:text>&#160;</xsl:text>
                   </td>
                </tr>
-            </xsl:if>
+            </xsl:if> -->
             <xsl:if test="meta/location">
                <tr>
                   <td class="col1">

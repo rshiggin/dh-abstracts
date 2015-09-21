@@ -460,14 +460,14 @@
    <!-- Subject Links                                                          -->
    <!-- ====================================================================== -->
    
-   <xsl:template match="subject">
+ <!--  <xsl:template match="subject">
       <a href="{$xtfURL}{$crossqueryPath}?subject={editURL:protectValue(.)};subject-join=exact;smode={$smode};rmode={$rmode};style={$style};brand={$brand}">
          <xsl:apply-templates/>
       </a>
       <xsl:if test="not(position() = last())">
          <xsl:text> | </xsl:text>
       </xsl:if>
-   </xsl:template>
+   </xsl:template> -->
    
    <!-- ====================================================================== -->
    <!-- Location Links                                                          -->
@@ -722,7 +722,7 @@
       <xsl:variable name="option" select="substring-before($optionList, '::')"/>
       
       <xsl:choose>
-         <xsl:when test="$selectType='subject'">    
+       <!--  <xsl:when test="$selectType='subject'">    
             <xsl:if test="$option != ''"> 
                <option>
                   <xsl:attribute name="value">"<xsl:value-of select="$option"/>"</xsl:attribute>
@@ -737,7 +737,7 @@
                   <xsl:with-param name="count" select="$count + 1"/>
                </xsl:call-template>
             </xsl:if>
-         </xsl:when>
+         </xsl:when>    -->
          <xsl:when test="$selectType='keyword-prox'">    
             <xsl:if test="$option != ''"> 
                <option>

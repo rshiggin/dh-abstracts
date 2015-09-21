@@ -19,9 +19,9 @@
             <publicationStmt>
                 <date when="2001">2001</date>
                 <publisher>
-                    <name/>
+                    <name>New York University</name>
                 </publisher>
-                <pubPlace/>
+                <pubPlace>New York, NY</pubPlace>
             </publicationStmt>
             <seriesStmt>
                 <title level="m"/>

@@ -185,13 +185,13 @@
    </xsl:template>
    
    <!-- Generate facet-subject -->
-   <xsl:template match="*:subject" mode="facet">
+  <!-- <xsl:template match="*:subject" mode="facet">
       <facet-subject>
          <xsl:attribute name="xtf:meta" select="'true'"/>
          <xsl:attribute name="xtf:facet" select="'yes'"/>
          <xsl:value-of select="normalize-unicode(string(.))"/>
       </facet-subject>
-   </xsl:template>
+   </xsl:template> -->
    
    <!-- Generate facet-location -->
    <xsl:template match="*:location" mode="facet">

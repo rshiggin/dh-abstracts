@@ -132,7 +132,7 @@
             <xsl:otherwise>
                <xsl:call-template name="get-tei-title"/>
                <xsl:call-template name="get-tei-creator"/>
-               <xsl:call-template name="get-tei-subject"/>
+            <!--   <xsl:call-template name="get-tei-subject"/> -->
                <xsl:call-template name="get-tei-description"/>
                <xsl:call-template name="get-tei-publisher"/>
                <xsl:call-template name="get-tei-contributor"/>
