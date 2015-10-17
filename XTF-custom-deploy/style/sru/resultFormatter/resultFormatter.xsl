@@ -35,7 +35,8 @@
 <xsl:stylesheet version="2.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" 
                               xmlns:xsi="http://www.w3.org/2001/XMLSchema" 
                               xmlns:dc="http://purl.org/dc/elements/1.1/" 
-                              xmlns:srw="http://www.loc.gov/zing/srw/" 
+                              xmlns:srw="http://www.loc.gov/zing/srw/"
+                              xmlns:xtf="http://cdlib.org/xtf"
                               xmlns:srw_dc="info:srw/schema/1/dc-schema">
                               
 <!-- ====================================================================== -->

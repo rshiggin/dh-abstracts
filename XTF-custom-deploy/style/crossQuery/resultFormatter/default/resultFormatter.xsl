@@ -1,11 +1,14 @@
-<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" 
+<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="2.0"
+   xmlns:ns="http://www.tei-c.org/ns/1.0" 
+   xmlns:xs="http://www.w3.org/2001/XMLSchema"
+   xmlns:date="http://exslt.org/dates-and-times"
+   xmlns:parse="http://cdlib.org/xtf/parse"
+   xmlns:xtf="http://cdlib.org/xtf"
    xmlns:session="java:org.cdlib.xtf.xslt.Session"
    xmlns:editURL="http://cdlib.org/xtf/editURL"
-   xmlns="http://www.w3.org/1999/xhtml"
-   extension-element-prefixes="session"
-   exclude-result-prefixes="#all"
-   version="2.0">
-   
+   xmlns:FileUtils="java:org.cdlib.xtf.xslt.FileUtils"
+   extension-element-prefixes="date FileUtils"
+   exclude-result-prefixes="#all">
    <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
    <!-- Query result formatter stylesheet                                      -->
    
@@ -69,8 +72,8 @@
    <!-- Local Parameters                                                       -->
    <!-- ====================================================================== -->
    
-   <xsl:param name="css.path" select="concat($xtfURL, 'css/default/')"/>
-   <xsl:param name="icon.path" select="concat($xtfURL, 'icons/default/')"/>
+   <xsl:param name="css.path" select="concat($xtfURL, 'css/brand/')"/>
+   <xsl:param name="icon.path" select="concat($xtfURL, 'icons/brand/')"/>
    <xsl:param name="docHits" select="/crossQueryResult/docHit"/>
    <xsl:param name="email"/>
    
@@ -173,8 +176,8 @@
             <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
             <xsl:copy-of select="$brand.links"/>
             <!-- AJAX support -->
-            <script src="script/yui/yahoo-dom-event.js" type="text/javascript"/> 
-            <script src="script/yui/connection-min.js" type="text/javascript"/> 
+            <script src="script/yahoo-dom-event.js" type="text/javascript"/> 
+            <script src="script/connection-min.js" type="text/javascript"/> 
          </head>
          <body>
             
@@ -398,9 +401,9 @@
       <!-- Change the values for @smtpHost and @from to those valid for your domain -->
       <mail:send xmlns:mail="java:/org.cdlib.xtf.saxonExt.Mail" 
          xsl:extension-element-prefixes="mail" 
-         smtpHost="smtp.yourserver.org" 
+         smtpHost="localhost" 
          useSSL="no" 
-         from="admin@yourserver.org"
+         from="web@digitalhumanities.org"
          to="{$email}" 
          subject="DH-Abstracts: Saved Items">
 Selected DH Abstracts:
@@ -463,8 +466,8 @@ Item number <xsl:value-of select="$num"/>:
             <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
             <xsl:copy-of select="$brand.links"/>
             <!-- AJAX support -->
-            <script src="script/yui/yahoo-dom-event.js" type="text/javascript"/> 
-            <script src="script/yui/connection-min.js" type="text/javascript"/> 
+            <script src="script/yahoo-dom-event.js" type="text/javascript"/> 
+            <script src="script/connection-min.js" type="text/javascript"/> 
          </head>
          <body>
             
@@ -946,4 +949,5 @@ Item number <xsl:value-of select="$num"/>:
       
    </xsl:template>
    
+
 </xsl:stylesheet>

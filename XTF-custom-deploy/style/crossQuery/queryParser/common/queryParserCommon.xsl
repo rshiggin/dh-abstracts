@@ -1,8 +1,14 @@
-<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="2.0"
+   xmlns:ns="http://www.tei-c.org/ns/1.0" 
+   xmlns:xs="http://www.w3.org/2001/XMLSchema"
+   xmlns:date="http://exslt.org/dates-and-times"
+   xmlns:parse="http://cdlib.org/xtf/parse"
+   xmlns:xtf="http://cdlib.org/xtf"
    xmlns:session="java:org.cdlib.xtf.xslt.Session"
-   extension-element-prefixes="session"
-   exclude-result-prefixes="#all" 
-   version="2.0">
+   xmlns:editURL="http://cdlib.org/xtf/editURL"
+   xmlns:FileUtils="java:org.cdlib.xtf.xslt.FileUtils"
+   extension-element-prefixes="date FileUtils"
+   exclude-result-prefixes="#all">
    
    <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
    <!-- Common templates for query parser stylesheets                          -->
@@ -92,7 +98,7 @@
    <!-- Special Robot Parameters -->
    <xsl:param name="http.user-agent"/>
    <!-- WARNING: Inclusion of 'Wget' is for testing only, please remove before going into production -->
-   <xsl:param name="robots" select="'Googlebot|Slurp|msnbot|Teoma|Wget'"/>
+   <xsl:param name="robots" select="'Googlebot|Slurp|msnbot|Teoma'"/>
    
    <!-- list of keyword search fields -->
    <xsl:param name="fieldList"/>
@@ -189,7 +195,7 @@
          </xsl:if>
          
          <!-- If there is a sectionType parameter, process it -->
-         <xsl:if test="matches($metaField, 'text|query') and (//param[@name='sectionType']/@value != '')">
+       <xsl:if test="matches($metaField, 'text|query') and (//param[@name='sectionType']/@value != '')">
             <sectionType>
                <xsl:apply-templates select="//param[@name='sectionType']/*"/>
             </sectionType>
@@ -250,7 +256,7 @@
    <!-- ====================================================================== -->
    
    <!-- Handle multi-field keyword queries -->
-   <xsl:template match="and[matches(@field, '^(serverChoice|keywords)$')] |
+ <!--  <xsl:template match="and[matches(@field, '^(serverChoice|keywords)$')] |
                         or[matches(@field, '^(serverChoice|keywords)$')]"
                  mode="freeform">
       <xsl:copy>
@@ -261,12 +267,12 @@
          <xsl:attribute name="maxContext" select="'60'"/>
          <xsl:apply-templates mode="freeform"/>
       </xsl:copy>
-   </xsl:template>
+   </xsl:template> -->
    
    <!-- Wrap terms or phrases with a field spec into an <and>, to make the query
         formatting logic simpler.
    -->
-   <xsl:template match="term[@field] | phrase[@field]" mode="freeform">
+  <!--  <xsl:template match="term[@field] | phrase[@field]" mode="freeform">
       <xsl:variable name="wrapped">
          <and field="{@field}">
             <xsl:copy>
@@ -275,19 +281,19 @@
          </and>
       </xsl:variable>
       <xsl:apply-templates select="$wrapped" mode="freeform"/>
-   </xsl:template>
+   </xsl:template> -->
    
    <!-- Arbitrarily change multi-field unary not to 'text' (have to pick something) -->
-   <xsl:template match="not[matches(@field, '^(serverChoice|keywords)$')]" mode="freeform">
+ <!--  <xsl:template match="not[matches(@field, '^(serverChoice|keywords)$')]" mode="freeform">
       <and field="text">
          <not>
             <xsl:apply-templates mode="freeform"/>
          </not>
       </and>
-   </xsl:template>
+   </xsl:template> -->
    
    <!-- Add maxContext to all fielded queries, plus maxSnippets for text queries -->
-   <xsl:template match="*[@field]" priority="-1" mode="freeform">
+ <!--  <xsl:template match="*[@field]" priority="-1" mode="freeform">
       <xsl:copy>
          <xsl:copy-of select="@*"/>
          <xsl:attribute name="maxContext" select="'60'"/>
@@ -296,15 +302,15 @@
          </xsl:if>
          <xsl:apply-templates mode="freeform"/>
       </xsl:copy>
-   </xsl:template>
+   </xsl:template> -->
    
    <!-- All other stuff can be copied unchanged -->
-   <xsl:template match="*" mode="freeform" priority="-2">
+  <!-- <xsl:template match="*" mode="freeform" priority="-2">
       <xsl:copy>
          <xsl:copy-of select="@*"/>
          <xsl:apply-templates mode="freeform"/>
       </xsl:copy>
-   </xsl:template>
+   </xsl:template> -->
       
    <!-- ====================================================================== -->
    <!-- "Add To Bag" template                                                  -->

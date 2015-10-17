@@ -33,7 +33,8 @@
 -->
 
 <xsl:stylesheet version="2.0"
-                xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+                xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+                xmlns:xtf="http://cdlib.org/xtf">
 
    <xsl:output method="xhtml" indent="no" 
       encoding="UTF-8" media-type="text/html; charset=UTF-8" 

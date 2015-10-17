@@ -1,9 +1,14 @@
-<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="2.0"
+   xmlns:ns="http://www.tei-c.org/ns/1.0" 
+   xmlns:xs="http://www.w3.org/2001/XMLSchema"
+   xmlns:date="http://exslt.org/dates-and-times"
+   xmlns:parse="http://cdlib.org/xtf/parse"
+   xmlns:xtf="http://cdlib.org/xtf"
    xmlns:session="java:org.cdlib.xtf.xslt.Session"
+   xmlns:editURL="http://cdlib.org/xtf/editURL"
+   xmlns:FileUtils="java:org.cdlib.xtf.xslt.FileUtils"
    xmlns:freeformQuery="java:org.cdlib.xtf.xslt.FreeformQuery"
-   extension-element-prefixes="session freeformQuery"
-   exclude-result-prefixes="#all" 
-   version="2.0">
+   exclude-result-prefixes="#all">
    
    <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
    <!-- Simple query parser stylesheet  -->
@@ -66,7 +71,7 @@
    <!-- list of fields to search in 'keyword' search; generally these should
         be the same fields shown in the search result listing, so the user
         can see all the matching words. -->
-   <xsl:param name="fieldList" select="'text title creator location subject '"/>
+   <xsl:param name="fieldList" select="'text title creator location'"/>
    
    <!-- ====================================================================== -->
    <!-- Root Template                                                          -->
@@ -121,11 +126,11 @@
          <!-- subject facet, normally shows top 10 sorted by count, but user can select 'more' 
               to see all sorted by subject. 
          -->
-         <xsl:call-template name="facet">
+       <!--  <xsl:call-template name="facet">
             <xsl:with-param name="field" select="'facet-subject'"/>
             <xsl:with-param name="topGroups" select="'*[1-5]'"/>
             <xsl:with-param name="sort" select="'totalDocs'"/>
-         </xsl:call-template>
+         </xsl:call-template> -->
          
          <!-- location facet, normally shows top 10 sorted by count, but user can select 'more' 
               to see all sorted by location. 
@@ -191,7 +196,7 @@
       
       <!-- Find the meta-data and full-text queries, if any -->
       <xsl:variable name="queryParams"
-         select="param[not(matches(@name,'style|smode|rmode|expand|brand|sort|startDoc|docsPerPage|sectionType|fieldList|normalizeScores|explainScores|f[0-9]+-.+|facet-.+|browse-*|email|.*-exclude|.*-join|.*-prox|.*-max|.*-ignore|freeformQuery'))]"/>
+         select="param[not(matches(@name,'style|smode|rmode|expand|brand|sort|startDoc|docsPerPage|fieldList|normalizeScores|explainScores|f[0-9]+-.+|facet-.+|browse-*|email|.*-exclude|.*-join|.*-prox|.*-max|.*-ignore'))]"/>
       
       <and>
          <!-- Process the meta-data and text queries, if any -->

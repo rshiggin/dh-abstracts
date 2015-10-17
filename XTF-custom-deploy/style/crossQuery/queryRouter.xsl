@@ -1,6 +1,14 @@
-<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-   exclude-result-prefixes="#all"
-   version="2.0">
+<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="2.0"
+   xmlns:ns="http://www.tei-c.org/ns/1.0" 
+   xmlns:xs="http://www.w3.org/2001/XMLSchema"
+   xmlns:date="http://exslt.org/dates-and-times"
+   xmlns:parse="http://cdlib.org/xtf/parse"
+   xmlns:xtf="http://cdlib.org/xtf"
+   xmlns:session="java:org.cdlib.xtf.xslt.Session"
+   xmlns:editURL="http://cdlib.org/xtf/editURL"
+   xmlns:FileUtils="java:org.cdlib.xtf.xslt.FileUtils"
+   extension-element-prefixes="date FileUtils"
+   exclude-result-prefixes="#all">
    
    <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
    <!-- Simple query router stylesheet                                         -->

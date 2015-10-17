@@ -1,7 +1,14 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" 
-   xmlns="http://www.w3.org/1999/xhtml"
-   version="2.0">
+<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="2.0"
+   xmlns:ns="http://www.tei-c.org/ns/1.0" 
+   xmlns:xs="http://www.w3.org/2001/XMLSchema"
+   xmlns:date="http://exslt.org/dates-and-times"
+   xmlns:parse="http://cdlib.org/xtf/parse"
+   xmlns:xtf="http://cdlib.org/xtf"
+   xmlns:session="java:org.cdlib.xtf.xslt.Session"
+   xmlns:editURL="http://cdlib.org/xtf/editURL"
+   xmlns:FileUtils="java:org.cdlib.xtf.xslt.FileUtils"
+   extension-element-prefixes="date FileUtils"
+   exclude-result-prefixes="#all">
    
    
    
@@ -290,7 +297,7 @@
                            <xsl:text> word(s)</xsl:text>
                         </td>
                      </tr>           
-                     <tr>
+                <tr>
                         <td class="indent">&#160;</td>
                         <td><b>Section</b></td>
                         <td>
@@ -341,13 +348,14 @@
                            <input type="text" name="location" size="20" value="{$location}" placeholder=" Location"/>
                         </td>
                      </tr>
-                     <tr>
+                     <!-- ADHO disable subject display -->
+                 <!--    <tr>
                         <td class="indent">&#160;</td>
                         <td><b>Subject</b></td>
                         <td>
                            <input type="text" name="subject" size="20" value="{$subject}" placeholder=" Subject"/>
                         </td>
-                     </tr>
+                     </tr> -->
                      <tr>
                         <td class="indent">&#160;</td>
                         <td><b>Year(s)</b></td>
@@ -413,7 +421,7 @@
                      <tr>
                         <td>Section</td>
                         <td><form action=""><input type="radio" checked="checked"/>headings</form></td>
-                        <td class="sampleDescrip">Match the full text terms, only if they appear in document 'headings' (e.g. chapter titles)</td>
+                        <td class="sampleDescrip">Match the full text terms, only if they appear in document 'headings' (e.g. section titles)</td>
                      </tr>
                      <tr>
                         <td>Title</td>

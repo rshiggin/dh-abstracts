@@ -1,9 +1,13 @@
-<xsl:stylesheet version="2.0" 
-   xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="2.0"
+   xmlns:ns="http://www.tei-c.org/ns/1.0" 
+   xmlns:xs="http://www.w3.org/2001/XMLSchema"
+   xmlns:date="http://exslt.org/dates-and-times"
+   xmlns:parse="http://cdlib.org/xtf/parse"
    xmlns:xtf="http://cdlib.org/xtf"
-   xmlns="http://www.w3.org/1999/xhtml"
    xmlns:session="java:org.cdlib.xtf.xslt.Session"
-   extension-element-prefixes="session"
+   xmlns:editURL="http://cdlib.org/xtf/editURL"
+   xmlns:FileUtils="java:org.cdlib.xtf.xslt.FileUtils"
+   extension-element-prefixes="date FileUtils"
    exclude-result-prefixes="#all">
    
    <!-- ====================================================================== -->
@@ -66,6 +70,13 @@
    
    <xsl:param name="docId"/>
    <xsl:param name="docPath" select="replace($docId, '[^/]+\.xml$', '')"/>
+   
+   <!-- ADHO specific: for docFormatterCommon.xsl -->
+   <xsl:param name="css.path" select="'css/brand/'"/>
+   <xsl:param name="icon.path" select="'icons/brand/'"/>
+   
+   <!-- ADHO: irregular title location. see tei/param.xsl to set title location in abstracts -->
+   <xsl:variable name="doc.title" select="string(/tei/xtf:meta/title)"/>
    
    <!-- If an external 'source' document was specified, include it in the
       query string of links we generate. -->
@@ -136,15 +147,17 @@
    
    <!-- Branding Parameters -->
    
-   <xsl:param name="brand" select="'default'"/>
+   <!-- Branding param SET TO ADHO -->
+   
+   <xsl:param name="brand" select="'adho'"/>
    
    <xsl:variable name="brand.file">
       <xsl:choose>
          <xsl:when test="$brand != ''">
-            <xsl:copy-of select="document(concat('../../../../brand/',$brand,'.xml'))"/>
+            <xsl:copy-of select="document('brand/adho.xml')"/>
          </xsl:when>
          <xsl:otherwise>
-            <xsl:copy-of select="document('../../../../brand/default.xml')"/>
+            <xsl:copy-of select="document('brand/default.xml')"/>
          </xsl:otherwise>
       </xsl:choose>
    </xsl:variable>
@@ -157,7 +170,7 @@
    
    <xsl:param name="http.user-agent"/>
    <!-- WARNING: Inclusion of 'Wget' is for testing only, please remove before going into production -->
-   <xsl:param name="robots" select="'Googlebot|Slurp|msnbot|Teoma|Wget'"/>
+   <xsl:param name="robots" select="'Googlebot|Slurp|msnbot|Teoma'"/>
    
    <!-- ====================================================================== -->
    <!-- Button Bar Templates                                                   -->
@@ -173,8 +186,6 @@
                   </title>
                   <link rel="stylesheet" type="text/css" href="{$css.path}bbar.css"/>
                   <link rel="shortcut icon" href="icons/default/favicon.ico" />
-
-
                </head>
                <body>
                   <div class="bbar">

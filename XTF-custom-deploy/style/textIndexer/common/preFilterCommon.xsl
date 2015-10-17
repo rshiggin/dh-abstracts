@@ -124,7 +124,9 @@
          
          <!-- Create facets -->
          <xsl:apply-templates select="$meta/*:date" mode="facet"/>
-         <xsl:apply-templates select="$meta/*:subject" mode="facet"/>
+         
+         <!-- ADHO remove subject -->
+        <!--  <xsl:apply-templates select="$meta/*:subject" mode="facet"/> -->
          <xsl:apply-templates select="$meta/*:location" mode="facet"/>
          
          <xsl:apply-templates select="$meta/*:title[1]" mode="browse"/>    

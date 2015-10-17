@@ -35,6 +35,7 @@
 <xsl:stylesheet version="1.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
                 xmlns:srw="http://www.loc.gov/zing/srw/" 
+                xmlns:xtf="http://cdlib.org/xtf"
                 xmlns:diag="http://www.loc.gov/zing/srw/diagnostic/">
 
 <xsl:output method="xml"

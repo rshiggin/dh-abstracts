@@ -4,6 +4,7 @@
 
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="2.0"
    xmlns:FileUtils="java:org.cdlib.xtf.xslt.FileUtils"
+   xmlns:xtf="http://cdlib.org/xtf"
    extension-element-prefixes="FileUtils"
    exclude-result-prefixes="#all">
 
@@ -172,7 +173,7 @@
                            matches($ns,'tei')">
                            <indexFile fileName="{$fileName}"
                               preFilter="style/textIndexer/tei/teiPreFilter.xsl"
-                              displayStyle="style/dynaXML/docFormatter/dh-abstracts/xslt/dh-abstracts2html.xsl"/>
+                              displayStyle="style/dynaXML/docFormatter/tei/teiDocFormatter.xsl"/>
                         </xsl:when>
                         <!-- DjVu files are typically subordinate to a main doc -->
                         <xsl:when test="matches($root-element-name, 'DjVuXML')">

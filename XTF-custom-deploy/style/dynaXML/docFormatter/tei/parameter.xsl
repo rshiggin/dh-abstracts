@@ -1,5 +1,6 @@
 <xsl:stylesheet version="2.0" 
    xmlns:xsl="http://www.w3.org/1999/XSL/Transform" 
+   xmlns:xtf="http://cdlib.org/xtf"
    xmlns="http://www.w3.org/1999/xhtml"
    exclude-result-prefixes="#all">
    
@@ -33,22 +34,24 @@
       POSSIBILITY OF SUCH DAMAGE.
    -->
       
-   <xsl:param name="icon.path" select="concat($xtfURL, 'icons/default/')"/>
+   <xsl:param name="icon.path" select="concat($xtfURL, 'icons/brand/')"/>
    
-   <xsl:param name="css.path" select="concat($xtfURL, 'css/default/')"/>
+   <xsl:param name="css.path" select="concat($xtfURL, 'css/brand/')"/>
    
    <xsl:param name="content.css" select="'tei.css'"/>
    
    <xsl:param name="fig.ent" select="'0'"/>
    
-   <xsl:param name="doc.title" select="replace(/*/*:text/*:front/*:titlePage//*:titlePart[@type='main'], ',$', '')"/>
+   <!-- ADHO revised doc.title and .author for abstracts -->
+
+   <xsl:param name="doc.title" select="replace(/*/*:teiHeader/*:fileDesc/*:titleStmt//*:title[@type='main'], ',$', '')"/>
    
-   <xsl:param name="doc.subtitle" select="/*/*:text/*:front/*:titlePage//*:titlePart[@type='subtitle']"/>
+  <!-- <xsl:param name="doc.subtitle" select="/*/*:text/*:front/*:titlePage//*:titlePart[@type='subtitle']"/> -->
    
    <xsl:param name="doc.author">
       <xsl:choose>
-         <xsl:when test="/*/*:text/*:front/*:titlePage/*:docAuthor[1]/name">
-            <xsl:value-of select="/*/*:text/*:front/*:titlePage/*:docAuthor[1]/*:name"/>
+         <xsl:when test="/*/*:teiHeader/*:fileDesc/*:titleStmt//*:author[1]/name">
+            <xsl:value-of select="/*/*:teiHeader/*:fileDesc/*:titleStmt//*:author[1]/*:name"/>
          </xsl:when>
          <xsl:otherwise>
             <xsl:value-of select="/*/*:text/*:front/*:titlePage/*:docAuthor[1]"/>

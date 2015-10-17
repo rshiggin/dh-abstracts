@@ -1,7 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="2.0"
+   xmlns:ns="http://www.tei-c.org/ns/1.0" 
    xmlns:date="http://exslt.org/dates-and-times"
    xmlns:parse="http://cdlib.org/xtf/parse"
    xmlns:xtf="http://cdlib.org/xtf"
+   xmlns:session="java:org.cdlib.xtf.xslt.Session"
+   xmlns:editURL="http://cdlib.org/xtf/editURL"
    xmlns:FileUtils="java:org.cdlib.xtf.xslt.FileUtils"
    extension-element-prefixes="date FileUtils"
    exclude-result-prefixes="#all">
@@ -71,23 +75,23 @@
          <xsl:call-template name="get-meta"/>
          <xsl:apply-templates/>
       </xsl:copy>
-   </xsl:template>
+   </xsl:template> 
    
    <!-- ====================================================================== -->
    <!-- TEI Indexing                                                           -->
    <!-- ====================================================================== -->
    
-   <!-- Ignored Elements. -->
-   <xsl:template match="*:teiHeader">
-      <xsl:copy>
-         <xsl:copy-of select="@*"/>
-         <xsl:attribute name="xtf:index" select="'no'"/>
-         <xsl:apply-templates/>
-      </xsl:copy>
-   </xsl:template>
+   <!-- Ignored Elements.
+   <xsl:template match="*[local-name()='teiHeader']">
+            <xsl:copy>
+       	         <xsl:copy-of select="@*"/>
+                 <xsl:attribute name="xtf:index" select="'no'"/>
+                  <xsl:apply-templates/>
+               </xsl:copy>
+         </xsl:template>   -->
    
-   <!-- sectionType Indexing and Element Boosting -->
-   <xsl:template match="*:head[parent::*[matches(local-name(),'^div')]]">
+   <!-- sectionType Indexing and Element Boosting 
+   <xsl:template match="*[local-name()='head'][parent::*[matches(local-name(),'^div')]]">
       <xsl:copy>
          <xsl:copy-of select="@*"/>
          <xsl:attribute name="xtf:sectionType" select="concat('head ', @type)"/>
@@ -96,22 +100,23 @@
       </xsl:copy>
    </xsl:template>
    
-   <xsl:template match="*:bibl">
+   <xsl:template match="*[local-name()='bibl']">
       <xsl:copy>
          <xsl:copy-of select="@*"/>
          <xsl:attribute name="xtf:sectionType" select="'citation'"/>
          <xsl:attribute name="xtf:wordBoost" select="2.0"/>
          <xsl:apply-templates/>
       </xsl:copy>
-   </xsl:template>
+   </xsl:template> 
    
-   <xsl:template match="*:titlePart[ancestor::*:titlePage]">
+   <xsl:template match="*[local-name()='titlePart'][ancestor::*[local-name()='titlePage']]">
       <xsl:copy>
          <xsl:copy-of select="@*"/>
          <xsl:attribute name="xtf:wordBoost" select="100.0"/>
          <xsl:apply-templates/>
       </xsl:copy>
    </xsl:template>
+  -->
    
    <!-- ====================================================================== -->
    <!-- Metadata Indexing                                                      -->
@@ -207,7 +212,7 @@
       </xsl:choose>
    </xsl:template>
    
-   <!-- subject --> 
+   <!-- subject 
    <xsl:template name="get-tei-subject">
       <xsl:choose>
          <xsl:when test="//*:keywords/*:list/*:item">
@@ -223,7 +228,7 @@
                </subject>
             </xsl:otherwise>
       </xsl:choose>
-   </xsl:template>
+   </xsl:template> --> 
    
    <!-- description --> 
    <xsl:template name="get-tei-description">

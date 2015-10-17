@@ -109,10 +109,13 @@
                   <xsl:when test="@fields">
                      <xsl:text> keywords</xsl:text>
                   </xsl:when>
-                  <xsl:when test="child::sectionType">
+                  
+         <!-- ADHO disable sectionType -->         
+                 <!--  <xsl:when test="child::sectionType">
                      <xsl:value-of select="sectionType/term"/>
                      <xsl:text> sections</xsl:text>
-                  </xsl:when>
+                  </xsl:when> -->
+                  
                   <xsl:when test="@field = 'text'">
                      <xsl:text> the full text </xsl:text>
                   </xsl:when>
@@ -120,8 +123,8 @@
                      <xsl:value-of select="not/@field"/>
                   </xsl:when>
                   <xsl:otherwise>
-                     <!-- mask facets -->
- <xsl:value-of select="replace(replace(replace(replace(@field,'facet-',''),'location','location'),'subject','subject'),'date','date')"/>
+                     <!-- mask facets ADHO delete subject -->
+ <xsl:value-of select="replace(replace(replace(@field,'facet-',''),'location','location'),'date','date')"/>
                   </xsl:otherwise>
                </xsl:choose>
             </b>
@@ -195,6 +198,6 @@
    </xsl:template>
    
    <!-- hide sectionType -->
-   <xsl:template match="sectionType" mode="query"/>
+  <!-- <xsl:template match="sectionType" mode="query"/> -->
    
 </xsl:stylesheet>

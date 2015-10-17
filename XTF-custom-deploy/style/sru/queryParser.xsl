@@ -52,6 +52,7 @@
                               xmlns:xcql="http://www.loc.gov/zing/srw/xcql/" 
                               xmlns:xsi="http://www.w3.org/2001/XMLSchema" 
                               xmlns:xsd="http://www.w3.org/2001/XMLSchema-instance"
+                              xmlns:xtf="http://cdlib.org/xtf"
                               exclude-result-prefixes="xsl dc mets xlink xs parse">
   
   <xsl:output method="xml" indent="yes" encoding="utf-8"/>

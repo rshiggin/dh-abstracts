@@ -1,5 +1,6 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" 
    xmlns:FileUtils="java:org.cdlib.xtf.xslt.FileUtils"
+   xmlns:xtf="http://cdlib.org/xtf"
    extension-element-prefixes="FileUtils"
    exclude-result-prefixes="#all" 
    version="2.0">

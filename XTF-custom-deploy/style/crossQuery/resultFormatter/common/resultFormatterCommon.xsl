@@ -1,14 +1,18 @@
-<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" 
+<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="2.0"
+   xmlns:ns="http://www.tei-c.org/ns/1.0" 
    xmlns:xs="http://www.w3.org/2001/XMLSchema"
-   xmlns:xtf="http://cdlib.org/xtf" 
+   xmlns:date="http://exslt.org/dates-and-times"
+   xmlns:parse="http://cdlib.org/xtf/parse"
+   xmlns:xtf="http://cdlib.org/xtf"
+   xmlns:session="java:org.cdlib.xtf.xslt.Session"
    xmlns:editURL="http://cdlib.org/xtf/editURL"
-   xmlns="http://www.w3.org/1999/xhtml"
-   exclude-result-prefixes="#all"
-   version="2.0">
+   xmlns:FileUtils="java:org.cdlib.xtf.xslt.FileUtils"
+   extension-element-prefixes="date FileUtils"
+   exclude-result-prefixes="#all">
    
    <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
    <!-- Query result formatter stylesheet                                      -->
-   <!-- DH-abstracts: added location as metadata facet                         -->
+   <!-- ADHO: added location as metadata facet                         -->
    <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
    
    <!--
@@ -79,13 +83,13 @@
    <xsl:param name="creator-prox"/>
    <xsl:param name="creator-exclude"/>
    <xsl:param name="creator-max"/>
-   
+   <!-- ADHO modified
    <xsl:param name="subject"/>
    <xsl:param name="subject-join"/>
    <xsl:param name="subject-prox"/>
    <xsl:param name="subject-exclude"/>
    <xsl:param name="subject-max"/>
-   
+   -->
    <xsl:param name="description"/>
    <xsl:param name="description-join"/>
    <xsl:param name="description-prox"/>
@@ -158,7 +162,7 @@
    <xsl:param name="rights-exclude"/>
    <xsl:param name="rights-max"/>
   
-  <!-- Special DH Abstracts addition of "location" -->
+  <!-- Special ADHO addition of "location" -->
    <xsl:param name="location"/>
    <xsl:param name="location-join"/>
    <xsl:param name="location-prox"/>
@@ -186,11 +190,11 @@
    <xsl:param name="browse-title"/>
    <xsl:param name="browse-creator"/>
    
-   <!-- Search and Result Behavior URL Parameters -->
+   <!-- Search and Result Behavior URL Parameters / brand = ADHO  -->
    <xsl:param name="style"/>
    <xsl:param name="smode" select="'simple'"/>
    <xsl:param name="rmode" select="'none'"/>
-   <xsl:param name="brand" select="'default'"/>
+   <xsl:param name="brand" select="'adho'"/>
    <xsl:param name="sort"/>
    
    <!-- XML Output Parameter -->
@@ -200,7 +204,7 @@
    <xsl:variable name="brand.file">
       <xsl:choose>
          <xsl:when test="$brand != ''">
-            <xsl:copy-of select="document(concat('../../../../brand/',$brand,'.xml'))"/>
+            <xsl:copy-of select="document('../../../../brand/adho.xml')"/>
          </xsl:when>
          <xsl:otherwise>
             <xsl:copy-of select="document('../../../../brand/default.xml')"/>
@@ -692,7 +696,7 @@
          <xsl:value-of select="concat(';query-exclude=', $keyword-exclude)"/>
       </xsl:if>
       <xsl:if test="$sectionType">
-         <xsl:value-of select="concat(';sectionType=', $sectionType)"/>
+         <xsl:value-of select="concat(';sectionType=', $sectionType)"/> 
       </xsl:if>
       <xsl:if test="$brand">
          <xsl:value-of select="concat(';brand=',$brand)"/>
@@ -722,7 +726,8 @@
       <xsl:variable name="option" select="substring-before($optionList, '::')"/>
       
       <xsl:choose>
-       <!--  <xsl:when test="$selectType='subject'">    
+     <!-- ADHO subject disabled   -->
+      <!--  <xsl:when test="$selectType='subject'">    
             <xsl:if test="$option != ''"> 
                <option>
                   <xsl:attribute name="value">"<xsl:value-of select="$option"/>"</xsl:attribute>

@@ -11,7 +11,7 @@
             <servlet-class>org.cdlib.xtf.crossQuery.CrossQuery</servlet-class>
             <init-param>
                 <param-name>base-dir</param-name>
-                <param-value>/srv/tomcat6/iusw-devel-8320/webapps/xtf</param-value>
+                <param-value>/usr/local/tomcat7/webapps/adho</param-value>
             </init-param>
         </servlet>
         
@@ -20,7 +20,7 @@
             <servlet-class>org.cdlib.xtf.crossQuery.raw.RawQuery</servlet-class>
             <init-param>
                 <param-name>base-dir</param-name>
-                <param-value>/srv/tomcat6/iusw-devel-8320/webapps/xtf</param-value>
+                <param-value>/usr/local/tomcat7/webapps/adho</param-value>
             </init-param>
         </servlet>
         
@@ -29,7 +29,7 @@
             <servlet-class>org.cdlib.xtf.dynaXML.DynaXML</servlet-class>
             <init-param>
                 <param-name>base-dir</param-name>
-                <param-value>/srv/tomcat6/iusw-devel-8320/webapps/xtf</param-value>
+                <param-value>/usr/local/tomcat7/webapps/adho</param-value>
             </init-param>
         </servlet>
         
@@ -38,7 +38,7 @@
             <servlet-class>org.cdlib.xtf.zing.SRU</servlet-class>
             <init-param>
                 <param-name>base-dir</param-name>
-                <param-value>/srv/tomcat6/iusw-devel-8320/webapps/xtf</param-value>
+                <param-value>/usr/local/tomcat7/webapps/adho</param-value>
             </init-param>
         </servlet>
         
@@ -47,7 +47,7 @@
             <servlet-class>org.cdlib.xtf.dynaXML.DynaXML</servlet-class>
             <init-param>
                 <param-name>base-dir</param-name>
-                <param-value>/srv/tomcat6/iusw-devel-8320/webapps/xtf</param-value>
+                <param-value>/usr/local/tomcat7/webapps/adho</param-value>
             </init-param>
         </servlet>
 
@@ -56,7 +56,7 @@
             <servlet-class>org.cdlib.xtf.crossQuery.CrossQuery</servlet-class>
             <init-param>
                 <param-name>base-dir</param-name>
-                <param-value>/srv/tomcat6/iusw-devel-8320/webapps/xtf</param-value>
+                <param-value>/usr/local/tomcat7/webapps/adho</param-value>
             </init-param>
         </servlet>
 
@@ -65,7 +65,7 @@
             <servlet-class>org.cdlib.xtf.zing.SRU</servlet-class>
             <init-param>
                 <param-name>base-dir</param-name>
-                <param-value>/srv/tomcat6/iusw-devel-8320/webapps/xtf</param-value>
+                <param-value>/usr/local/tomcat7/webapps/adho</param-value>
             </init-param>
         </servlet>
         
