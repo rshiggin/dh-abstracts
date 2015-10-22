@@ -2,6 +2,8 @@
 
 ### Renovating the Digital Humanities Conference Abstracts Collection
 
+Folder XTF-custom-deploy contains a full fork of XTF 3.1, with significant modifications to XSLT and CSS for ADHO.
+
 Current active location: [digitalhumanities.org/dh-abstracts/search](http://digitalhumanities.org/dh-abstracts/search)  
 See [documentation.md](documentation.md) for specific guidelines and changelog    
 Questions and comments? Use contact info found [here](http://www.rshiggins.net) for Richard Higgins 
