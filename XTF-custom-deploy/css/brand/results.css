@@ -1,8 +1,9 @@
 /* crossQuery RESULTS stylesheet */
-/* Modified for ADHO */
+/* Modified for ADHO by RSH */
+@import url('http://fonts.googleapis.com/css?family=Arvo:400,700,400italic,700italic|Gentium+Book+Basic:400,400italic,700,700italic');
 body {
-    font-family: georgia, times, serif;
-    font-size: 14px;
+    font-family: font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 16px;
     background-color: silver;
 	color: #333;
     /* margin: 0 1.5em 1.5em 1.5em;
@@ -87,7 +88,7 @@ div.footer a {
 div.searchPage {
    margin: 0 auto;
 	 background-color: #fff;
-	 width: 100%;
+	 width: 99%;
 	 border-right: 1px solid #666;
 	 border-left: 1px solid #666;
 	 border-top: 1px solid #999;
@@ -150,7 +151,7 @@ height: 25px;
 width: 400px;
 margin-top: 40px;
 padding: 0px;
-font-family: georgia, times, serif;
+font-family: font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 font-size: 16px;
 }
 
@@ -199,10 +200,12 @@ div.form table td.indent {
 table.sampleTable {
 	padding-top: 50px;
 	padding-left: 10px;
+	font-size: 80%;
 }
 
 table.sampleTable td {
 	padding: 5px;
+	 font-size: 80%;
 }
 
 table td.sampleQuery {
@@ -214,6 +217,7 @@ table td.sampleQuery {
 
 table td.sampleDescrip {
     font-style: italic;
+    font-size: 80%;
 }
 
 /* Results */

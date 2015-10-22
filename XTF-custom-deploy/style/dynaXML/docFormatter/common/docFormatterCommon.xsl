@@ -227,7 +227,7 @@
                               <xsl:text> | </xsl:text>
                               <a href="{$doc.path}&#038;doc.view=print;chunk.id={$chunk.id}" target="_top">Print View</a>
                               <xsl:text> | </xsl:text>
-                              <a href="javascript://" onclick="javascript:window.open('/xtf/search?smode=getLang','popup','width=500,height=200,resizable=no,scrollbars=no')">Choose Language</a>
+                              <a href="{$doc.path}&#038;doc.view=xml;chunk.id={$chunk.id};raw=1" target="_top">Show XML</a>
                            </td>
                         </tr>
                      </table>
@@ -274,6 +274,11 @@
          </body>
       </html>
      
+   </xsl:template>
+   
+   
+   <xsl:template name="xml">
+      <apply-templates/>
    </xsl:template>
    
    <!-- ====================================================================== -->

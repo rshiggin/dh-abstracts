@@ -1,9 +1,6 @@
 /* dynaXML Button Bar stylesheet */
 /* Applies only to the top navigation bar that appears in the frames view */
-body {
-	background-color: silver;
-	margin: 6px;
-}
+
 
 form {
 	display: inline;

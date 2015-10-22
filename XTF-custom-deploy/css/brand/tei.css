@@ -1,16 +1,48 @@
 /* dynaXML CONTENT stylesheet for TEI */
-
+/* Modified for ADHO by RSH */
+@import url('http://fonts.googleapis.com/css?family=Arvo:400,700,400italic,700italic|Gentium+Book+Basic:400,400italic,700,700italic');
 @import url("content.css");
+@import url("bbar.css");
 
-/* DIVS */
 
-DIV.content {
-margin-top: 15px;
-margin-left: 28px;
-margin-right: 28px;
+div.bbar {
+    width: 100%;
+    align: top;
+    position: relative;
+    margin: 0px;
+    clear: both;
+}
+div.topLevel, div.content {
+    background-color: #FFFFFF;
+	color: #333;
+	display: block;
+}
+div.topLevel {
+    font-size: 18px;
+    margin-bottom: 2px;
+    padding: 2em;
+}
+div.content {
+    font-size: 16px;
+    padding-top: 0.5em;
+    padding-left: 3em;
+    padding-right: 3em;
+    padding-bottom: 2em;
 }
 
-DIV.illgrp {
+ptr {
+    display: inline;
+}
+a,
+a.active,
+li a.active {
+  color: blue;
+}
+a.visited {
+    color: light-blue;
+}
+
+div.illgrp {
 text-align: center;
 }
 
@@ -31,7 +63,6 @@ h3 {font-size: 1.17em;}
 /* TEXT BLOCKS */
 
 BLOCKQUOTE  {
-font-size: 80%;
 margin-left: 3%;
 margin-right: 3%;
 margin-top: 3%;
@@ -41,7 +72,7 @@ margin-bottom: 3%
 P.normal {
 text-indent: 4%;
 margin-top: 0.5%;
-margin-bottom: 0;
+margin-bottom: 0.5%;
 }
 
 P.indent {
@@ -81,6 +112,10 @@ text-indent: 0;
 text-align: center;
 margin-top: 0;
 margin-bottom: 0; 
+}
+
+div.illgrp {
+    display: none;
 }
 
 /* LISTS */

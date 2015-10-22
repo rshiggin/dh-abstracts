@@ -6,6 +6,7 @@
    xmlns:session="java:org.cdlib.xtf.xslt.Session"
    xmlns:editURL="http://cdlib.org/xtf/editURL"
    xmlns:FileUtils="java:org.cdlib.xtf.xslt.FileUtils"
+   xmlns:tei="http://www.tei-c.org/ns/1.0"
    extension-element-prefixes="date FileUtils"
    exclude-result-prefixes="#all">
    
@@ -48,24 +49,18 @@
    <!-- ====================================================================== -->
    
    <xsl:import href="../common/docFormatterCommon.xsl"/>
+   <xsl:import href="../../../crossQuery/resultFormatter/common/resultFormatterCommon.xsl"/>
    
    <!-- ====================================================================== -->
    <!-- Output Format                                                          -->
    <!-- ====================================================================== -->
    
-   <xsl:output method="xhtml" indent="no" 
+   <xsl:output name="xhtml" method="xhtml" indent="no" 
       encoding="UTF-8" media-type="text/html; charset=UTF-8" 
       doctype-public="-//W3C//DTD XHTML 1.0 Transitional//EN" 
       doctype-system="http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd" 
       exclude-result-prefixes="#all"
       omit-xml-declaration="yes"/>
-   
- <xsl:output name="frameset" method="xhtml" indent="no" 
-      encoding="UTF-8" media-type="text/html; charset=UTF-8" 
-      doctype-public="-//W3C//DTD XHTML 1.0 Frameset//EN" 
-      doctype-system="http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd" 
-      omit-xml-declaration="yes"
-      exclude-result-prefixes="#all"/>
  
    <!-- ====================================================================== -->
    <!-- Strip Space                                                            -->
@@ -77,7 +72,6 @@
    <!-- Included Stylesheets                                                   -->
    <!-- ====================================================================== -->
    
-   <xsl:include href="autotoc.xsl"/>
    <xsl:include href="component.xsl"/>
    <xsl:include href="search.xsl"/>
    <xsl:include href="parameter.xsl"/>
@@ -96,10 +90,45 @@
    <xsl:key name="div-id" match="*[matches(name(),'^div')]" use="@*:id"/>
    <xsl:key name="generic-id" match="*[matches(name(),'^note$')][not(@type='footnote' or @place='foot' or @type='endnote' or @place='end')]|*[matches(name(),'^figure$|^bibl$|^table$')]" use="@*:id"/>
    
+
+   <!-- ====================================================================== -->
+   <!-- Root Template                                                          -->
+   <!-- ====================================================================== -->
+   
+   <xsl:template match="/">
+      <xsl:choose>
+         <!-- robot solution -->
+         <xsl:when test="matches($http.user-agent,$robots)">
+            <xsl:call-template name="robot"/>
+         </xsl:when>
+         <xsl:when test="$doc.view='bbar'">
+            <xsl:call-template name="bbar"/>
+         </xsl:when>
+         <xsl:when test="$doc.view='content'">
+            <xsl:call-template name="content"/>
+         </xsl:when>
+         <xsl:when test="$doc.view='popup'">
+            <xsl:call-template name="popup"/>
+         </xsl:when>
+         <xsl:when test="$doc.view='citation'">
+            <xsl:call-template name="citation"/>
+         </xsl:when>
+         <xsl:when test="$doc.view='print'">
+            <xsl:call-template name="print"/>
+         </xsl:when>
+         <xsl:when test="$doc.view='xml'">
+            <xsl:call-template name="xml"/>
+         </xsl:when>
+         <xsl:otherwise>
+            <xsl:call-template name="frames"/>
+         </xsl:otherwise>
+      </xsl:choose>
+   </xsl:template>
+   
    <!-- ====================================================================== -->
    <!-- TEI-specific parameters                                                -->
    <!-- ====================================================================== -->
-
+   
    <!-- If a query was specified but no particular hit rank, jump to the first hit 
         (in document order) 
    -->
@@ -136,82 +165,123 @@
          </xsl:otherwise>
       </xsl:choose>
    </xsl:param>
+   
+   <!-- ====================================================================== -->
+   <!--   Using selector language from resultFormatter                               -->
+   <!-- ====================================================================== -->
+   
+   <xsl:template name="topLevel">
+   <xsl:for-each select="tei:TEI/tei:teiHeader/tei:fileDesc">
+      <strong><xsl:text>Title: "</xsl:text></strong>
+         <xsl:value-of select="tei:titleStmt/tei:title[@type='main']"/><xsl:text>"</xsl:text>
+   </xsl:for-each> <br/>
+     <xsl:for-each select="tei:TEI/tei:teiHeader/tei:fileDesc/tei:titleStmt">
+        <strong><xsl:text>Author: </xsl:text></strong>
+            <xsl:value-of select="tei:author[1]/tei:name/tei:forename[@type='first']"/>
+            <xsl:text> </xsl:text>
+        <xsl:value-of select="tei:author[1]/tei:name/tei:surname"/>
+   </xsl:for-each><br/>
+      <xsl:for-each select="tei:TEI/tei:teiHeader/tei:fileDesc/tei:titleStmt">
+         <strong><xsl:text>Affiliation: </xsl:text></strong>
+         <xsl:value-of select="tei:author[1]/tei:name/tei:affiliation"/>
+      </xsl:for-each><br/>
+      <xsl:for-each select="tei:TEI/tei:teiHeader/tei:fileDesc/tei:publicationStmt">
+         <strong><xsl:text>Conference location: </xsl:text></strong>
+         <xsl:value-of select="tei:publisher/tei:name"/>
+      </xsl:for-each><br/>
+      <xsl:for-each select="tei:TEI/tei:teiHeader/tei:fileDesc/tei:publicationStmt">
+         <strong> <xsl:text>Date: </xsl:text></strong>
+         <xsl:value-of select="tei:date"/>
+      </xsl:for-each><br/>
+</xsl:template>
 
    <!-- ====================================================================== -->
-   <!-- Root Template                                                          -->
+   <!-- Content Template                                                       -->
    <!-- ====================================================================== -->
-   
-   <xsl:template match="/">
-      <xsl:choose>
-         <!-- robot solution -->
-         <xsl:when test="matches($http.user-agent,$robots)">
-            <xsl:call-template name="robot"/>
-         </xsl:when>
-         <xsl:when test="$doc.view='bbar'">
-            <xsl:call-template name="bbar"/>
-         </xsl:when>
-         <xsl:when test="$doc.view='toc'">
-            <xsl:call-template name="toc"/>
-         </xsl:when>
-         <xsl:when test="$doc.view='content'">
-            <xsl:call-template name="content"/>
-         </xsl:when>
-         <xsl:when test="$doc.view='popup'">
-            <xsl:call-template name="popup"/>
-         </xsl:when>
-         <xsl:when test="$doc.view='citation'">
-            <xsl:call-template name="citation"/>
-         </xsl:when>
-         <xsl:when test="$doc.view='print'">
-            <xsl:call-template name="print"/>
-         </xsl:when>
-         <xsl:otherwise>
-            <xsl:call-template name="frames"/>
-         </xsl:otherwise>
-      </xsl:choose>
+   <xsl:template name="content">
+      <xsl:for-each select="tei:TEI">
+         <h3><xsl:text>Abstract</xsl:text></h3><br/>
+         <xsl:value-of select="tei:text"/>
+      </xsl:for-each>
    </xsl:template>
    
+   <xsl:template match="content">
+      <xsl:apply-templates/>
+   </xsl:template>
+ 
    <!-- ====================================================================== -->
-   <!-- Frames Template                                                        -->
+   <!-- Frames Template -->
+   <!-- ====================================================================== -->
+   <xsl:template name="frames" exclude-result-prefixes="#all">   
+      <xsl:variable name="bbar.href"><xsl:value-of select="$query.string"/>&#038;doc.view=bbar&#038;chunk.id=<xsl:value-of select="$chunk.id"/>&#038;brand=<xsl:value-of select="$brand"/><xsl:value-of select="$search"/></xsl:variable> 
+      <xsl:variable name="xml.href"><xsl:value-of select="$query.string"/>&#038;doc.view=xml&#038;chunk.id=<xsl:value-of select="$chunk.id"/>&#038;brand=<xsl:value-of select="$brand"/><xsl:value-of select="$search"/></xsl:variable> 
+      <xsl:variable name="toc.href"><xsl:value-of select="$query.string"/>&#038;doc.view=toc&#038;chunk.id=<xsl:value-of select="$chunk.id"/>&#038;brand=<xsl:value-of select="$brand"/>&#038;<xsl:value-of select="$search"/>#X</xsl:variable>
+      <xsl:variable name="content.href"><xsl:value-of select="$query.string"/>&#038;doc.view=content&#038;chunk.id=<xsl:value-of select="$chunk.id"/>&#038;brand=<xsl:value-of select="$brand"/><xsl:value-of select="$search"/></xsl:variable>
+      
+      <html xml:lang="en" lang="en">
+         <head>
+            <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+            <title>
+               <xsl:value-of select="$doc.title"/>
+            </title>
+            <xsl:copy-of select="$brand.links"/>
+            <link rel="shortcut icon" href="icons/brand/favicon.ico" />
+            <link rel="stylesheet" type="text/css" href="css/brand/tei.css"/>
+            <!-- AJAX support -->
+            <script src="script/yahoo-dom-event.js" type="text/javascript"/> 
+            <script src="script/connection-min.js" type="text/javascript"/> 
+         </head>
+         <body>         
+               <div class="bbar">
+                  <xsl:attribute name="name">bbar</xsl:attribute>
+                  <xsl:attribute name="src"><xsl:value-of select="$xtfURL"/>view?<xsl:value-of select="$bbar.href"/></xsl:attribute> 
+                  <xsl:call-template name="bbar"/>
+               </div> 
+                <div class="topLevel">
+                 <xsl:call-template name="topLevel"/>      
+                </div>
+            <div class="content">
+               <xsl:attribute name="name">content</xsl:attribute>
+             <xsl:attribute name="src"><xsl:value-of select="$xtfURL"/>view?<xsl:value-of select="$content.href"/></xsl:attribute> 
+               <h2><xsl:text>Abstract</xsl:text></h2><br/>
+               <xsl:apply-templates select="/*/*:text/*"/>
+            </div>
+            <xsl:copy-of select="$brand.footer"/>
+            </body>
+         </html>
+   </xsl:template>
+   
+
+   
+   <!-- ====================================================================== -->
+   <!-- Print Template                                                  -->
    <!-- ====================================================================== -->
    
-   <xsl:template name="frames" exclude-result-prefixes="#all">
-      
-      <xsl:variable name="bbar.href"><xsl:value-of select="$query.string"/>&#038;doc.view=bbar&#038;chunk.id=<xsl:value-of select="$chunk.id"/>&#038;toc.depth=<xsl:value-of select="$toc.depth"/>&#038;brand=<xsl:value-of select="$brand"/><xsl:value-of select="$search"/></xsl:variable> 
-      <xsl:variable name="toc.href"><xsl:value-of select="$query.string"/>&#038;doc.view=toc&#038;chunk.id=<xsl:value-of select="$chunk.id"/>&#038;toc.depth=<xsl:value-of select="$toc.depth"/>&#038;brand=<xsl:value-of select="$brand"/>&#038;toc.id=<xsl:value-of select="$toc.id"/><xsl:value-of select="$search"/>#X</xsl:variable>
-      <xsl:variable name="content.href"><xsl:value-of select="$query.string"/>&#038;doc.view=content&#038;chunk.id=<xsl:value-of select="$chunk.id"/>&#038;toc.depth=<xsl:value-of select="$toc.depth"/>&#038;brand=<xsl:value-of select="$brand"/>&#038;anchor.id=<xsl:value-of select="$anchor.id"/><xsl:value-of select="$search"/><xsl:call-template name="create.anchor"/></xsl:variable>
-      
-      <xsl:result-document format="frameset" exclude-result-prefixes="#all">
-         <html xml:lang="en" lang="en">
-            <head>
-               <title>
-                  <xsl:value-of select="$doc.title"/>
-               </title>
-               <link rel="shortcut icon" href="icons/brand/favicon.ico" />
-            </head>
-            <frameset rows="120,*">
-               <frame frameborder="1" scrolling="no" title="Navigation Bar">
-                  <xsl:attribute name="name">bbar</xsl:attribute>
-                  <xsl:attribute name="src"><xsl:value-of select="$xtfURL"/>view?<xsl:value-of select="$bbar.href"/></xsl:attribute>
-               </frame>
-               <frameset cols="35%,65%">
-                  <frame frameborder="1" title="Table of Contents">
-                     <xsl:attribute name="name">toc</xsl:attribute>
-                     <xsl:attribute name="src"><xsl:value-of select="$xtfURL"/>view?<xsl:value-of select="$toc.href"/></xsl:attribute>
-                  </frame>
-                  <frame frameborder="1" title="Content">
-                     <xsl:attribute name="name">content</xsl:attribute>
-                     <xsl:attribute name="src"><xsl:value-of select="$xtfURL"/>view?<xsl:value-of select="$content.href"/></xsl:attribute>
-                  </frame>
-               </frameset>
-               <noframes>
-                  <body>
-                     <h1>Sorry, your browser doesn't support frames...</h1>
-                  </body>
-               </noframes>
-            </frameset>
-         </html>
-      </xsl:result-document>
+   <xsl:template name="print" exclude-result-prefixes="#all">
+      <html xml:lang="en" lang="en">
+         <head>
+            <title>
+               <xsl:value-of select="$doc.title"/>
+            </title>
+            <link rel="stylesheet" type="text/css" href="css/brand/print.css"/>
+         </head>
+            <div align="center">
+               <table width="80%">
+                        <tr>
+                           <td>
+                              <xsl:choose>
+                                 <xsl:when test="$chunk.id != '0'">
+                                    <xsl:apply-templates select="key('div-id', $chunk.id)"/>
+                                 </xsl:when>
+                                 <xsl:otherwise>
+                                    <xsl:apply-templates select="/*/*:text/*"/>
+                                 </xsl:otherwise>
+                              </xsl:choose>
+                           </td>
+                        </tr>
+               </table>
+            </div>
+      </html>
    </xsl:template>
    
    <!-- ====================================================================== -->
@@ -238,164 +308,9 @@
    </xsl:template>
    
    <!-- ====================================================================== -->
-   <!-- TOC Template                                                           -->
-   <!-- ====================================================================== -->
-   
-   <xsl:template name="toc" exclude-result-prefixes="#all">
-      <xsl:call-template name="translate">
-         <xsl:with-param name="resultTree">
-            <html xml:lang="en" lang="en">
-               <head>
-                  <title>
-                     <xsl:value-of select="$doc.title"/>
-                  </title>
-                  <link rel="stylesheet" type="text/css" href="css/brand/toc.css"/>
-                  <link rel="shortcut icon" href="icons/brand/favicon.ico" />
-
-               </head>
-               <body>
-                  <div class="toc">
-                     <xsl:call-template name="book.autotoc"/>
-                  </div>
-               </body>
-            </html>
-         </xsl:with-param>
-      </xsl:call-template>
-   </xsl:template>
-   
-   <!-- ====================================================================== -->
-   <!-- Content Template                                                       -->
-   <!-- ====================================================================== -->
-   
-   <xsl:template name="content" exclude-result-prefixes="#all">
-      
-      <xsl:variable name="navbar">
-         <xsl:call-template name="navbar"/>
-      </xsl:variable>
-      
-      <html xml:lang="en" lang="en">
-         <head>
-            <title>
-               <xsl:value-of select="$doc.title"/> "<xsl:value-of select="$chunk.id"/>"
-            </title>
-            <link rel="stylesheet" type="text/css" href="css/brand/content.css"/>
-            <link rel="shortcut icon" href="icons/brand/favicon.ico" />
-
-         </head>
-         <body>
-            
-            <table width="100%" border="0" cellpadding="0" cellspacing="0">
-               <!-- BEGIN MIDNAV ROW -->
-               <tr>
-                  <td colspan="2" width="100%" align="center" valign="top">
-                     <!-- BEGIN MIDNAV INNER TABLE -->
-                     <table width="94%" border="0" cellpadding="0" cellspacing="0">
-                        <tr>
-                           <td colspan="3">
-                              <xsl:text>&#160;</xsl:text>
-                           </td>
-                        </tr>
-                        <xsl:copy-of select="$navbar"/>
-                        <tr>
-                           <td colspan="3" >
-                              <hr class="hr-title"/>
-                           </td>
-                        </tr>
-                     </table>
-                     <!-- END MIDNAV INNER TABLE -->
-                  </td>
-               </tr>
-               <!-- END MIDNAV ROW -->
-            </table>
-            
-            <!-- BEGIN CONTENT ROW -->
-            <table width="100%" border="0" cellpadding="0" cellspacing="0">
-               <tr>
-                  <td align="left" valign="top">
-                     <div class="content">
-                        <!-- BEGIN CONTENT -->
-                        <xsl:choose>
-                           <xsl:when test="$chunk.id = '0'">
-                              <xsl:apply-templates select="/*/*:text/*:front/*:titlePage"/>
-                           </xsl:when>
-                           <xsl:otherwise>
-                              <xsl:apply-templates select="key('div-id', $chunk.id)"/>          
-                           </xsl:otherwise>
-                        </xsl:choose>
-                     </div>
-                  </td>
-               </tr>
-            </table>
-            
-            <table width="100%" border="0" cellpadding="0" cellspacing="0">
-               <!-- BEGIN MIDNAV ROW -->
-               <tr>
-                  <td colspan="2" width="100%" align="center" valign="top">
-                     <!-- BEGIN MIDNAV INNER TABLE -->
-                     <table width="94%" border="0" cellpadding="0" cellspacing="0">
-                        <tr>
-                           <td colspan="3">
-                              <hr class="hr-title"/>
-                           </td>
-                        </tr>
-                        <xsl:copy-of select="$navbar"/>
-                        <tr>
-                           <td colspan="3" >
-                              <xsl:text>&#160;</xsl:text>
-                           </td>
-                        </tr>
-                     </table>
-                     <!-- END MIDNAV INNER TABLE -->
-                  </td>
-               </tr>
-               <!-- END MIDNAV ROW -->
-            </table>
-            
-         </body>
-      </html>
-   </xsl:template>
-   
-   <!-- ====================================================================== -->
-   <!-- Print Template                                                  -->
-   <!-- ====================================================================== -->
-   
-   <xsl:template name="print" exclude-result-prefixes="#all">
-      <html xml:lang="en" lang="en">
-         <head>
-            <title>
-               <xsl:value-of select="$doc.title"/>
-            </title>
-            <link rel="stylesheet" type="text/css" href="css/brand/content.css"/>
-            <link rel="shortcut icon" href="icons/brand/favicon.ico" />
-
-         </head>
-         <body bgcolor="white">
-            <hr class="hr-title"/>
-            <div align="center">
-               <table width="95%">
-                  <tr>
-                     <td>
-                        <xsl:choose>
-                           <xsl:when test="$chunk.id != '0'">
-                              <xsl:apply-templates select="key('div-id', $chunk.id)"/>
-                           </xsl:when>
-                           <xsl:otherwise>
-                              <xsl:apply-templates select="/*/*:text/*"/>
-                           </xsl:otherwise>
-                        </xsl:choose>
-                     </td>
-                  </tr>
-               </table>
-            </div>
-            <hr class="hr-title"/>
-         </body>
-      </html>
-   </xsl:template>
-   
-   <!-- ====================================================================== -->
    <!-- Popup Window Template                                                  -->
    <!-- ====================================================================== -->
-   
+  
    <xsl:template name="popup" exclude-result-prefixes="#all">
       <html xml:lang="en" lang="en">
          <head>
@@ -456,7 +371,7 @@
             </div>
          </body>
       </html>
-   </xsl:template>
+   </xsl:template> 
    
    <!-- ====================================================================== -->
    <!-- Navigation Bar Template                                                -->
@@ -587,5 +502,7 @@
             <!-- END NEXT SELECTION -->
          </td>
       </tr>
+      
    </xsl:template>
+   
 </xsl:stylesheet>  
