@@ -458,7 +458,8 @@ Item number <xsl:value-of select="$num"/>:
    
    <xsl:template match="crossQueryResult" mode="browse" exclude-result-prefixes="#all">
       
-      <xsl:variable name="alphaList" select="'A B C D E F G H I J K L M N O P Q R S T U V W Y Z OTHER'"/>
+      <!-- OTHER variable deleted -->
+      <xsl:variable name="alphaList" select="'A B C D E F G H I J K L M N O P Q R S T U V W Y Z'"/>
       
       <html xml:lang="en" lang="en">
          <head>
@@ -475,10 +476,16 @@ Item number <xsl:value-of select="$num"/>:
             <xsl:copy-of select="$brand.header"/>
             
             <!-- result header -->
+            <!-- REVISION: moved new search to left side, nudged Facets prompt up one line -->
             <div class="resultsHeader">
                <table>
                   <tr>
-                     <td colspan="2" class="right">
+                     <td colspan="1" class="left">
+                        <a href="{$xtfURL}{$crossqueryPath}">
+                           <xsl:text>New Search</xsl:text>
+                        </a>
+                     </td>  
+                     <td  class="right">
                         <xsl:variable name="bag" select="session:getData('bag')"/>
                         <a href="{$xtfURL}{$crossqueryPath}?smode=showBag">Save selected</a>
                         (<span id="bagCount"><xsl:value-of select="count($bag/bag/savedDoc)"/></span>)
@@ -494,16 +501,16 @@ Item number <xsl:value-of select="$num"/>:
                         </xsl:choose>
                      </td>
                      <td class="right">
-                        <a href="{$xtfURL}{$crossqueryPath}">
-                           <xsl:text>New Search</xsl:text>
-                        </a>
                         <xsl:if test="$smode = 'showBag'">
                            <xsl:text>&#160;|&#160;</xsl:text>
                            <a href="{session:getData('queryURL')}">
                               <xsl:text>Return to Search Results</xsl:text>
                            </a>
                         </xsl:if>
-                     </td>
+
+                        <xsl:text>Browse by </xsl:text>
+                        <xsl:call-template name="browseLinks"/>
+                     </td>  
                   </tr>
                   <tr>
                      <td>
@@ -519,10 +526,6 @@ Item number <xsl:value-of select="$num"/>:
                               <xsl:text> Item</xsl:text>
                            </xsl:otherwise>
                         </xsl:choose>
-                     </td>
-                     <td class="right">
-                        <xsl:text>Browse by </xsl:text>
-                        <xsl:call-template name="browseLinks"/>
                      </td>
                   </tr>
                   <tr>

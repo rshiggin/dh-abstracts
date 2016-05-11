@@ -1,22 +1,24 @@
 /* dynaXML CONTENT stylesheet */
 /* ADHO custom by RSH */
-@import url('http://fonts.googleapis.com/css?family=Arvo:400,700,400italic,700italic|Gentium+Book+Basic:400,400italic,700,700italic');
 body {
-    font-family: font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    font-size: 16px;
-    background-color: silver;
-	color: #333;
+	font-size: 16px;
+	font-family: 'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', Geneva, Verdana, sans-serif;
+    padding-right: 0px; 
+    padding-left: 0px; 
+    margin: 0px;
+    background-color:#ffffff;
 }
+
 /* Links */
 a,
 a.active,
 li a.active {
-  color: #b93826;
+  	color: #b93826;
 }
 
 legend {
-  background-color: #b93826;
-  color: #ffffff;
+  	background-color: #b93826;
+  	color: #ffffff;
 }
 
 /* Link hovered */
@@ -26,8 +28,8 @@ a.active:hover,
 a.active:focus,
 li a.active:hover,
 li a.active:focus {
-  color: #d54b17;
-  border-bottom-color: #d54b17;
+  	color: #d54b17;
+  	border-bottom-color: #d54b17;
 }
 
 form {
@@ -75,30 +77,30 @@ div.header .text_line {
 } 
 
 div.footer {
-   margin: 0 auto;
 	width: 100%;
-	 text-align: center;
-	 padding: 10px 0;
-	 margin-bottom: 1px;
-	 background-color: #417ba8;
-	 text-color: #FFF;
+ 	text-align: center;
+	padding: 10px 0;
+	margin-bottom: 0;
+	background-color: #417ba8;
+	text-color: #FFF;
+	position: fixed;
 }
 div.footer a {
       color: #ffffff;
 }
 
 .hit  {
-background-color: #D6DCE5; 
-color: red; 
-font-weight: bold;
+	background-color: #D6DCE5; 
+	color: red; 
+	font-weight: bold;
 }
 
 .subhit  {
-color: red; 
-font-weight: bold;
+	color: red; 
+	font-weight: bold;
 }
 
 .hitsection  {
-background-color: #D6DCE5;
+	background-color: #D6DCE5;
 }
 

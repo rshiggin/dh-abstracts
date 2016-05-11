@@ -1,25 +1,25 @@
 /* crossQuery RESULTS stylesheet */
-/* Modified for ADHO by RSH */
-@import url('http://fonts.googleapis.com/css?family=Arvo:400,700,400italic,700italic|Gentium+Book+Basic:400,400italic,700,700italic');
+/* Modified for DH Abstracts */
+
 body {
-    font-family: font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    font-size: 16px;
-    background-color: silver;
-	color: #333;
-    /* margin: 0 1.5em 1.5em 1.5em;
-    padding: 0em 2em 2em 2em; */
-}
+	font-size: 16px;
+	font-family: 'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', Geneva, Verdana, sans-serif;
+    background-color:#ffffff;
+ 	/* margin: 0px; */
+ 	border-right: 1px solid #666666;
+ 	border-left: 1px solid #666666;
+ }	
 
 /* Links */
 a,
 a.active,
 li a.active {
-  color: #b93826;
+  	color: #b93826;
 }
 
 legend {
-  background-color: #b93826;
-  color: #ffffff;
+  	background-color: #b93826;
+  	color: #ffffff;
 }
 
 /* Link hovered */
@@ -29,8 +29,19 @@ a.active:hover,
 a.active:focus,
 li a.active:hover,
 li a.active:focus {
-  color: #d54b17;
-  border-bottom-color: #d54b17;
+  	color: #b93826;;
+  	border-bottom-color: #b93826;;
+}
+
+/* Link hovered */
+a:hover,
+a:focus,
+a.active:hover,
+a.active:focus,
+li a.active:hover,
+li a.active:focus {
+  	color: #b93826;;
+  	border-bottom-color: #b93826;;
 }
 
 form {
@@ -42,11 +53,12 @@ form {
 }
 
 div.header {
-	 border: 1px solid #666;
-	 width: 100%;
-	 border-bottom: 0;
-	 margin: 0 auto;
-	 background-color: #417ba8;
+    /* margin: 10px 0 10px 0; */
+    padding: 10px;
+	/* width: 100%;
+	border-bottom: 0;
+	margin: 0 auto; */
+	background-color: #417ba8;
 }
 
 div.header img {
@@ -55,44 +67,45 @@ div.header img {
 
 div.header img.left-logo {
 	float: left;
-	margin: 5px 5px
+	margin: 10px;
 }
 
 div.header img.right-logo {
 	float: right;
-	margin: 5px 5px;
+	margin: 10px;
 }
 
 div.header .text_line {
     text-align: center;
-	color: #FFF;
+	color: #ffffff;
 	margin-top: 30px;
 	font-size: 36px;
 } 
 
 div.footer {
-   margin: 0 auto;
+   	margin-bottom: 0;
 	width: 100%;
-	 text-align: center;
-	 padding: 10px 0;
-	 margin-bottom: 1px;
-	 background-color: #417ba8;
-	 text-color: #FFF;
+	text-align: center;
+	padding: 10px 0;
+	background-color: #417ba8;
+	text-color: #ffffff;
+	position: relative;
 }
 div.footer a {
-      color: #ffffff;
+    color: #ffffff;
 }
 
 /* Forms */
 
 div.searchPage {
-   margin: 0 auto;
-	 background-color: #fff;
-	 width: 99%;
-	 border-right: 1px solid #666;
-	 border-left: 1px solid #666;
-	 border-top: 1px solid #999;
-	 border-bottom: 1px solid #666;
+	background-color: #ffffff;
+    margin: 0px 0 0px 0;
+	/*  border: 1px solid #666666;
+	width: 100%;
+	border-right: 1px solid #666666;
+	border-left: 1px solid #666666;
+	border-top: 1px solid #999;
+	border-bottom: 1px solid #666666; */
 }
 
 div.forms {
@@ -110,32 +123,34 @@ div.forms table td {
 
 div.forms table td.tab,
 div.forms table td.tab-select {
-	width: 25%;
+	width: 30%;
 	text-align: center;
 	padding: 0.5em;
 }
 
 div.forms table td.tab {
-   border: 1px solid #999;
-	 background-color: #E8EBF1;
+   	/* border: 1px solid #999; */
+	background-color: #c0c0c0;
 }
 
 div.forms table td.tab-select {
-   border: 1px solid #999;
-	 border-bottom: 0;
+   	/* border: 1px solid #999; */
+   	border-bottom: 0;
+   	background-color: #c0c0c0; 
 }
 
 div.forms table td.tab a {
 	text-decoration: none;
-	color: #333;
+	color: #424F8D;
 }
 
 div.forms table td.tab a:hover {
 	text-decoration: underline;
+	color: #b93826;
 }
 
 div.forms table td.tab-select a {
-	color: #424F8D;
+	color: #b93826;
 }
 
 div.form {
@@ -145,13 +160,13 @@ div.form {
    text-align: center;
 }
 
-/* added to resize search box to slightly larger */
+/* added to resize search box slightly larger */
 div.form input[name="keyword"] {
 height: 25px;
 width: 400px;
 margin-top: 40px;
 padding: 0px;
-font-family: font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+font-family: georgia, times, serif;
 font-size: 16px;
 }
 
@@ -176,7 +191,7 @@ div.form table.right_table {
 }
 
 div.form table h4 {
-	margin: 0 0 10px 0;
+	margin: 10px 0 20px 0;
 }
 
 div.form table,
@@ -199,13 +214,12 @@ div.form table td.indent {
 
 table.sampleTable {
 	padding-top: 50px;
-	padding-left: 10px;
-	font-size: 80%;
+	padding-left: 50px;
+    font-size: 80%;
 }
 
 table.sampleTable td {
 	padding: 5px;
-	 font-size: 80%;
 }
 
 table td.sampleQuery {
@@ -217,20 +231,19 @@ table td.sampleQuery {
 
 table td.sampleDescrip {
     font-style: italic;
-    font-size: 80%;
 }
 
 /* Results */
 
 div.resultsHeader {
-   width: 99%;
-	 border-right: 1px solid #666;
-	 border-left: 1px solid #666;
-	 border-top: 1px solid #999;
-	 border-bottom: 1px solid #999;
-	 background-color: #dededf;
-	 margin-left: auto;
-	 margin-right: auto;
+   	width: 100%;
+	border-right: 1px solid #666;
+	border-left: 1px solid #666;
+	border-top: 1px solid #999;
+	border-bottom: 1px solid #999;
+	background-color: #dededf;
+	margin-left: auto;
+	margin-right: auto;
 }
 
 div.resultsHeader table {
@@ -268,11 +281,11 @@ div.resultsHeader .subQuery {
 }
 
 div.results {
-   margin: 0 auto;
-   background-color: white;
-	 width: 99%;
-	 border: 1px solid #666;
-	 border-top: 0;
+   	margin: 0 auto;
+   	background-color: white;
+	width: 99%;
+	/* border: 1px solid #666; */
+	border-top: 0;
 }
 
 div.results table {

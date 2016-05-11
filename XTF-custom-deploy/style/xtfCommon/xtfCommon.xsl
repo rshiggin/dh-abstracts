@@ -1,13 +1,12 @@
-<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-    xmlns:ns="http://www.tei-c.org/ns/1.0" version="1.0"
-    xmlns:date="http://exslt.org/dates-and-times"
-    xmlns:parse="http://cdlib.org/xtf/parse"
-    xmlns:xtf="http://cdlib.org/xtf"
+<?xml version="1.0" encoding="UTF-8"?>
+<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" 
+    xmlns:xtf="http://cdlib.org/xtf" 
     xmlns:session="java:org.cdlib.xtf.xslt.Session"
     xmlns:editURL="http://cdlib.org/xtf/editURL"
-    xmlns:FileUtils="java:org.cdlib.xtf.xslt.FileUtils"
-    extension-element-prefixes="date FileUtils"
-    exclude-result-prefixes="#all">
+    xmlns="http://www.w3.org/1999/xhtml"
+    extension-element-prefixes="session"
+    exclude-result-prefixes="#all"
+    version="2.0">
     
     <xsl:param name="lang" select="if (normalize-space(session:getData('lang')) != '') then session:getData('lang') else 'en'"/>
     <xsl:param name="transTable" select="document(concat('g10n/translation_', $lang, '.xml'))"/>
@@ -207,7 +206,7 @@
     </xsl:template>
     
     <xsl:template name="getLang">
-        <!--<xsl:variable name="lang" select="session:getData('lang')"/>-->
+        <xsl:variable name="lang" select="session:getData('lang')"/>
         <html xml:lang="en" lang="en">
             <head>
                 <title>Abstracts: Set Language</title>
@@ -218,7 +217,7 @@
                 <xsl:copy-of select="$brand.header"/>
                 <div>
                     <h2>Set Language</h2>
-                    <form action="/xtf/search" method="get">
+                    <form action="/adho/search" method="get">
                         <input type="radio" name="lang" value="en">
                             <xsl:if test="$lang='en'"><xsl:attribute name="checked" select="'checked'"/></xsl:if>
                             <xsl:text>English</xsl:text>

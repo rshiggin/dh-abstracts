@@ -397,7 +397,8 @@
                   </table>
                </td>
             </tr>
-            <tr>
+          <!-- Omit sampleTable -->
+           <!-- <tr>
                <td colspan="2">
                   <table class="sampleTable">
                      <tr>
@@ -435,7 +436,7 @@
                      </tr>
                   </table>
                </td>
-            </tr>
+            </tr> -->
          </table>
       </form>
    </xsl:template>

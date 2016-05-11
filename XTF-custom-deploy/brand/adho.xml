@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<brand xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml">
  
  <!-- ADHO custom -->
    <links>
@@ -44,8 +44,8 @@
    <!-- revised footer  -->
    <footer>
       <div class="footer">
-         <a href="mailto:web@digitalhumanities.org">Comments? Questions?</a> | <a href="javascript://" onclick="javascript:window.open('/xtf/search?smode=getLang','popup','width=500,height=200,resizable=no,scrollbars=no')">Choose Language</a>
+         <a href="mailto:web@digitalhumanities.org">Comments? Questions?</a> | <a href="javascript://" onclick="javascript:window.open('/adho/search?smode=getLang','popup','width=500,height=500,resizable=no,scrollbars=no')">Choose Language</a>
       </div>
    </footer> 
    
-</brand>
+</html>
