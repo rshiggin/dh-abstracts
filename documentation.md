@@ -1,5 +1,5 @@
 ##DH Abstracts Documentation
-Richard Higgins, PhD (English), pending MIS (InfoSci)  
+Richard Higgins, M.I.S., Ph.D. 
 Indiana University, Bloomington  
 [rshiggin.net](http://www.rshiggins.net/)  
 
