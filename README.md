@@ -1,14 +1,15 @@
 # DH-Abstracts
 
+#### ** Find the latest tested release here [/dh-abstracts 2.1] (https://github.com/rshiggin/dh-abstracts/releases/tag/2.1) **
+
 ### Renovating the Digital Humanities Conference Abstracts Collection
 
-Folder XTF-custom-deploy contains a full fork of XTF 3.1, with significant modifications to XSLT and CSS for ADHO.
-
 Current active location: [digitalhumanities.org/dh-abstracts/search](http://digitalhumanities.org/dh-abstracts/search)  
-See [documentation.md](documentation.md) for specific guidelines and changelog    
-Questions and comments? Use contact info found [here](http://www.rshiggins.net) for Richard Higgins 
+See [documentation.md](documentation.md) for specific guidelines and changelog 
+All customizations and work performed by Richard Higgins for the Alliance of Digital Humanities Organizations.
+Questions and comments? Need help with installation? Contact me at [rshiggin.net](http://www.rshiggins.net),  [@richardshiggins](https://twitter.com/richardshiggins), or [IUScholarWorks](https://scholarworks.iu.edu/people). 
 
-__In Progress: modified default search__
+__Modified default search__
 
 ![](img/screen1.jpg)
 
@@ -33,6 +34,8 @@ __Project Summary__
   * ensure that the abstracts dataset conforms to the definitions and standards that we have codified    
   * revise XTF code and specifications as needed to accommodate the expanded collection of XML documents  
 
-__In Progress: modified results page__  
+__Modified results page__  
   
 ![](img/results-rev.png)
+
+Apache Software License, BSD License, Mozilla Public License 1.0 (MPL)
