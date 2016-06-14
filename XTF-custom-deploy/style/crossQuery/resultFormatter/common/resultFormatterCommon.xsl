@@ -1132,13 +1132,15 @@
                </td>
             </xsl:when>
             
+            <!-- ADHO block sub-groups expand for date: year -->
             <!-- closed node: click to expand -->
-            <xsl:when test="count(group) = 0">
-               <td class="col1">
+       <xsl:when test="count(group) = 0">
+          <td class="col1">&#8226;</td> <!-- bullet char -->
+             <!--  <td class="col1">
                   <a href="{$selectLink}">
                      <img src="{$icon.path}/i_expand.gif" border="0" alt="expand"/>
                   </a>
-               </td>
+               </td> -->
                <td class="col2">
                   <xsl:apply-templates select="." mode="beforeGroupValue"/>
                   <a href="{$selectLink}">
@@ -1149,15 +1151,16 @@
                <td class="col3">
                   (<xsl:value-of select="@totalDocs"/>)
                </td>
-            </xsl:when>
+            </xsl:when> 
                
             <!-- top-level open node: click to clear the facet -->
-            <xsl:when test="not(parent::group)">
-               <td class="col1">
+          <xsl:when test="not(parent::group)">
+             <td class="col1">&#8226;</td> <!-- bullet char -->
+            <!--   <td class="col1">
                   <a href="{$clearLink}">
                      <img src="{$icon.path}/i_colpse.gif" border="0" alt="collapse"/>
                   </a>
-               </td>
+               </td> -->
                <td class="col2">
                   <xsl:apply-templates select="." mode="beforeGroupValue"/>
                   <a href="{$clearLink}">
@@ -1166,15 +1169,16 @@
                   <xsl:apply-templates select="." mode="afterGroupValue"/>
                </td>
                <td class="col3"/>
-            </xsl:when>
+            </xsl:when> 
                
             <!-- mid-level open node: click to collapse -->
             <xsl:otherwise>
-               <td class="col1">
+               <td class="col1">&#8226;</td> <!-- bullet char -->
+         <!--      <td class="col1">
                   <a href="{$collapseLink}">
                      <img src="{$icon.path}/i_colpse.gif" border="0" alt="collapse"/>
                   </a>
-               </td>
+               </td>  -->
                <td colspan="col2">
                   <xsl:apply-templates select="." mode="beforeGroupValue"/>
                   <a href="{$collapseLink}">
@@ -1188,7 +1192,7 @@
       </tr>
       
       <!-- Handle sub-groups if any -->
-      <xsl:if test="group">
+   <!--   <xsl:if test="group">
          <tr>
             <td class="col1"/>
             <td class="col2" colspan="2">
@@ -1199,7 +1203,7 @@
                </div>
             </td>
          </tr>
-      </xsl:if>
+      </xsl:if> -->
    </xsl:template>
 
    <!-- Default template to display the name of a facet. Override to specialize. -->
