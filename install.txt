@@ -1,0 +1,50 @@
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+# dh-abstracts
+=======
+## dh-abstracts
+>>>>>>> origin/master
+=======
+## dh-abstracts
+>>>>>>> origin/master
+=======
+## dh-abstracts
+>>>>>>> origin/master
+install.txt
+
+Two methods: 
+
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+1. Move the unarchived or unzipped directory into the Webapps directory of a Tomcat server. Make adjustments as needed to config files. 
+
+2. Build XTF 3.1 (with mvn/ant) http://xtf.cdlib.org/documentation/deployment-guide/, and overlay the following folders from this package: brand, conf, css, icons, and style. 
+
+Add XML/TEI dh-abstract data to the top-level directory: "abstracts-XML_TEI-documents"
+
+github location includes documentation and troubleshooting for installation issues: https://github.com/rshiggin/dh-abstracts
+
+=======
+=======
+>>>>>>> origin/master
+=======
+>>>>>>> origin/master
+1. Move the unarchived or unzipped directory into the Webapps directory of a Tomcat server. 
+Make adjustments as needed to config files. 
+
+2. Build XTF 3.1 (with mvn/ant) http://xtf.cdlib.org/documentation/deployment-guide/, 
+and overlay the following folders from this package: brand, conf, css, icons, and style. 
+
+Add XML/TEI dh-abstract data to the top-level directory: "abstracts-XML_TEI-documents"
+
+github location includes documentation and troubleshooting for installation issues: 
+https://github.com/rshiggin/dh-abstracts
+<<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> origin/master
+=======
+>>>>>>> origin/master
+=======
+>>>>>>> origin/master
