@@ -4,9 +4,9 @@
 
 ### Renovating the Digital Humanities Conference Abstracts Collection
 
-Current active location: [digitalhumanities.org/dh-abstracts/search](http://digitalhumanities.org/dh-abstracts/search)  
-See [documentation.md](documentation.md) for specific guidelines and changelog 
-All customizations and work performed by Richard Higgins for the Alliance of Digital Humanities Organizations.
+Current active location: [digitalhumanities.org/dh-abstracts/search](http://digitalhumanities.org/dh-abstracts/search).  
+See [documentation.md](documentation.md) for specific guidelines and changelog.       
+All customizations and work performed by Richard Higgins for the Alliance of Digital Humanities Organizations (ADHO).     
 Questions and comments? Need help with installation? Contact me at [rshiggin.net](http://www.rshiggins.net),  [@richardshiggins](https://twitter.com/richardshiggins), or [IUScholarWorks](https://scholarworks.iu.edu/people). 
 
 __Modified default search__
