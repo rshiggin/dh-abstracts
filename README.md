@@ -1,9 +1,9 @@
 # DH-Abstracts
 
-#### ** Find the latest tested release here [/dh-abstracts 2.1] (https://github.com/rshiggin/dh-abstracts/releases/tag/2.1) **
+##### Find the latest tested release here [dh-abstracts 2.1](https://github.com/rshiggin/dh-abstracts/releases/tag/2.1)
 
-### Renovating the Digital Humanities Conference Abstracts Collection
-
+### Renovating the Digital Humanities Conference Abstracts Collection      
+##### Browseable demo version [http://dhabstracts-rshiggins.rhcloud.com/dhabstracts/search](http://dhabstracts-rshiggins.rhcloud.com/dhabstracts/search)
 Replaces the legacy version found here: [digitalhumanities.org/dh-abstracts/search](http://digitalhumanities.org/dh-abstracts/search).  
 See [documentation.md](documentation.md) for specific guidelines and changelog.       
 All customizations and work performed by Richard Higgins for the Alliance of Digital Humanities Organizations (ADHO).     
