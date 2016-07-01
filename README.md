@@ -1,20 +1,19 @@
-# DH-Abstracts
+### Digital Humanities (ADHO) Conference Abstracts Collection  
 
-##### Public demo version [http://dhabstracts-rshiggins.rhcloud.com/dhabstracts/search](http://dhabstracts-rshiggins.rhcloud.com/dhabstracts/search)
+##### Public demo version [http://dhabstracts-rshiggins.rhcloud.com/dhabstracts/search](http://dhabstracts-rshiggins.rhcloud.com/dhabstracts/search)     
+##### Current site for the abstracts collection [digitalhumanities.org/dh-abstracts/search](http://digitalhumanities.org/dh-abstracts/search)
 
-### Renovating the Digital Humanities Conference Abstracts Collection      
+The latest release can be downloaded from here [dh-abstracts 2.1](https://github.com/rshiggin/dh-abstracts/releases/tag/2.1).     
 
-Find the latest tested release here [dh-abstracts 2.1](https://github.com/rshiggin/dh-abstracts/releases/tag/2.1)     
-      
+__Abstracts Collection__    
+This collection provides a central location for search, discovery, and preservation of conference abstracts submitted by attendees. The software platform, eXtensible Text Framework (XTF), enables powerful indexing, keyword search, and faceted browsing for the material, all which has been encoded in TEI/XML. The current version, orginally implemented in approximately 2004, can be found here digitalhumanities.org/dh-abstracts/search. The project work on this version so far has updated and rewritten the XTF implementation, improved the user interface, standardized display and documentation, and performed initial improvements on the XML encoded data.
+
+For more on the eXtensible Text Framework, see the site maintained by the California Digital Library http://xtf.cdlib.org. The platform is in wide use by libraries for maintaining finding aids and managing archival metadata.
+  
 All customizations and work performed by Richard Higgins for the Alliance of Digital Humanities Organizations (ADHO).     
 Questions and comments? Need help with installation? Contact me at [rshiggin.net](http://www.rshiggins.net),  [@richardshiggins](https://twitter.com/richardshiggins), or [IUScholarWorks](https://scholarworks.iu.edu/people). 
 
-__Abstracts Collection__     
-This collection provides a central location for search, discovery, and preservation of conference abstracts submitted by attendees. The software platform, eXtensible Text Framework (XTF), enables powerful indexing, keyword search, and faceted browsing for the material, all which has been encoded in TEI/XML. The current version, orginally implemented in approximately 2004, can be found here [digitalhumanities.org/dh-abstracts/search](http://digitalhumanities.org/dh-abstracts/search). The project work on this version so far has updated and rewritten the XTF implementation, improved the user interface, standardized display and documentation, and performed initial improvements on the XML encoded data. 
-
-For more on the eXtensible Text Framework, see the site maintained by the California Digital Library [http://xtf.cdlib.org](http://xtf.cdlib.org). The platform is in wide use by libraries for maintaining finding aids and managing archival metadata. 
-
-__Project Summary by Phase__
+__Project Summary by phase__
 
 1. Fix the present site (completed)       
   * upgrade software  
