@@ -1,7 +1,7 @@
 ### Digital Humanities (ADHO) Conference Abstracts Collection  
 
-##### Public demo version [http://dhabstracts-rshiggins.rhcloud.com/dhabstracts/search](http://dhabstracts-rshiggins.rhcloud.com/dhabstracts/search)     
-##### Current site for the abstracts collection [digitalhumanities.org/dh-abstracts/search](http://digitalhumanities.org/dh-abstracts/search)
+##### Public demo of updated version [http://dhabstracts-rshiggins.rhcloud.com/dhabstracts/search](http://dhabstracts-rshiggins.rhcloud.com/dhabstracts/search)     
+##### Current site of the abstracts collection [digitalhumanities.org/dh-abstracts/search](http://digitalhumanities.org/dh-abstracts/search)
 
 The latest release can be downloaded from here [dh-abstracts 2.1](https://github.com/rshiggin/dh-abstracts/releases/tag/2.1).     
 
