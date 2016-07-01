@@ -1,17 +1,15 @@
 # DH-Abstracts
 
-##### Find the latest tested release here [dh-abstracts 2.1](https://github.com/rshiggin/dh-abstracts/releases/tag/2.1)
+##### Public demo version [http://dhabstracts-rshiggins.rhcloud.com/dhabstracts/search](http://dhabstracts-rshiggins.rhcloud.com/dhabstracts/search)
 
 ### Renovating the Digital Humanities Conference Abstracts Collection      
-##### Browseable demo version [http://dhabstracts-rshiggins.rhcloud.com/dhabstracts/search](http://dhabstracts-rshiggins.rhcloud.com/dhabstracts/search)
-Replaces the legacy version found here: [digitalhumanities.org/dh-abstracts/search](http://digitalhumanities.org/dh-abstracts/search).  
-See [documentation.md](documentation.md) for specific guidelines and changelog.       
+
+Find the latest tested release here [dh-abstracts 2.1](https://github.com/rshiggin/dh-abstracts/releases/tag/2.1)     
+Replaces the legacy version found here: [digitalhumanities.org/dh-abstracts/search](http://digitalhumanities.org/dh-abstracts/search).   
+      
 All customizations and work performed by Richard Higgins for the Alliance of Digital Humanities Organizations (ADHO).     
 Questions and comments? Need help with installation? Contact me at [rshiggin.net](http://www.rshiggins.net),  [@richardshiggins](https://twitter.com/richardshiggins), or [IUScholarWorks](https://scholarworks.iu.edu/people). 
 
-__Modified default search__
-
-![](img/screen1.jpg)
 
 __Project Summary__
 
@@ -34,8 +32,5 @@ __Project Summary__
   * ensure that the abstracts dataset conforms to the definitions and standards that we have codified    
   * revise XTF code and specifications as needed to accommodate the expanded collection of XML documents  
 
-__Modified results page__  
-  
-![](img/results-rev.png)
 
 Apache Software License, BSD License, Mozilla Public License 1.0 (MPL)
