@@ -14,20 +14,20 @@ This collection provides a central location for search, discovery, and preservat
 
 __Project Summary__
 
-1. Fix the present site        
+1. Fix the present site (completed)       
   * upgrade software  
   * rewrite outdated code    
   * address inconsistencies and errors in current XML markup and metadata    
   * establish a GitHub-based version-tracking workflow   
   * improve the user interface and faceted search
 
-2. Bring the content of the Collection up-to-date   
+2. Bring the content of the Collection up-to-date  (scheduled to begin)
   * encode and integrate all documents from 2004 to the present   
   * validate and normalize markup in the entire collection
   * add support for the display of images for those abstracts that include screenshots  
   * graphs, and charts, and create guidelines, templates, and schemas for future conference abstracts
 
-3. Incorporate abstracts from pre-1996 conferences    
+3. Incorporate abstracts from pre-1996 conferences (status not yet determined)   
   * collect conference material from the 1970s, 80s and early 90s
   * scan and OCR non-digital documents   
   * ensure that the abstracts dataset conforms to the definitions and standards that we have codified    
