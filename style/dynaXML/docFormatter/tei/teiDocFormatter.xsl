@@ -78,6 +78,7 @@
    <xsl:include href="structure.xsl"/>
    <xsl:include href="table.xsl"/>
    <xsl:include href="titlepage.xsl"/>
+   <xsl:include href="biblStruct.xsl"/>
    
    <!-- ====================================================================== -->
    <!-- Define Keys                                                            -->
@@ -135,7 +136,6 @@
    <xsl:param name="hit.rank">
       <xsl:choose>
          <xsl:when test="$query and not($query = '0')">
-            <xsl:value-of select="key('hit-num-dynamic', '1')/@rank"/>
          </xsl:when>
          <xsl:otherwise>
             <xsl:value-of select="'0'"/>
@@ -200,17 +200,136 @@
    <!-- ====================================================================== -->
    <xsl:template name="content">
       <xsl:for-each select="tei:TEI">
-         <h3><xsl:text>Abstract</xsl:text></h3><br/>
+         <h3><xsl:text>Abstract</xsl:text></h3>
          <xsl:value-of select="tei:text"/>
       </xsl:for-each>
    </xsl:template>
    
-   <xsl:template match="content">
+   <!-- ====================================================================== -->
+   <!-- Notes                                                                  -->
+   <!-- ====================================================================== -->
+   
+   <xsl:template match="*:note">
+      <xsl:choose>
+         <xsl:when test="@type='footnote' or @place='foot'">
+            <xsl:if test="$doc.view='popup' or $doc.view='print'">
+               <xsl:apply-templates/>
+            </xsl:if>
+         </xsl:when>
+         <xsl:when test="@type='endnote' or @place='end'">
+            <xsl:choose>
+               <xsl:when test="$anchor.id=@*:id">
+                  <a name="X"></a>
+                  <div class="note-hi">
+                     <xsl:apply-templates/>
+                  </div>
+               </xsl:when>
+               <xsl:otherwise>
+                  <div class="note">
+                     <xsl:apply-templates/>
+                  </div>
+               </xsl:otherwise>
+            </xsl:choose>
+         </xsl:when>
+         <xsl:when test="@type='note' or @place='inline'">
+            <div class="inline-note">
+               <xsl:apply-templates/>
+            </div>
+         </xsl:when>
+         <xsl:otherwise>
+            <div class="note">
+               <xsl:apply-templates/>
+            </div>
+         </xsl:otherwise>
+      </xsl:choose>
+   </xsl:template>
+   
+   <xsl:template match="*:p[ancestor::note[@type='footnote' or @place='foot']]">
+      
+      <xsl:variable name="n" select="parent::note/@n"/>
+      
+      <p>
+         <xsl:if test="position()=1">
+            <xsl:if test="$n != ''">
+               <xsl:text>[</xsl:text><xsl:value-of select="$n"/><xsl:text>] </xsl:text>
+            </xsl:if>
+         </xsl:if>
+         <xsl:apply-templates/>
+      </p>
+      
+   </xsl:template>
+   
+   <xsl:template match="*:p[ancestor::note[@type='endnote' or @place='end']]">
+      
+      <xsl:variable name="n" select="parent::note/@n"/>
+      
+      <xsl:variable name="class">
+         <xsl:choose>
+            <xsl:when test="position()=1">noindent</xsl:when>
+            <xsl:otherwise>indent</xsl:otherwise>
+         </xsl:choose>
+      </xsl:variable>
+      
+      <p class="{$class}">
+         <xsl:if test="position()=1">
+            <xsl:if test="$n != ''">
+               <xsl:value-of select="$n"/><xsl:text>. </xsl:text>
+            </xsl:if>
+         </xsl:if>
+         <xsl:apply-templates/>
+         <xsl:if test="position()=last()">
+            <xsl:if test="parent::note/@corresp">
+               
+               <xsl:variable name="corresp" select="parent::note/@corresp"/>
+               
+               <xsl:variable name="chunk" select="key('ref-id', $corresp)/ancestor::*[matches(local-name(), '^div[1-6]$')][1]/@*:id"/>
+               
+               <xsl:variable name="toc" select="key('div-id', $chunk)/parent::*/@*:id"/>
+               
+               <span class="down1">
+                  <xsl:text> [</xsl:text>
+                  <a>
+                     <xsl:attribute name="href"><xsl:value-of select="$doc.path"/>&#038;chunk.id=<xsl:value-of select="$chunk"/>&#038;toc.id=<xsl:value-of select="$toc"/>&#038;toc.depth=<xsl:value-of select="$toc.depth"/>&#038;brand=<xsl:value-of select="$brand"/><xsl:value-of select="$search"/>&#038;anchor.id=<xsl:value-of select="$corresp"/>#X</xsl:attribute>
+                     <xsl:attribute name="target">_top</xsl:attribute>
+                     <xsl:text>BACK</xsl:text>
+                  </a>
+                  <xsl:text>]</xsl:text>
+               </span>
+            </xsl:if>
+         </xsl:if>
+      </p>
+   </xsl:template>
+   
+   <!-- ====================================================================== -->
+   <!--   References                                                            -->
+   <!-- ====================================================================== -->
+  
+   <xsl:template name="BiblStruct">
       <xsl:apply-templates/>
    </xsl:template>
- 
+
+   <xsl:template match="tei:TEI/tei:text/tei:back/tei:listBibl"> 
+         <xsl:apply-templates select="tei:biblStruct/tei:monogr"/>
+            <xsl:for-each select="tei:biblStruct/tei:relatedItem[@type='constituent']">
+              <xsl:apply-templates select="current()"/>
+            </xsl:for-each>
+   </xsl:template>
+   
+   <xsl:template match="tei:monogr"><div>
+      <xsl:apply-templates select="tei:title"/> <br/> </div><br/>
+   </xsl:template>
+   
+   <xsl:template match="tei:relatedItem[@type='constituent']">
+      <xsl:variable name="title" select="tei:biblStruct/tei:analytic/tei:title"/>
+      <xsl:variable name="byline">
+         <xsl:apply-templates select="tei:biblStruct/tei:analytic/tei:respStmt"/>
+      </xsl:variable>
+      <xsl:variable name="page" select="tokenize(tei:biblStruct/tei:monogr/tei:imprint/tei:biblScope/@corresp, ' ')[1]"/>
+      <a href="#{$page}"><xsl:value-of select="concat($title, ' . . . ', $byline)"/></a>
+   </xsl:template>
+
    <!-- ====================================================================== -->
-   <!-- Frames Template -->
+   <!-- Single-view (was Frames) Template -->
    <!-- ====================================================================== -->
    <xsl:template name="frames" exclude-result-prefixes="#all">   
       <xsl:variable name="bbar.href"><xsl:value-of select="$query.string"/>&#038;doc.view=bbar&#038;chunk.id=<xsl:value-of select="$chunk.id"/>&#038;brand=<xsl:value-of select="$brand"/><xsl:value-of select="$search"/></xsl:variable> 
@@ -243,10 +362,15 @@
             <div class="content">
                <xsl:attribute name="name">content</xsl:attribute>
              <xsl:attribute name="src"><xsl:value-of select="$xtfURL"/>view?<xsl:value-of select="$content.href"/></xsl:attribute> 
-               <h2><xsl:text>Abstract</xsl:text></h2><br/>
+               <h2><xsl:text>Abstract</xsl:text></h2>
                <xsl:apply-templates select="/*/*:text/*"/>
             </div>
+            <div class="bibliography"><p>
+               <xsl:copy-of select="biblStruct"/></p>
+            </div>
+            <div>
             <xsl:copy-of select="$brand.footer"/>
+            </div>
             </body>
          </html>
    </xsl:template>
@@ -274,6 +398,9 @@
                                     <xsl:apply-templates select="key('div-id', $chunk.id)"/>
                                  </xsl:when>
                                  <xsl:otherwise>
+                                    <div class="topLevel">
+                                       <xsl:call-template name="topLevel"/>      
+                                    </div>
                                     <xsl:apply-templates select="/*/*:text/*"/>
                                  </xsl:otherwise>
                               </xsl:choose>

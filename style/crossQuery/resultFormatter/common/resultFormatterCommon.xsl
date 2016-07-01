@@ -70,6 +70,7 @@
    <xsl:param name="text-prox"/>
    <xsl:param name="text-exclude"/>
    <xsl:param name="text-max"/>
+
    
    <!-- Dublin Core Metadata Elements -->
    <xsl:param name="title"/>
@@ -83,6 +84,7 @@
    <xsl:param name="creator-prox"/>
    <xsl:param name="creator-exclude"/>
    <xsl:param name="creator-max"/>
+   
    <!-- ADHO modified
    <xsl:param name="subject"/>
    <xsl:param name="subject-join"/>

@@ -87,7 +87,7 @@
    <xsl:param name="icon.path" select="concat($xtfURL, 'icons/brand/')"/>
    <xsl:param name="docHits" select="/crossQueryResult/docHit"/>
    <xsl:param name="email"/>
-   
+
    <!-- ====================================================================== -->
    <!-- Root Template                                                          -->
    <!-- ====================================================================== -->
@@ -283,8 +283,11 @@
                   </xsl:if>
                   <tr>
                      <td>
+                        <!-- ADHO change totalDocs to count($bag/bag/savedDoc -->
                         <b><xsl:value-of select="if($smode='showBag') then 'Saved' else 'Results'"/>:</b>&#160;
-                        <xsl:variable name="items" select="@totalDocs"/>
+                        <xsl:variable name="bag" select="session:getData('bag')"/>
+                        <xsl:variable name="items" select="count($bag/bag/savedDoc)"/>
+                       <!--  <xsl:variable name="items" select="@totalDocs"/> -->
                         <xsl:choose>
                            <xsl:when test="$items = 1">
                               <span id="itemCount">1</span>
@@ -605,7 +608,7 @@ Item number <xsl:value-of select="$num"/>:
          </xsl:when>
 
          <xsl:when test="$browse-creator">
-         <xsl:text>Author | </xsl:text>
+         <xsl:text>creator | </xsl:text>
          <a href="{$xtfURL}{$crossqueryPath}?browse-title=first;sort=title">Title</a>
          <xsl:text> | </xsl:text>
          <a href="{$xtfURL}{$crossqueryPath}?browse-all=yes">Facets (Location, Date)</a>

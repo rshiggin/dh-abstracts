@@ -164,13 +164,23 @@
    <!-- advanced form -->
    <xsl:template name="advancedForm" exclude-result-prefixes="#all">
       <form method="get" action="{$xtfURL}{$crossqueryPath}">
+         <br/>
+   <div class="center-buttons">
+            <input type="hidden" name="smode" value="advanced"/>
+            <input type="submit" value="Search"/>
+            <input type="reset" onclick="location.href='{$xtfURL}{$crossqueryPath}?smode=advanced'" value="Clear"/>
+   </div>
+      </form>
+         
+         <br class="clear"/>
+           <form>
          <table class="top_table">
             <tr>
                <td>
                   <table class="left_table">
                      <tr>
                         <td colspan="3">
-                           <h4>Search Entire Text</h4>
+                           <h5>Search Entire Text</h5>
                         </td>
                      </tr>
                      <tr>
@@ -201,14 +211,14 @@
                      </tr>
                      <tr>
                         <td class="indent">&#160;</td>
-                        <td><b>Exclude</b></td>
+                        <td>Exclude</td>
                         <td>
                            <input type="text" name="text-exclude" size="20" value="{$text-exclude}" placeholder=" Exclude"/>
                         </td>
                      </tr>
                      <tr>
                         <td class="indent">&#160;</td>
-                        <td><b>Proximity</b></td>
+                        <td>Proximity</td>
                         <td>
                            <select size="1" name="text-prox">
                               <xsl:choose>
@@ -299,9 +309,10 @@
                      </tr>           
                 <tr>
                         <td class="indent">&#160;</td>
-                        <td><b>Section</b></td>
-                        <td>
+                        <td>Section</td>
+                        <td> <br/>
                            <xsl:choose>
+                         
                               <xsl:when test="$sectionType = 'head'">
                                  <input type="radio" name="sectionType" value=""/><xsl:text> any </xsl:text><br/>
                                  <input type="radio" name="sectionType" value="head" checked="checked"/><xsl:text> headings </xsl:text><br/>
@@ -325,25 +336,25 @@
                <td>
                   <table class="right_table">
                      <tr>
-                        <td colspan="3"><h4>Search Metadata</h4></td>
+                        <td colspan="3"><h5>Search Metadata</h5></td>
                      </tr>
                      <tr>
                         <td class="indent">&#160;</td>
-                        <td><b>Title</b></td>
+                        <td>Title</td>
                         <td>
                            <input type="text" name="title" size="20" value="{$title}" placeholder=" Title"/>
                         </td>
                      </tr>
                      <tr>
                         <td class="indent">&#160;</td>
-                        <td><b>Author</b></td>
+                        <td>Author</td>
                         <td>
                            <input type="text" name="creator" size="20" value="{$creator}" placeholder=" Author"/>
                         </td>
                      </tr>
                      <tr>
                         <td class="indent">&#160;</td>
-                        <td><b>Location</b></td>
+                        <td>Location</td>
                         <td>
                            <input type="text" name="location" size="20" value="{$location}" placeholder=" Location"/>
                         </td>
@@ -358,7 +369,7 @@
                      </tr> -->
                      <tr>
                         <td class="indent">&#160;</td>
-                        <td><b>Year(s)</b></td>
+                        <td>Year(s)</td>
                         <td>
                            <xsl:text>From </xsl:text>
                            <input type="text" name="year" size="4" value="{$year}" placeholder=" begin"/>
@@ -368,7 +379,7 @@
                      </tr>
                      <tr>
                         <td class="indent">&#160;</td>
-                        <td><b>Type</b></td>
+                        <td>Type</td>
                         <td>
                            <select size="1" name="type">
                               <option value="">All</option>
@@ -382,21 +393,10 @@
                            </select>
                         </td>
                      </tr>
-                     <tr>
-                        <td colspan="3">&#160;</td>
-                     </tr>
-                     <tr>
-                        <td class="indent">&#160;</td>
-                        <td>&#160;</td>
-                        <td>
-                           <input type="hidden" name="smode" value="advanced"/>
-                           <input type="submit" value="Search"/>
-                           <input type="reset" onclick="location.href='{$xtfURL}{$crossqueryPath}?smode=advanced'" value="Clear"/>
-                        </td>
-                     </tr>
                   </table>
                </td>
             </tr>
+
           <!-- Omit sampleTable -->
            <!-- <tr>
                <td colspan="2">

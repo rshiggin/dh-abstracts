@@ -481,7 +481,8 @@
    <!-- Bibliographies                                                         -->
    <!-- ====================================================================== -->
    
-   <xsl:template match="*:listBibl">
+   <!-- ADHO see biblStruct.xsl -->
+    <xsl:template match="*:listBibl">
       <xsl:if test="$anchor.id=@*:id">
          <a name="X"></a>
       </xsl:if>
@@ -511,7 +512,7 @@
             <xsl:apply-templates/>
          </xsl:otherwise>
       </xsl:choose>
-   </xsl:template>
+   </xsl:template> 
    
    <!-- Because of order in the following, "rend" takes precedence over "level" -->
    
@@ -550,7 +551,7 @@
             <xsl:apply-templates/>
          </xsl:otherwise>
       </xsl:choose>
-   </xsl:template>
+   </xsl:template> 
    
    <!-- ====================================================================== -->
    <!-- Formatting                                                             -->

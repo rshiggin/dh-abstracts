@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
  
  <!-- ADHO custom -->
    <links>
@@ -12,39 +13,23 @@
       <link rel="stylesheet" href="css/brand/content.css" type="text/css"/>
       <link rel="shortcut icon" href="icons/brand/favicon.ico" />
    </dynaxml.links>
-  
+   </head>
+   
    <header>
       <div class="header">
-         <img src="icons/brand/ADHO-logo.png" width="100" height="100" alt="ADHO" class="left-logo"/>
          <!--<img src="icons/brand/ACH-logo.jpg" width="100" height="100" alt="ACH" class="right-logo"/> -->
-         <h1 class="text_line">Digital Humanities Abstracts</h1> 
+         <img src="icons/brand/ADHO-logo.png" width="100" height="100" alt="ADHO" class="right-logo"/>
+         <h1 class="text_line"><a href="http://dhabstracts-rshiggins.rhcloud.com/dhabstracts/search">Digital Humanities Abstracts</a></h1> 
          <br class="clear" />
-      </div>
+       </div>
    </header>
    
-   <dynaxml.header>
-      <div class="header">
-         <img src="icons/brand/ADHO-logo.png" width="100" height="100" alt="ADHO" class="left-logo"/>
-         <img src="icons/brand/ACH-logo.jpg" width="100" height="100" alt="ACH" class="right-logo"/>
-         <div class="searchBox">
-            <form method="get" id="searchform" action="{$xtfURL}{$crossqueryPath}">
-               <div>
-                  <input class="query" type="text"
-                     value="Search: enter term, hit return"
-                     onfocus="clearDefaultValue(this , 'Search: enter term, hit return')"
-                     onblur="addDefaultValue(this , 'Search: enter term, hit return')"
-                     name="keyword" id="s"/>
-               </div>
-            </form>
-         </div>
-         <br class="clear" />
-      </div>
-   </dynaxml.header>
+
    
    <!-- revised footer  -->
    <footer>
       <div class="footer">
-         <a href="mailto:web@digitalhumanities.org">Comments? Questions?</a> | <a href="javascript://" onclick="javascript:window.open('/adho/search?smode=getLang','popup','width=500,height=500,resizable=no,scrollbars=no')">Choose Language</a>
+         <a href="mailto:web@digitalhumanities.org">Comments? Questions?</a> | <a href="javascript://" onclick="javascript:window.open('http://dhabstracts-rshiggins.rhcloud.com/dhabstracts/search?smode=getLang','popup','width=500,height=500,resizable=no,scrollbars=no')">Choose Language</a>
       </div>
    </footer> 
    

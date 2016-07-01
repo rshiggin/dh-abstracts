@@ -3,15 +3,17 @@
 @import url('http://fonts.googleapis.com/css?family=Arvo:400,700,400italic,700italic|Gentium+Book+Basic:400,400italic,700,700italic');
 @import url("content.css");
 @import url("bbar.css");
+@import url("results.css");
 
+body {
+	font-size: 16px;
+	font-family: 'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', Geneva, Verdana, sans-serif;
+    background-color:#ffffff;
+ 	/* margin: 0px; */
+ 	border-right: 1px solid #666666;
+ 	border-left: 1px solid #666666;
+ }	
 
-div.bbar {
-    width: 100%;
-    align: top;
-    position: relative;
-    margin: 0px;
-    clear: both;
-}
 div.topLevel, div.content {
     background-color: #FFFFFF;
 	color: #333;
@@ -20,7 +22,8 @@ div.topLevel, div.content {
 div.topLevel {
     font-size: 18px;
     margin-bottom: 2px;
-    padding: 2em;
+    padding-left: 3em;
+    padding-top: 1em;
 }
 div.content {
     font-size: 16px;
@@ -116,6 +119,10 @@ margin-bottom: 0;
 
 div.illgrp {
     display: none;
+}
+
+ptr {
+    display:none;
 }
 
 /* LISTS */

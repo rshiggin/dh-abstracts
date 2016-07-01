@@ -1,42 +1,18 @@
 /* dynaXML Button Bar stylesheet */
 /* Applies only to the top navigation bar that appears in the frames view */
+@import url("content.css");
+@import url("results.css");
 
 
 form {
-	display: inline;
+	display: none;
 }
 
 .clear {
 	clear: both;
 }
-div.header {
-	 border: 1px solid #666;
-	 width: 100%;
-	 border-bottom: 0;
-	 margin: 0 auto;
-	 background-color: #417ba8;
-}
 
-div.header img {
-	border: 0;
-}
 
-div.header img.left-logo {
-	float: left;
-	margin: 5px 5px
-}
-
-div.header img.right-logo {
-	float: right;
-	margin: 5px 5px;
-}
-
-div.header .text_line {
-    text-align: center;
-	color: #FFF;
-	margin-top: 30px;
-	font-size: 36px;
-} 
 
 div.footer {
    margin: 0 auto;
@@ -45,15 +21,14 @@ div.footer {
 	 padding: 10px 0;
 	 margin-bottom: 1px;
 	 background-color: #417ba8;
-	 text-color: #FFF;
 }
 div.footer a {
       color: #ffffff;
 }
 
 div.bbar {
-	width: 100%;
-	margin: 0 auto;
+	width: auto;
+	margin: 2px;
 }
 
 div.bbar table {

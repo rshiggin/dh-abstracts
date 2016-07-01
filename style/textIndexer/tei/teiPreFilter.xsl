@@ -124,17 +124,17 @@
    
    <xsl:template name="get-meta">
       <!-- Access Dublin Core Record (if present) -->
-      <xsl:variable name="dcMeta">
+      <!-- <xsl:variable name="dcMeta">
          <xsl:call-template name="get-dc-meta"/>
-      </xsl:variable>
+      </xsl:variable> -->
       
       <!-- If no Dublin Core present, then extract meta-data from the TEI -->
       <xsl:variable name="meta">
-         <xsl:choose>
+        <!-- <xsl:choose>
             <xsl:when test="$dcMeta/*">
                <xsl:copy-of select="$dcMeta"/>
             </xsl:when>
-            <xsl:otherwise>
+            <xsl:otherwise> -->
                <xsl:call-template name="get-tei-title"/>
                <xsl:call-template name="get-tei-creator"/>
             <!--   <xsl:call-template name="get-tei-subject"/> -->
@@ -155,8 +155,8 @@
                <xsl:call-template name="oai-set"/>
                <!-- special value for dh-abstracts -->
                <xsl:call-template name="get-tei-location"/>
-            </xsl:otherwise>
-         </xsl:choose>
+          <!--  </xsl:otherwise>
+         </xsl:choose> -->
       </xsl:variable>
       
       <!-- Add doc kind and sort fields to the data, and output the result. -->
@@ -196,7 +196,8 @@
       <xsl:choose>
          <xsl:when test="//*:fileDesc/*:titleStmt/*:author">
             <creator xtf:meta="true">
-               <xsl:value-of select="string(//*:fileDesc/*:titleStmt/*:author[1])"/>
+               <xsl:value-of select="string(//*:fileDesc/*:titleStmt/*:author[1]/*:name/*:surname)"/>, 
+               <xsl:value-of select="string(//*:fileDesc/*:titleStmt/*:author[1]/*:name/*:forename)"/>
             </creator>
          </xsl:when>
          <xsl:when test="//*:titlePage/*:docAuthor">

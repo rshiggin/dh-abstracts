@@ -81,7 +81,10 @@ div.header .text_line {
 	margin-top: 30px;
 	font-size: 36px;
 } 
-
+div.header h1 > a {
+    text-decoration: none;
+     color: #ffffff;
+}
 div.footer {
    	margin-bottom: 0;
 	width: 100%;
