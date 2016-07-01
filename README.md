@@ -36,3 +36,4 @@ __Project Summary by phase__
 
 
 Apache Software License, BSD License, Mozilla Public License 1.0 (MPL)
+Demo hosting provided by OpenShift by Red Hat
