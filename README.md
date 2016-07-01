@@ -5,11 +5,12 @@
 ### Renovating the Digital Humanities Conference Abstracts Collection      
 
 Find the latest tested release here [dh-abstracts 2.1](https://github.com/rshiggin/dh-abstracts/releases/tag/2.1)     
-Replaces the legacy version found here: [digitalhumanities.org/dh-abstracts/search](http://digitalhumanities.org/dh-abstracts/search).   
       
 All customizations and work performed by Richard Higgins for the Alliance of Digital Humanities Organizations (ADHO).     
 Questions and comments? Need help with installation? Contact me at [rshiggin.net](http://www.rshiggins.net),  [@richardshiggins](https://twitter.com/richardshiggins), or [IUScholarWorks](https://scholarworks.iu.edu/people). 
 
+__Abstracts Collection__     
+This collection provides a central location for search, discovery, and preservation of conference abstracts submitted by attendees. The software platform, Xtensible Text Format (XTF), enables powerful indexing, keyword search, and faceted browsing for the material, all which has been encoded in TEI/XML. The current version, orginally implemented in approximately 2004, can be found here [digitalhumanities.org/dh-abstracts/search](http://digitalhumanities.org/dh-abstracts/search). The project work on this version so far has updated and rewritten the XTF implementation, improved the user interface, standardized display and documentation, and performed initial improvements on the XML encoded data. 
 
 __Project Summary__
 
