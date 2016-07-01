@@ -35,5 +35,5 @@ __Project Summary by phase__
   * revise XTF code and specifications as needed to accommodate the expanded collection of XML documents  
 
 
-Apache Software License, BSD License, Mozilla Public License 1.0 (MPL)
+Apache Software License, BSD License, Mozilla Public License 1.0 (MPL)      
 Demo hosting provided by OpenShift by Red Hat
