@@ -32,7 +32,9 @@ li a.active:focus {
   	color: #b93826;;
   	border-bottom-color: #b93826;;
 }
-
+p.clear {
+    clear: both;
+}
 /* Link hovered */
 a:hover,
 a:focus,
@@ -157,40 +159,49 @@ div.forms table td.tab-select a {
 }
 
 div.form {
-   width: 99%;
-   margin-top: 10px;
-   margin-left: 40px;  /*	changed from 10px */
-   text-align: center;
+    width: 99%;
+    margin-top: 40px;
+    margin-left: 54px; /*	changed from 10px */
+   /* text-align: center; */
 }
 
 /* added to resize search box slightly larger */
-div.form input[name="keyword"] {
-height: 25px;
-width: 400px;
-margin-top: 40px;
-padding: 0px;
-font-family: georgia, times, serif;
-font-size: 16px;
+div.form input[name="keyword"] {    
+    height: 25px;
+    width: 400px;
+    margin-top: 40px;
+    padding: 0px;
+    font-family: georgia, times, serif;
+    font-size: 16px;
 }
-
-div.form table {
+   /* ADHO new div class for advanced buttons */
+div.center-buttons {
+    margin-left: 40%;
+}
+/*  ADHO increase size of buttons */
+div.center-buttons > input {
+    font-size: 14px;
+}
+.form table {
 	margin: 0 auto;
 }
 
 div.form table.top_table {
 	width: 85%;
 	margin: 0 auto;
+	font-size: 85%;
 }
 
 div.form table.left_table {
 	border-right: 1px solid #ccc;
 	text-align: left;
 	margin-right: 40px;
-	width: 90%;
+	width: 80%;
 }
 
 div.form table.right_table {
 	margin: 0 25px;
+	width: 80%;
 }
 
 div.form table h4 {

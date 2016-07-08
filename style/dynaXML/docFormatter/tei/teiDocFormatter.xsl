@@ -172,7 +172,7 @@
    
    <xsl:template name="topLevel">
    <xsl:for-each select="tei:TEI/tei:teiHeader/tei:fileDesc">
-      <strong><xsl:text>Title: "</xsl:text></strong>
+      <strong><xsl:text>Title: </xsl:text></strong><xsl:text>"</xsl:text>
          <xsl:value-of select="tei:titleStmt/tei:title[@type='main']"/><xsl:text>"</xsl:text>
    </xsl:for-each> <br/>
      <xsl:for-each select="tei:TEI/tei:teiHeader/tei:fileDesc/tei:titleStmt">
@@ -203,6 +203,171 @@
          <h3><xsl:text>Abstract</xsl:text></h3>
          <xsl:value-of select="tei:text"/>
       </xsl:for-each>
+   </xsl:template>
+   
+   <!-- ====================================================================== -->
+   <!-- Lists                                                                  -->
+   <!-- ====================================================================== -->
+   
+   <xsl:template match="*:list">
+      <xsl:choose>
+         <xsl:when test="@type='gloss'">
+            <dl><xsl:apply-templates/></dl>
+         </xsl:when>
+         <xsl:when test="@type='simple'">
+            <ul class="nobull"><xsl:apply-templates/></ul>
+         </xsl:when>
+         <xsl:when test="@type='ordered'">
+            <xsl:choose>
+               <xsl:when test="@rend='alpha'">
+                  <ol class="alpha"><xsl:apply-templates/></ol>
+               </xsl:when>
+               <xsl:otherwise>
+                  <ol><xsl:apply-templates/></ol>
+               </xsl:otherwise>
+            </xsl:choose>
+         </xsl:when>
+         <xsl:when test="@type='unordered'">
+            <ul><xsl:apply-templates/></ul>
+         </xsl:when>
+         <xsl:when test="@type='bulleted'">
+            <xsl:choose>
+               <xsl:when test="@rend='dash'">
+                  <ul class="nobull"><xsl:text>- </xsl:text><xsl:apply-templates/></ul>
+               </xsl:when>
+               <xsl:otherwise>
+                  <ul><xsl:apply-templates/></ul>
+               </xsl:otherwise>
+            </xsl:choose>
+         </xsl:when>
+         <xsl:when test="@type='bibliographic'">
+            <ol><xsl:apply-templates/></ol>
+         </xsl:when>
+         <xsl:when test="@type='special'">
+            <ul><xsl:apply-templates/></ul>
+         </xsl:when>
+      </xsl:choose>
+   </xsl:template>
+   
+   <xsl:template match="*:item">
+      <xsl:choose>
+         <xsl:when test="parent::list[@type='gloss']">
+            <dd><xsl:apply-templates/></dd>
+         </xsl:when>
+         <xsl:otherwise>
+            <li><xsl:apply-templates/></li>
+         </xsl:otherwise>
+      </xsl:choose>
+   </xsl:template>
+   
+   <xsl:template  match="*:label">
+      <dt><xsl:apply-templates/></dt>
+   </xsl:template>
+   
+   <xsl:template match="*:name">
+      <xsl:apply-templates/>
+   </xsl:template>
+   
+   <!-- ====================================================================== -->
+   <!-- Heads                                                                  -->
+   <!-- ====================================================================== -->
+   
+   <xsl:template match="*:head">
+      
+      <xsl:variable name="type" select="parent::*/@type"/>
+      
+      <xsl:variable name="class">
+         <xsl:choose>
+            <xsl:when test="@rend">
+               <xsl:value-of select="@rend"/>
+            </xsl:when>
+            <xsl:otherwise>normal</xsl:otherwise>
+         </xsl:choose>
+      </xsl:variable>
+      
+      <xsl:choose>
+         <xsl:when test="@type='sub' or @type='subtitle'">
+            <!-- Needs more choices here -->
+            <h3 class="{$class}"><xsl:apply-templates/></h3>
+         </xsl:when>
+         <xsl:when test="$type='fmsec'">
+            <h2 class="{$class}"><xsl:apply-templates/></h2>
+         </xsl:when>
+         <xsl:when test="$type='volume'">
+            <h1 class="{$class}">
+               <xsl:if test="parent::*/@n">
+                  <xsl:value-of select="parent::*/@n"/><xsl:text>. </xsl:text>
+               </xsl:if>
+               <xsl:apply-templates/>
+            </h1>
+         </xsl:when>
+         <xsl:when test="$type='part'">
+            <h1 class="{$class}">
+               <xsl:if test="parent::*/@n">
+                  <xsl:value-of select="parent::*/@n"/><xsl:text>. </xsl:text>
+               </xsl:if>
+               <xsl:apply-templates/>
+            </h1>
+         </xsl:when>
+         <xsl:when test="$type='chapter'">
+            <h2 class="{$class}">
+               <xsl:if test="parent::*/@n">
+                  <xsl:value-of select="parent::*/@n"/><xsl:text>. </xsl:text>
+               </xsl:if>
+               <xsl:apply-templates/>
+            </h2>
+         </xsl:when>
+         <xsl:when test="$type='ss1'">
+            <h3 class="{$class}">
+               <xsl:if test="parent::*/@n">
+                  <xsl:value-of select="parent::*/@n"/><xsl:text>. </xsl:text>
+               </xsl:if>
+               <xsl:apply-templates/>
+            </h3>
+         </xsl:when>
+         <xsl:when test="$type='ss2'">
+            <h3 class="{$class}"><xsl:apply-templates/></h3>
+         </xsl:when>
+         <xsl:when test="$type='ss3'">
+            <h3 class="{$class}"><xsl:apply-templates/></h3>
+         </xsl:when>
+         <xsl:when test="$type='ss4'">
+            <h4 class="{$class}"><xsl:apply-templates/></h4>
+         </xsl:when>
+         <xsl:when test="$type='ss5'">
+            <h4 class="{$class}"><xsl:apply-templates/></h4>
+         </xsl:when>
+         <xsl:when test="$type='bmsec'">
+            <h2 class="{$class}"><xsl:apply-templates/></h2>
+         </xsl:when>
+         <xsl:when test="$type='appendix'">
+            <h2 class="{$class}">
+               <xsl:if test="parent::*/@n">
+                  <xsl:value-of select="parent::*/@n"/><xsl:text>. </xsl:text>
+               </xsl:if>
+               <xsl:apply-templates/>
+            </h2>
+         </xsl:when>
+         <xsl:when test="$type='endnotes'">
+            <h3 class="{$class}"><xsl:apply-templates/></h3>
+         </xsl:when>
+         <xsl:when test="$type='bibliography'">
+            <h2 class="{$class}"><xsl:apply-templates/></h2>
+         </xsl:when>
+         <xsl:when test="$type='glossary'">
+            <h2 class="{$class}"><xsl:apply-templates/></h2>
+         </xsl:when>
+         <xsl:when test="$type='index'">
+            <h2 class="{$class}"><xsl:apply-templates/></h2>
+         </xsl:when>
+         <xsl:otherwise>
+            <h4 class="{$class}"><xsl:apply-templates/></h4>
+         </xsl:otherwise>
+      </xsl:choose>
+   </xsl:template>
+   
+   <xsl:template match="*:docAuthor">
+      <h4><xsl:apply-templates/></h4>
    </xsl:template>
    
    <!-- ====================================================================== -->
@@ -331,6 +496,7 @@
    <!-- ====================================================================== -->
    <!-- Single-view (was Frames) Template -->
    <!-- ====================================================================== -->
+   
    <xsl:template name="frames" exclude-result-prefixes="#all">   
       <xsl:variable name="bbar.href"><xsl:value-of select="$query.string"/>&#038;doc.view=bbar&#038;chunk.id=<xsl:value-of select="$chunk.id"/>&#038;brand=<xsl:value-of select="$brand"/><xsl:value-of select="$search"/></xsl:variable> 
       <xsl:variable name="xml.href"><xsl:value-of select="$query.string"/>&#038;doc.view=xml&#038;chunk.id=<xsl:value-of select="$chunk.id"/>&#038;brand=<xsl:value-of select="$brand"/><xsl:value-of select="$search"/></xsl:variable> 
@@ -346,9 +512,13 @@
             <xsl:copy-of select="$brand.links"/>
             <link rel="shortcut icon" href="icons/brand/favicon.ico" />
             <link rel="stylesheet" type="text/css" href="css/brand/tei.css"/>
+            <link rel="stylesheet" type="text/css" href="css/brand/results.css"/>
             <!-- AJAX support -->
-            <script src="script/yahoo-dom-event.js" type="text/javascript"/> 
-            <script src="script/connection-min.js" type="text/javascript"/> 
+            <script src="{$xtfURL}script/connection-min.js" type="text/javascript"/> 
+            <script src="{$xtfURL}script/jquery.js" type="text/javascript"/> 
+            <script src="{$xtfURL}script/jquery-ui.js" type="text/javascript"/> 
+            <script src="{$xtfURL}script/bookbag.js" type="text/javascript"/>
+            <script src="{$xtfURL}script/moreLike.js" type="text/javascript"/>
          </head>
          <body>         
                <div class="bbar">
@@ -499,137 +669,5 @@
          </body>
       </html>
    </xsl:template> 
-   
-   <!-- ====================================================================== -->
-   <!-- Navigation Bar Template                                                -->
-   <!-- ====================================================================== -->
-   
-   <xsl:template name="navbar" exclude-result-prefixes="#all">
-      
-      <xsl:variable name="prev">
-         <xsl:choose>
-            <!-- preceding div sibling -->
-            <xsl:when test="key('div-id', $chunk.id)/preceding-sibling::*[*:head][@*:id]">
-               <xsl:value-of select="key('div-id', $chunk.id)/preceding-sibling::*[*:head][@*:id][1]/@*:id"/>
-            </xsl:when>
-            <!-- last div node in preceding div sibling of parent -->
-            <xsl:when test="key('div-id', $chunk.id)/parent::*/preceding-sibling::*[*:head][@*:id]">
-               <xsl:value-of select="key('div-id', $chunk.id)/parent::*/preceding-sibling::*[*:head][@*:id][1]/@*:id"/>
-            </xsl:when>
-            <!-- last div node in any preceding structure-->
-            <xsl:when test="key('div-id', $chunk.id)/ancestor::*/preceding-sibling::*/*[*:head][@*:id]">
-               <xsl:value-of select="(key('div-id', $chunk.id)/ancestor::*/preceding-sibling::*[1]/*[*:head][@*:id][position()=last()]/@*:id)[last()]"/>
-            </xsl:when>
-            <!-- top of tree -->
-            <xsl:otherwise>
-               <xsl:value-of select="'0'"/>
-            </xsl:otherwise>
-         </xsl:choose>
-      </xsl:variable>
-      
-      <xsl:variable name="prev_toc">
-         <xsl:choose>
-            <xsl:when test="key('div-id', $prev)/*[*:head][@*:id]">
-               <xsl:value-of select="key('div-id', $prev)/@*:id"/>
-            </xsl:when>
-            <xsl:otherwise>
-               <xsl:value-of select="key('div-id', $prev)/parent::*[*:head][@*:id]/@*:id"/>
-            </xsl:otherwise>
-         </xsl:choose>
-      </xsl:variable>
-      
-      <xsl:variable name="next">
-         <xsl:choose>
-            <!-- following div sibling -->
-            <xsl:when test="key('div-id', $chunk.id)/following-sibling::*[*:head][@*:id]">
-               <xsl:value-of select="key('div-id', $chunk.id)/following-sibling::*[*:head][@*:id][1]/@*:id"/>
-            </xsl:when>
-            <!-- first div node in following div sibling of parent -->
-            <xsl:when test="key('div-id', $chunk.id)/parent::*/following-sibling::*[*:head][@*:id]">
-               <xsl:value-of select="key('div-id', $chunk.id)/parent::*/following-sibling::*[*:head][@*:id][1]/@*:id"/>
-            </xsl:when>
-            <!-- first div node in any following structure -->
-            <xsl:when test="key('div-id', $chunk.id)/ancestor::*/following-sibling::*/*[*:head][@*:id]">
-               <xsl:value-of select="(key('div-id', $chunk.id)/ancestor::*/following-sibling::*[1]/*[*:head][@*:id][1]/@*:id)[1]"/>
-            </xsl:when>
-            <!-- no previous $chunk.id (i.e. titlePage) -->
-            <xsl:when test="$chunk.id='0'">
-               <xsl:value-of select="/*/*:text/*[*[*:head][@*:id]][1]/*[*:head][@*:id][1]/@*:id"/>
-            </xsl:when>
-            <!-- bottom of tree -->
-            <xsl:otherwise>
-               <xsl:value-of select="'0'"/>
-            </xsl:otherwise>
-         </xsl:choose>
-      </xsl:variable>
-      
-      <xsl:variable name="next_toc">
-         <xsl:choose>
-            <xsl:when test="key('div-id', $next)/*[*:head][@*:id]">
-               <xsl:value-of select="key('div-id', $next)/@*:id"/>
-            </xsl:when>
-            <xsl:otherwise>
-               <xsl:value-of select="key('div-id', $next)/parent::*[*:head][@*:id]/@*:id"/>
-            </xsl:otherwise>
-         </xsl:choose>
-      </xsl:variable>
-      
-      <tr>
-         <td width="25%" align="left">
-            <!-- BEGIN PREVIOUS SELECTION -->
-            <a target="_top">
-               <xsl:choose>
-                  <xsl:when test="$prev != '0'">
-                     <xsl:attribute name="href">
-                        <xsl:value-of select="$doc.path"/>
-                        <xsl:text>&#038;chunk.id=</xsl:text>
-                        <xsl:value-of select="$prev"/>
-                        <xsl:text>&#038;toc.id=</xsl:text>
-                        <xsl:value-of select="$prev_toc"/>
-                        <xsl:text>&#038;brand=</xsl:text>
-                        <xsl:value-of select="$brand"/>
-                        <xsl:value-of select="$search"/>
-                     </xsl:attribute>
-                     <img src="{$icon.path}b_prev.gif" width="15" height="15" border="0" alt="previous"/>
-                  </xsl:when>
-                  <xsl:otherwise>
-                     <img src="{$icon.path}d_prev.gif" width="15" height="15" border="0" alt="no previous"/>
-                  </xsl:otherwise>
-               </xsl:choose>
-            </a>
-            <!-- END PREVIOUS SELECTION -->
-         </td>
-         <td width="50%" align="center">
-            <span class="chapter-text">
-               <xsl:value-of select="key('div-id', $chunk.id)/ancestor-or-self::*[matches(@*:type,'fmsec|chapter|bmsec')][1]/*:head[1]"/>
-            </span>
-         </td>
-         <td width="25%" align="right">
-            <!-- BEGIN NEXT SELECTION -->
-            <a target="_top">
-               <xsl:choose>
-                  <xsl:when test="$next != '0'">
-                     <xsl:attribute name="href">
-                        <xsl:value-of select="$doc.path"/>
-                        <xsl:text>&#038;chunk.id=</xsl:text>
-                        <xsl:value-of select="$next"/>
-                        <xsl:text>&#038;toc.id=</xsl:text>
-                        <xsl:value-of select="$next_toc"/>
-                        <xsl:text>&#038;brand=</xsl:text>
-                        <xsl:value-of select="$brand"/>
-                        <xsl:value-of select="$search"/>
-                     </xsl:attribute>
-                     <img src="{$icon.path}b_next.gif" width="15" height="15" border="0" alt="next"/>
-                  </xsl:when>
-                  <xsl:otherwise>
-                     <img src="{$icon.path}d_next.gif" width="15" height="15" border="0" alt="no next"/>
-                  </xsl:otherwise>
-               </xsl:choose>
-            </a>
-            <!-- END NEXT SELECTION -->
-         </td>
-      </tr>
-      
-   </xsl:template>
    
 </xsl:stylesheet>  

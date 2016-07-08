@@ -12,7 +12,7 @@
    
    <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
    <!-- Query result formatter stylesheet                                      -->
-   <!-- ADHO: added location as metadata facet                         -->
+   <!-- ADHO: added location as metadata facet                                 -->
    <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
    
    <!--

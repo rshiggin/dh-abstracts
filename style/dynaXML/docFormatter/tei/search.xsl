@@ -127,12 +127,13 @@
       <xsl:choose>
          <xsl:when test="key('hit-num-dynamic', string($next))/ancestor::*[@*:id = $chunk.id]">
             <xsl:text>&#160;</xsl:text>
-            <a>
+            <!-- disabled navigation -->
+           <!--  <a>
                <xsl:attribute name="href">
                   <xsl:text>#</xsl:text><xsl:value-of select="$next"/>
                </xsl:attribute>
                <img src="{$icon.path}b_innext.gif" border="0" alt="next hit"/>
-            </a>
+            </a> -->
          </xsl:when>
          <xsl:when test="key('hit-num-dynamic', string($next))/ancestor::*[matches(local-name(), '^div')]">
             <xsl:variable name="targetChunk" select="key('hit-num-dynamic', string($next))/ancestor::*[matches(local-name(), '^div') and @*:id][1]/@*:id"/>
@@ -150,7 +151,7 @@
                   <xsl:text>&#038;set.anchor=</xsl:text><xsl:value-of select="$next"/>
                </xsl:attribute>
                <xsl:attribute name="target">_top</xsl:attribute>
-               <img src="{$icon.path}b_innext.gif" border="0" alt="next hit"/>
+              <!--  <img src="{$icon.path}b_innext.gif" border="0" alt="next hit"/> -->
             </a>
          </xsl:when>
          <xsl:otherwise>

@@ -6,19 +6,7 @@
    exclude-result-prefixes="#all"
    version="2.0">
 
-<!-- Above unrevised - try to use for now -->
-   <!--<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="2.0"
-   xmlns:ns="http://www.tei-c.org/ns/1.0" 
-   xmlns:xs="http://www.w3.org/2001/XMLSchema"
-   xmlns:date="http://exslt.org/dates-and-times"
-   xmlns:parse="http://cdlib.org/xtf/parse"
-   xmlns:xtf="http://cdlib.org/xtf"
-   xmlns:session="java:org.cdlib.xtf.xslt.Session"
-   xmlns:editURL="http://cdlib.org/xtf/editURL"
-   xmlns:FileUtils="java:org.cdlib.xtf.xslt.FileUtils"
-   extension-element-prefixes="date FileUtils"
-   exclude-result-prefixes="#all"> -->
-   <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+<!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
    <!-- Query result formatter stylesheet                                      -->
    
    <!-- DH-abstracts: remove RSS and Freeform; modify Bookbag to Save selected -->
@@ -65,6 +53,7 @@
    <!-- ====================================================================== -->
    
    <xsl:import href="../common/resultFormatterCommon.xsl"/>
+   <xsl:import href="../../../xtfCommon/xtfCommon.xsl"/>
    <!-- <xsl:import href="rss.xsl"/> -->
    <xsl:include href="searchForms.xsl"/>
    
@@ -83,7 +72,7 @@
    <!-- Local Parameters                                                       -->
    <!-- ====================================================================== -->
    
-   <xsl:param name="css.path" select="concat($xtfURL, 'css/default/')"/>
+   <xsl:param name="css.path" select="concat($xtfURL, 'css/brand/')"/>
    <xsl:param name="icon.path" select="concat($xtfURL, 'icons/brand/')"/>
    <xsl:param name="docHits" select="/crossQueryResult/docHit"/>
    <xsl:param name="email"/>
@@ -106,11 +95,11 @@
             <a href="#">Delete</a>
          </xsl:when>
          <xsl:when test="$smode = 'removeFromBag'">
-            <!-- no output needed -->
+            <a href="#">Add</a>
          </xsl:when>
-         <xsl:when test="$smode='getAddress'">
+       <!--  <xsl:when test="$smode='getAddress'">
             <xsl:call-template name="getAddress"/>
-         </xsl:when>
+         </xsl:when> -->
          <xsl:when test="$smode='getLang'">
             <xsl:call-template name="getLang"/>
          </xsl:when>
@@ -178,8 +167,8 @@
    <xsl:template match="crossQueryResult" mode="results" exclude-result-prefixes="#all">
       
       <!-- modify query URL -->
-      <xsl:variable name="modify" select="if(matches($smode,'simple')) then 'simple-modify' else 'advanced-modify'"/>
-      <xsl:variable name="modifyString" select="editURL:set($queryString, 'smode', $modify)"/>
+     <!-- <xsl:variable name="modify" select="if(matches($smode,'simple')) then 'simple-modify' else 'advanced-modify'"/>
+      <xsl:variable name="modifyString" select="editURL:set($queryString, 'smode', $modify)"/> -->
       
       <html xml:lang="en" lang="en">
          <head>
@@ -187,52 +176,41 @@
             <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
             <xsl:copy-of select="$brand.links"/>
             <!-- AJAX support -->
-            <script src="script/jquery-1.12.4.js" type="text/javascript"/> 
-            <script src="script/jquery-ui-1.11.4.js" type="text/javascript"/> 
-            <script src="script/bookbag.js" type="text/javascript"/>
-            <script src="script/moreLike.js" type="text/javascript"/>
+            <script src="{$xtfURL}script/connection-min.js" type="text/javascript"/> 
+            <script src="{$xtfURL}script/jquery.js" type="text/javascript"/> 
+            <script src="{$xtfURL}script/jquery-ui.js" type="text/javascript"/> 
+            <script src="{$xtfURL}script/bookbag.js" type="text/javascript"/>
+            <script src="{$xtfURL}script/moreLike.js" type="text/javascript"/>
          </head>
          <body>
             
             <!-- header -->
             <xsl:copy-of select="$brand.header"/>
-            
+           
             <!-- result header -->
             <div class="resultsHeader">
                <table>
                   <tr>
-                     <!-- ADHO - New Search moved to left side of header; Modify removed -->     
-                     <td colspan="1" class="left">
-                     <xsl:if test="$smode != 'showBag'">
-                        <a href="{$xtfURL}{$crossqueryPath}">
-                           <xsl:text>New Search </xsl:text>
-                        </a>
-                 <!--       <xsl:text>&#160;|&#160;</xsl:text>
-                        <a href="{$xtfURL}{$crossqueryPath}?{$modifyString}">
-                           <xsl:text>Modify Search</xsl:text>
-                        </a> -->
-                     </xsl:if>
-                     </td>
                      <td colspan="2" class="right">
-                        <xsl:if test="$smode != 'showBag'">
-                           <xsl:variable name="bag" select="session:getData('bag')"/>
-                           <a href="{$xtfURL}{$crossqueryPath}?smode=showBag">Save selected</a>
+                <!--     <xsl:if test="$smode != 'showBag'">
+                        <xsl:variable name="bag" select="session:getData('bag')"/>
+                 <a href="{$xtfURL}{$crossqueryPath}?smode=showBag">Selected</a>
                            (<span id="bagCount"><xsl:value-of select="count($bag/bag/savedDoc)"/></span>)
-                        </xsl:if>
+                        </xsl:if>   -->
                      </td>
                   </tr>
                   <tr>
-                     <td>
+                        <td>
                         <xsl:choose>
                            <xsl:when test="$smode='showBag'">
-                              <a>
+                            <!--  <a>
                                  <xsl:attribute name="href">javascript://</xsl:attribute>
                                  <xsl:attribute name="onclick">
                                     <xsl:text>javascript:window.open('</xsl:text><xsl:value-of
                                        select="$xtfURL"/>search?smode=getAddress<xsl:text>','popup','width=500,height=500,resizable=no,scrollbars=no')</xsl:text>
                                  </xsl:attribute>
                                  <xsl:text>E-mail selected</xsl:text>
-                              </a>
+                              </a> -->
                            </xsl:when>
                            <xsl:otherwise>
                               <div class="query">
@@ -245,29 +223,30 @@
                         </xsl:choose>
                      </td>
                      <td class="right">
-                       <!-- remove RSS --> 
-                     <!--   <xsl:if test="docHit">
+                <!-- ADHO RSS disabled, unnecessary complexity -->
+                   <!--     <xsl:if test="docHit">
                            <xsl:variable name="cleanString" select="replace(replace($queryString,';*smode=docHits',''),'^;','')"/>
                            <span style="vertical-align:bottom"><img src="{$icon.path}/i_rss.png" alt="rss icon"/></span>
                            <xsl:text>&#160;</xsl:text>
                            <a href="search?{$cleanString};docsPerPage=100;rmode=rss;sort=rss">RSS</a>
                            <xsl:text>&#160;|&#160;</xsl:text>
                         </xsl:if> -->
-
-                    <!--      <xsl:if test="$smode != 'showBag'">
+                <!-- ADHO modify disabled, dataset doesn't merit -->
+                      <!--  <xsl:if test="$smode != 'showBag'">
                            <a href="{$xtfURL}{$crossqueryPath}?{$modifyString}">
                               <xsl:text>Modify Search</xsl:text>
                            </a>
                            <xsl:text>&#160;|&#160;</xsl:text>
-                        </xsl:if>
+                        </xsl:if> -->
                         <a href="{$xtfURL}{$crossqueryPath}">
                            <xsl:text>New Search</xsl:text>
-                        </a> -->
-                        <xsl:if test="$smode = 'showBag'">
+                        </a>
+                    <!--    <xsl:if test="$smode = 'showBag'">
+                           <xsl:text>&#160;|&#160;</xsl:text>
                            <a href="{session:getData('queryURL')}">
                               <xsl:text>Return to Search Results</xsl:text>
                            </a>
-                        </xsl:if>
+                        </xsl:if> -->
                      </td>
                   </tr>
                   <xsl:if test="//spelling">
@@ -283,11 +262,8 @@
                   </xsl:if>
                   <tr>
                      <td>
-                        <!-- ADHO change totalDocs to count($bag/bag/savedDoc -->
-                        <b><xsl:value-of select="if($smode='showBag') then 'Saved' else 'Results'"/>:</b>&#160;
-                        <xsl:variable name="bag" select="session:getData('bag')"/>
-                        <xsl:variable name="items" select="count($bag/bag/savedDoc)"/>
-                       <!--  <xsl:variable name="items" select="@totalDocs"/> -->
+                        <b><xsl:value-of select="if($smode='showBag') then 'Selected' else 'Results'"/>:</b>&#160;
+                        <xsl:variable name="items" select="@totalDocs"/>
                         <xsl:choose>
                            <xsl:when test="$items = 1">
                               <span id="itemCount">1</span>
@@ -392,10 +368,10 @@
    </xsl:template>
    
    <!-- ====================================================================== -->
-   <!-- Bookbag Templates (revised to "Selected")                                                      -->
+   <!-- Selected Templates (revised from "Bookbag")                             -->
    <!-- ====================================================================== -->
    
-   <xsl:template name="getAddress" exclude-result-prefixes="#all">
+   <!-- <xsl:template name="getAddress" exclude-result-prefixes="#all">
       <html xml:lang="en" lang="en">
          <head>
             <title>E-mail Saved Items: Get Address</title>
@@ -422,10 +398,10 @@
    
    <xsl:template match="crossQueryResult" mode="emailFolder" exclude-result-prefixes="#all">
       
-      <xsl:variable name="bookbagContents" select="session:getData('bag')/bag"/>
+      <xsl:variable name="bookbagContents" select="session:getData('bag')/bag"/> -->
       
       <!-- Change the values for @smtpHost and @from to those valid for your domain -->
-      <mail:send xmlns:mail="java:/org.cdlib.xtf.saxonExt.Mail" 
+   <!--   <mail:send xmlns:mail="java:/org.cdlib.xtf.saxonExt.Mail" 
          xsl:extension-element-prefixes="mail" 
          smtpHost="localhost" 
          useSSL="no" 
@@ -449,7 +425,7 @@ Selected DH Abstracts:
          </body>
       </html>
       
-   </xsl:template>
+   </xsl:template> 
    
    <xsl:template match="savedDoc" mode="emailFolder" exclude-result-prefixes="#all">
       <xsl:variable name="num" select="position()"/>
@@ -476,7 +452,7 @@ Item number <xsl:value-of select="$num"/>:
 [<xsl:value-of select="$url"/>]
          
       </xsl:for-each>
-   </xsl:template>
+   </xsl:template> -->
    
    <!-- ====================================================================== -->
    <!-- Browse Template                                                        -->
@@ -493,11 +469,10 @@ Item number <xsl:value-of select="$num"/>:
             <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
             <xsl:copy-of select="$brand.links"/>
             <!-- AJAX support -->
-            <script src="script/jquery-1.12.4.js" type="text/javascript"/>
-            <script src="script/jquery-ui-1.11.4.js" type="text/javascript"/>
-            <script src="script/bookbag.js" type="text/javascript"/>
-            <script src="script/moreLike.js" type="text/javascript"/>
-          
+            <script src="{$xtfURL}script/jquery.js" type="text/javascript"/>
+            <script src="{$xtfURL}script/jquery-ui.js" type="text/javascript"/>
+            <script src="{$xtfURL}script/bookbag.js" type="text/javascript"/>
+            <script src="{$xtfURL}script/moreLike.js" type="text/javascript"/>  
          </head>
          <body>
             
@@ -505,20 +480,14 @@ Item number <xsl:value-of select="$num"/>:
             <xsl:copy-of select="$brand.header"/>
             
             <!-- result header -->
-            <!-- REVISION: moved new search to left side, nudged Facets prompt up one line -->
             <div class="resultsHeader">
                <table>
                   <tr>
-                     <td colspan="1" class="left">
-                        <a href="{$xtfURL}{$crossqueryPath}">
-                           <xsl:text>New Search</xsl:text>
-                        </a>
-                     </td>  
-                     <td colspan="2" class="right">
+                    <!-- <td colspan="2" class="right">
                         <xsl:variable name="bag" select="session:getData('bag')"/>
                         <a href="{$xtfURL}{$crossqueryPath}?smode=showBag">Save selected</a>
                         (<span id="bagCount"><xsl:value-of select="count($bag/bag/savedDoc)"/></span>)
-                     </td>
+                     </td> -->
                   </tr>
                   <tr>
                      <td>
@@ -530,12 +499,15 @@ Item number <xsl:value-of select="$num"/>:
                         </xsl:choose>
                      </td>
                      <td class="right">
-                        <xsl:if test="$smode = 'showBag'">
+                        <a href="{$xtfURL}{$crossqueryPath}">
+                           <xsl:text>New Search</xsl:text>
+                        </a>
+                     <!--   <xsl:if test="$smode = 'showBag'">
                            <xsl:text>&#160;|&#160;</xsl:text>
                            <a href="{session:getData('queryURL')}">
                               <xsl:text>Return to Search Results</xsl:text>
                            </a>
-                        </xsl:if>
+                        </xsl:if> -->
                      </td>
                   </tr>
                   <tr>
@@ -552,6 +524,10 @@ Item number <xsl:value-of select="$num"/>:
                               <xsl:text> Item</xsl:text>
                            </xsl:otherwise>
                         </xsl:choose>
+                     </td>
+                  <td class="right">
+                        <xsl:text>Browse by </xsl:text>
+                        <xsl:call-template name="browseLinks"/>
                      </td>
                   </tr>
                   <tr>
@@ -674,7 +650,7 @@ Item number <xsl:value-of select="$num"/>:
                      <xsl:otherwise>none</xsl:otherwise>
                   </xsl:choose>
                </td>
-               <td class="col4">
+            <!--   <td class="col4">
                   <xsl:choose>
                      <xsl:when test="$smode='showBag'">
                         <a href="#" class="bookbag" data-identifier="{$identifier}">
@@ -694,7 +670,7 @@ Item number <xsl:value-of select="$num"/>:
                         </xsl:choose>
                      </xsl:otherwise>
                   </xsl:choose>
-               </td>
+               </td> -->
             </tr>
             <tr>
                <td class="col1">
@@ -827,8 +803,7 @@ Item number <xsl:value-of select="$num"/>:
       </div>
       
    </xsl:template>
-   
-   <!-- ====================================================================== -->
+  <!-- ====================================================================== -->
    <!-- Snippet Template (for snippets in the full text)                       -->
    <!-- ====================================================================== -->
    

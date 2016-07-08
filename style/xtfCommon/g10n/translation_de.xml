@@ -164,4 +164,8 @@
         <from>Title</from>
         <to>Titel</to>
     </trans>
+    <trans>
+        <from>Show</from>
+        <to>Anzeigen</to>
+    </trans>
 </transTable>

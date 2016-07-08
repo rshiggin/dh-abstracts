@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" 
     xmlns:xtf="http://cdlib.org/xtf" 
     xmlns:session="java:org.cdlib.xtf.xslt.Session"
@@ -217,7 +216,7 @@
                 <xsl:copy-of select="$brand.header"/>
                 <div>
                     <h2>Set Language</h2>
-                    <form action="/adho/search" method="get">
+                    <form action="/dhabstracts/search" method="get">
                         <input type="radio" name="lang" value="en">
                             <xsl:if test="$lang='en'"><xsl:attribute name="checked" select="'checked'"/></xsl:if>
                             <xsl:text>English</xsl:text>

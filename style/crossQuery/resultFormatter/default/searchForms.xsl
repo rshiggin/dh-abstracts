@@ -164,23 +164,20 @@
    <!-- advanced form -->
    <xsl:template name="advancedForm" exclude-result-prefixes="#all">
       <form method="get" action="{$xtfURL}{$crossqueryPath}">
-         <br/>
    <div class="center-buttons">
             <input type="hidden" name="smode" value="advanced"/>
             <input type="submit" value="Search"/>
             <input type="reset" onclick="location.href='{$xtfURL}{$crossqueryPath}?smode=advanced'" value="Clear"/>
    </div>
-      </form>
+      <p class="clear"></p>
          
-         <br class="clear"/>
-           <form>
          <table class="top_table">
             <tr>
                <td>
                   <table class="left_table">
                      <tr>
                         <td colspan="3">
-                           <h5>Search Entire Text</h5>
+                           <h4>Search Entire Text</h4>
                         </td>
                      </tr>
                      <tr>
@@ -336,7 +333,7 @@
                <td>
                   <table class="right_table">
                      <tr>
-                        <td colspan="3"><h5>Search Metadata</h5></td>
+                        <td colspan="3"><h4>Search Metadata</h4></td>
                      </tr>
                      <tr>
                         <td class="indent">&#160;</td>
@@ -372,9 +369,9 @@
                         <td>Year(s)</td>
                         <td>
                            <xsl:text>From </xsl:text>
-                           <input type="text" name="year" size="4" value="{$year}" placeholder=" begin"/>
+                           <input type="text" name="year" size="7" value="{$year}" placeholder=" begin"/>
                            <xsl:text> to </xsl:text>
-                           <input type="text" name="year-max" size="4" value="{$year-max}" placeholder=" end"/>
+                           <input type="text" name="year-max" size="7" value="{$year-max}" placeholder=" end"/>
                         </td>
                      </tr>
                      <tr>

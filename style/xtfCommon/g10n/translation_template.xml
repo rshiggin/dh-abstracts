@@ -206,4 +206,9 @@
         <from>Title</from>
         <to></to>
     </trans>
+    <trans>
+        <!-- header link show xml -->
+        <from>Show</from>
+        <to></to>
+    </trans>
 </transTable>
