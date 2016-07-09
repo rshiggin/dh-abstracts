@@ -6,7 +6,7 @@
 The latest release can be downloaded [here](https://github.com/rshiggin/dh-abstracts/releases).     
 
 __Abstracts Collection__    
-The collection site provides a central, public location for search, discovery, and preservation of conference abstracts submitted by attendees to the annual ADHO conference. The software platform, eXtensible Text Framework (XTF), enables powerful indexing, keyword search, and faceted browsing for abstract documents, all which have been encoded in TEI/XML. The current version, orginally implemented in approximately 2004, can be found here digitalhumanities.org/dh-abstracts/search. The phase one work on the new version has updated, replaced, and rewritten the XTF implementation, customized the application for the specific requirements of the ADHO documents, added a branded user interface, standardized display and documentation, and performed initial improvements on the XML encoded data.
+The collection site provides a central, public location for search, discovery, and preservation of conference abstracts submitted by attendees to the annual ADHO conference. The software platform, eXtensible Text Framework (XTF), enables powerful indexing, keyword search, and faceted browsing for abstract documents, all which have been encoded in TEI/XML. The current version, a mostly out-of-the-box XTF implementation meant to be temporary, was first installed in 2004. The phase one work on the new version has updated, replaced, and rewritten the XTF implementation, customized the application for the specific requirements of the ADHO documents, added a branded user interface, standardized display and documentation, and performed initial improvements on the XML encoded data.
 
 For more on the eXtensible Text Framework, see the site maintained by the [California Digital Library](http://xtf.cdlib.org). The platform is in wide use by libraries for maintaining finding aids and managing archival metadata.
   
@@ -36,4 +36,4 @@ __Project Summary by phase__
 
 
 Apache Software License, BSD License, Mozilla Public License 1.0 (MPL)      
-Demo hosting provided by OpenShift by Red Hat
+Demo hosting provided by [OpenShift](https://www.redhat.com/en/technologies/cloud-computing/openshift) by Red Hat
