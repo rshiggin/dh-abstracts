@@ -3,7 +3,7 @@
 ##### Public demo of new version [http://dhabstracts-rshiggins.rhcloud.com/dhabstracts/search](http://dhabstracts-rshiggins.rhcloud.com/dhabstracts/search)     
 ##### Current version at [digitalhumanities.org](http://digitalhumanities.org/dh-abstracts/search)
 
-The latest release can be downloaded here [dh-abstracts 2.1](https://github.com/rshiggin/dh-abstracts/releases).     
+The latest release can be downloaded [here](https://github.com/rshiggin/dh-abstracts/releases).     
 
 __Abstracts Collection__    
 The collection site provides a central, public location for search, discovery, and preservation of conference abstracts submitted by attendees to the annual ADHO conference. The software platform, eXtensible Text Framework (XTF), enables powerful indexing, keyword search, and faceted browsing for abstract documents, all which have been encoded in TEI/XML. The current version, orginally implemented in approximately 2004, can be found here digitalhumanities.org/dh-abstracts/search. The phase one work on the new version has updated, replaced, and rewritten the XTF implementation, customized the application for the specific requirements of the ADHO documents, added a branded user interface, standardized display and documentation, and performed initial improvements on the XML encoded data.
