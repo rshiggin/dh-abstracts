@@ -466,34 +466,6 @@
    </xsl:template>
    
    <!-- ====================================================================== -->
-   <!--   References                                                            -->
-   <!-- ====================================================================== -->
-  
-   <xsl:template name="BiblStruct">
-      <xsl:apply-templates/>
-   </xsl:template>
-
-   <xsl:template match="tei:TEI/tei:text/tei:back/tei:listBibl"> 
-         <xsl:apply-templates select="tei:biblStruct/tei:monogr"/>
-            <xsl:for-each select="tei:biblStruct/tei:relatedItem[@type='constituent']">
-              <xsl:apply-templates select="current()"/>
-            </xsl:for-each>
-   </xsl:template>
-   
-   <xsl:template match="tei:monogr"><div>
-      <xsl:apply-templates select="tei:title"/> <br/> </div><br/>
-   </xsl:template>
-   
-   <xsl:template match="tei:relatedItem[@type='constituent']">
-      <xsl:variable name="title" select="tei:biblStruct/tei:analytic/tei:title"/>
-      <xsl:variable name="byline">
-         <xsl:apply-templates select="tei:biblStruct/tei:analytic/tei:respStmt"/>
-      </xsl:variable>
-      <xsl:variable name="page" select="tokenize(tei:biblStruct/tei:monogr/tei:imprint/tei:biblScope/@corresp, ' ')[1]"/>
-      <a href="#{$page}"><xsl:value-of select="concat($title, ' . . . ', $byline)"/></a>
-   </xsl:template>
-
-   <!-- ====================================================================== -->
    <!-- Single-view (was Frames) Template -->
    <!-- ====================================================================== -->
    

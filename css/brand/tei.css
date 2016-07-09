@@ -3,7 +3,6 @@
 @import url('http://fonts.googleapis.com/css?family=Arvo:400,700,400italic,700italic|Gentium+Book+Basic:400,400italic,700,700italic');
 @import url("content.css");
 @import url("bbar.css");
-@import url("results.css");
 
 body {
 	font-size: 16px;
@@ -33,8 +32,12 @@ div.content {
     padding-bottom: 2em;
 }
 
+div.bibl {
+    margin-bottom: 5px;
+}
+
 ptr {
-    display: inline;
+    display: none;
 }
 a,
 a.active,
