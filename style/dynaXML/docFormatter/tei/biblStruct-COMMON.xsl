@@ -11,6 +11,13 @@
   exclude-result-prefixes="#all">
  <!-- Bibliographical renderings -->
 
+  <xsl:template match="listBibl/biblStruct">
+    <div>
+      <xsl:value-of select="'bibl'"/> 
+      <xsl:apply-templates/>
+    </div>
+  </xsl:template>
+
  <xsl:template match="biblStruct">
   <p style="text-indent:-10mm;margin-left:10mm">
    <xsl:if test="@n">

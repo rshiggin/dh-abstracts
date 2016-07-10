@@ -206,10 +206,10 @@
                         </tr>
                         <tr>
                            <td class="left">
-                              <a href="{$xtfURL}search" target="_top">Home</a><xsl:text> | </xsl:text>
+                              <a href="{$xtfURL}search" target="_top">Home</a><xsl:text></xsl:text>
                               <xsl:choose>
                                  <xsl:when test="session:getData('queryURL')">
-                                    <a href="{session:getData('queryURL')}" target="_top">Return to Search Results</a>
+                                    <a href="{session:getData('queryURL')}" target="_top"> | Return to Search Results</a>
                                  </xsl:when>
                                  <xsl:otherwise>
                                  <!--   <span class="notActive">Return to Search Results</span> -->

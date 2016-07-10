@@ -317,18 +317,18 @@
                     <xsl:value-of select="'bibl'"/>
                 </xsl:with-param>
             </xsl:call-template>
-            <xsl:call-template name="get-author"/>
-            <xsl:call-template name="get-editor-analytic"/>
+         <!--   <xsl:call-template name="get-author"/> -->
+        <!--    <xsl:call-template name="get-editor-analytic"/> -->
             <xsl:if test="analytic/title">
                 <xsl:call-template name="get-biblScope"/>
             </xsl:if>
             <xsl:call-template name="get-title-monogr"/>
-            <xsl:if test="analytic and not(analytic/author)">
+       <!--     <xsl:if test="analytic and not(analytic/author)">
                 <xsl:call-template name="get-author-monogr"/>
-            </xsl:if>
+            </xsl:if> -->
             
-            <xsl:call-template name="get-editor-monogr"/>
-            <xsl:call-template name="get-extent"/>
+         <!--   <xsl:call-template name="get-editor-monogr"/> -->
+         <!--   <xsl:call-template name="get-extent"/> -->
             <xsl:call-template name="get-pubPlace"/>
             <xsl:call-template name="get-publisher"/>
          <!--   <xsl:call-template name="get-date"/> -->
@@ -340,24 +340,22 @@
             <xsl:choose>
                 <xsl:when test="analytic">
                     <xsl:choose>
-   
-                <xsl:when test="analytic/author">
-                    <xsl:value-of select="analytic/author"/>
-                </xsl:when>
+                         <xsl:when test="analytic/author">
+                             <xsl:value-of select="analytic/author"/>
+                          </xsl:when>
                     </xsl:choose>
-                </xsl:when>
+                </xsl:when>    
                 <xsl:otherwise>
                     <xsl:choose>
-
-                <xsl:when test="monogr/author">
-                    <xsl:value-of select="monogr/author"/>
-                </xsl:when>
-                <xsl:when test="analytic/editor"/>
-                <xsl:when test="monogr/editor"/>
-                <xsl:otherwise>
-                    <xsl:value-of select="'unknown'"/>
-                </xsl:otherwise>
-                    </xsl:choose>
+                            <xsl:when test="monogr/author">
+                                <xsl:value-of select="monogr/author"/>
+                             </xsl:when>
+                            <xsl:when test="analytic/editor"/>
+                            <xsl:when test="monogr/editor"/>
+                        <xsl:otherwise>
+                             <xsl:value-of select="'unknown'"/>
+                          </xsl:otherwise>
+                 </xsl:choose>
                 </xsl:otherwise>
             </xsl:choose>
         </xsl:param>
@@ -376,15 +374,14 @@
     <xsl:template name="get-author-monogr">
         <xsl:param name="author">
             <xsl:choose>
-
                         <xsl:when test="mongr/author/persName">
                             <xsl:value-of select="mongr/author/persName"/>
                         </xsl:when>
                         <xsl:when test="monogr/author">
                             <xsl:value-of select="monogr/author"/>
                         </xsl:when>
-                        <xsl:when test="analytic/editor"/>
-                        <xsl:when test="monogr/editor"/>
+                <xsl:when test="analytic/editor"/>
+                <xsl:when test="monogr/editor"/>
                         <xsl:otherwise>
                             <xsl:value-of select="'unknown'"/>
                         </xsl:otherwise>
@@ -403,11 +400,10 @@
     </xsl:template>
     
     <xsl:template name="get-editor-analytic">
-        
         <xsl:param name="editor">
             <xsl:choose>
                 <xsl:when test="analytic/editor">
-                    <xsl:value-of select="analytic/editor"/>
+                    <xsl:value-of select="analytic/editor"/><xsl:text>, ed. </xsl:text>
                 </xsl:when>
                 <!--
                     <xsl:when test="/TEI/teiHeader/fileDesc/sourceDesc/biblStruct/monogr/editor/persName/@key">
@@ -443,7 +439,7 @@
         </xsl:if>
     </xsl:template>
 
-    <xsl:template name="get-extent">
+    <!--<xsl:template name="get-extent">
         <xsl:param name="extent" select="normalize-space(monogr/extent)"/>
         <xsl:if test="$extent != ''">
             <xsl:choose>
@@ -455,7 +451,7 @@
                 </xsl:otherwise>
             </xsl:choose>
         </xsl:if>
-    </xsl:template>
+    </xsl:template> -->
     
     <xsl:template name="get-biblScope">
         <xsl:variable name="refIdwHash">
@@ -517,7 +513,7 @@
                 <xsl:choose>
                     <xsl:when test="tei:author = parent::tei:biblStruct/tei:analytic/tei:author">
                         <xsl:if test="tei:author[2]">
-                            <xsl:apply-templates select="tei:author"/>
+                            <xsl:apply-templates select="tei:author"/><xsl:text>, </xsl:text>
                         </xsl:if>
                         <xsl:apply-templates select="tei:title"/>
                         <xsl:if test="tei:edition"><xsl:apply-templates select="tei:edition"/></xsl:if>
@@ -613,6 +609,14 @@
             <xsl:call-template name="atts"/>
             <xsl:apply-templates/>
         </span>
+    </xsl:template>
+    
+    <!-- ADHO special case type book -->
+    <xsl:template match="biblStruct [@type='book']">
+                <xsl:apply-templates select="get-author"/>
+                <xsl:if test="tei:title/@level='m'">
+                    <xsl:apply-templates select="get-title-monogr" />
+                </xsl:if>
     </xsl:template>
     
     

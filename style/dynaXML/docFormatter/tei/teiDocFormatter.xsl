@@ -209,7 +209,7 @@
    <!-- Lists                                                                  -->
    <!-- ====================================================================== -->
    
-   <xsl:template match="*:list">
+  <!-- <xsl:template match="*:list">
       <xsl:choose>
          <xsl:when test="@type='gloss'">
             <dl><xsl:apply-templates/></dl>
@@ -247,18 +247,25 @@
             <ul><xsl:apply-templates/></ul>
          </xsl:when>
       </xsl:choose>
-   </xsl:template>
+   </xsl:template> -->
    
-   <xsl:template match="*:item">
+   <!-- ADHO list/item special case -->
+   <xsl:template match="*:list/*:item/*:list/*:item">
+            <ul><xsl:apply-templates/></ul>
+   </xsl:template>
+ 
+   
+  <xsl:template match="*:list">
       <xsl:choose>
-         <xsl:when test="parent::list[@type='gloss']">
-            <dd><xsl:apply-templates/></dd>
+         <xsl:when test="*:item">
+            <item><xsl:apply-templates/></item>
+            <xsl:text>&#x0A;</xsl:text>
          </xsl:when>
          <xsl:otherwise>
-            <li><xsl:apply-templates/></li>
+            <ul><xsl:apply-templates/></ul>
          </xsl:otherwise>
       </xsl:choose>
-   </xsl:template>
+   </xsl:template> 
    
    <xsl:template  match="*:label">
       <dt><xsl:apply-templates/></dt>
@@ -507,9 +514,7 @@
                <h2><xsl:text>Abstract</xsl:text></h2>
                <xsl:apply-templates select="/*/*:text/*"/>
             </div>
-            <div class="bibliography"><p>
-               <xsl:copy-of select="biblStruct"/></p>
-            </div>
+            
             <div>
             <xsl:copy-of select="$brand.footer"/>
             </div>
