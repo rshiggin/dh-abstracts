@@ -1,15 +1,10 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="2.0"
-   xmlns:ns="http://www.tei-c.org/ns/1.0" 
    xmlns:date="http://exslt.org/dates-and-times"
    xmlns:parse="http://cdlib.org/xtf/parse"
    xmlns:xtf="http://cdlib.org/xtf"
-   xmlns:session="java:org.cdlib.xtf.xslt.Session"
-   xmlns:editURL="http://cdlib.org/xtf/editURL"
    xmlns:FileUtils="java:org.cdlib.xtf.xslt.FileUtils"
    extension-element-prefixes="date FileUtils"
    exclude-result-prefixes="#all">
-   
    <!--
       Copyright (c) 2008, Regents of the University of California
       All rights reserved.
@@ -117,7 +112,14 @@
       </xsl:copy>
    </xsl:template>
   -->
-   
+   <!-- add @id's to all /div* missing them so they are reachable  -->
+  <!-- <xsl:template match="*[matches(local-name(), '^div')][not(@id)]">
+      <xsl:copy>
+         <xsl:copy-of select="@*" />
+         <xsl:attribute name="id"><xsl:value-of select="generate-id()"/></xsl:attribute>
+         <xsl:apply-templates />
+      </xsl:copy>
+   </xsl:template> -->
    <!-- ====================================================================== -->
    <!-- Metadata Indexing                                                      -->
    <!-- ====================================================================== -->
@@ -251,7 +253,7 @@
             </publisher>
          </xsl:when>
          <xsl:when test="//*:text/*:front/*:titlePage//*:publisher">
-            <publisher xtf-meta="true">
+            <publisher xtf:meta="true">
                <xsl:value-of select="string(//*:text/*:front/*:titlePage//*:publisher[1])"/>
             </publisher>
          </xsl:when>
@@ -267,7 +269,7 @@
    <xsl:template name="get-tei-contributor">
       <xsl:choose>
          <xsl:when test="//*:fileDesc/*:respStmt/*:name">
-            <contributor xtf-meta="true">
+            <contributor xtf:meta="true">
                <xsl:value-of select="string(//*:fileDesc/*:respStmt/*:name[1])"/>
             </contributor>
          </xsl:when>
@@ -330,7 +332,7 @@
    <xsl:template name="get-tei-source">
       <xsl:choose>
          <xsl:when test="//*:sourceDesc/*:bibl">
-            <source xtf-meta="true">
+            <source xtf:meta="true">
                <xsl:value-of select="string(//*:sourceDesc/*:bibl[1])"/>
             </source>
          </xsl:when>
@@ -346,7 +348,7 @@
    <xsl:template name="get-tei-language">
       <xsl:choose>
          <xsl:when test="//*:profileDesc/*:langUsage/*:language">
-            <language xtf-meta="true">
+            <language xtf:meta="true">
                <xsl:value-of select="string((//*:profileDesc/*:langUsage/*:language)[1])"/>
             </language>
          </xsl:when>
@@ -362,7 +364,7 @@
    <xsl:template name="get-tei-relation">
       <xsl:choose>
          <xsl:when test="//*:fileDesc/*:seriesStmt/*:title">
-            <relation xtf-meta="true">
+            <relation xtf:meta="true">
                <xsl:value-of select="string(//*:fileDesc/*:seriesStmt/*:title)"/>
             </relation>
          </xsl:when>
@@ -383,7 +385,7 @@
    
    <!-- rights -->
    <xsl:template name="get-tei-rights">
-      <rights xtf-meta="true">
+      <rights xtf:meta="true">
          <xsl:value-of select="'public'"/>
       </rights>
    </xsl:template>
